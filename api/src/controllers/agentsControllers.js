@@ -7,7 +7,7 @@ const agentController = {
       res.json(agents);
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(`Internal Server Error: ${error.message}`);
     }
   },
 
@@ -18,11 +18,11 @@ const agentController = {
       if (agent) {
         res.json(agent);
       } else {
-        res.status(404).send("Agent not found");
+        res.status(404).json({ error: "Agent not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(`Internal Server Error: ${error.message}`);
     }
   },
 
@@ -33,7 +33,7 @@ const agentController = {
       res.json(newAgent);
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(`Internal Server Error: ${error.message}`);
     }
   },
 
@@ -42,13 +42,13 @@ const agentController = {
     try {
       const deletedCount = await Agent.destroy({ where: { id } });
       if (deletedCount > 0) {
-        res.send("Agent deleted successfully");
+        res.json({ message: "Agent deleted successfully" });
       } else {
-        res.status(404).send("Agent not found");
+        res.status(404).json({ error: "Agent not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(`Internal Server Error: ${error.message}`);
     }
   },
 
@@ -60,13 +60,13 @@ const agentController = {
         where: { id },
       });
       if (updatedCount > 0) {
-        res.send("Agent updated successfully");
+        res.json({ message: "Agent updated successfully" });
       } else {
-        res.status(404).send("Agent not found");
+        res.status(404).json({ error: "Agent not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(`Internal Server Error: ${error.message}`);
     }
   },
 };
