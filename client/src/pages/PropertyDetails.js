@@ -75,7 +75,7 @@ const PropertyDetails = () => {
             <div className="mb-8">
               <img src={house.imageLg} alt="" />
             </div>
-            <div className="flex gap-x-4 text-green-700 mb-6">
+            <div className="flex gap-x-4 text-green-700 mb-6 text-sm">
               <div className="flex gap-x-1 items-center">
                 <BiBed />
                 <div>{house.bedrooms}</div>
@@ -89,7 +89,7 @@ const PropertyDetails = () => {
                 <div>{house.surface}</div>
               </div>
             </div>
-            <div>{house.description}</div>
+            <div className="text-sm">{house.description}</div>
           </div>
           <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
             <div className="flex items-center gap-x-4 mb-8">

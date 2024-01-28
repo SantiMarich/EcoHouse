@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
   host: "localhost", // Cambia esto según tu configuración
   username: "postgres", // Cambia esto según tu configuración
   password: "33814489", // Cambia esto según tu configuración
-  database: "ecohouse", // Cambia esto según tu configuración
+  database: "postgres", // Cambia esto según tu configuración
 });
 
 module.exports = sequelize;
