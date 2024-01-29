@@ -1,63 +1,117 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { createHouseSuccess } from "../redux/actions/houseActions";
 
-export default function App() {
+export default function FormHouse() {
+  const dispatch = useDispatch();
+  const agents = useSelector((state) => state.agents.agents);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+
+  const onSubmit = (data) => {
+    dispatch(createHouseSuccess(data));
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <select {...register("Tipo", { required: true })}>
-        <option value="Casa">Casa</option>
-        <option value=" Departamento"> Departamento</option>
-        <option value=" Temporal"> Temporal</option>
-        <option value=" Terreno"> Terreno</option>
-      </select>
-      <input
-        type="text"
-        placeholder="Nombre"
-        {...register("Nombre", { required: true, maxLength: 30 })}
-      />
-      <input
-        type="text"
-        placeholder="Descripción"
-        {...register("Descripción", { required: true, maxLength: 100 })}
-      />
-      <input
-        type="url"
-        placeholder="Imagenes"
-        {...register("Imagenes", { maxLength: 50 })}
-      />
-      <select {...register("Ubicación")}>
-        <option value="Córdoba, Salta">Córdoba, Salta</option>
-      </select>
-      <input
-        type="text"
-        placeholder="Dirección"
-        {...register("Dirección", {})}
-      />
-      <input type="number" placeholder="Habitaciones" {...register} />
-      <input type="number" placeholder="Baños" {...register("Baños", {})} />
-      <input
-        type="number"
-        placeholder="Superficie"
-        {...register("Superficie", {})}
-      />
-      <input type="datetime" placeholder="Año" {...register("Año", {})} />
-      <input type="number" placeholder="Precio" {...register} />
-      <select {...register("Operación")}>
-        <option value="Venta, Alquiler, Temporal">
-          Venta, Alquiler, Temporal
-        </option>
-      </select>
-      <input type="text" placeholder="Agente" {...register("Agente", {})} />
-
-      <input type="submit" />
-    </form>
+    <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
+        <select
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("type", { required: true })}
+        >
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
+          <option value="Temporal">Temporal</option>
+          <option value="Terreno">Terreno</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Nombre"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("name", { required: true, maxLength: 30 })}
+        />
+        <input
+          type="text"
+          placeholder="Descripción"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("description", { required: true, maxLength: 100 })}
+        />
+        <input
+          type="url"
+          placeholder="Imagenes"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("image", { maxLength: 50 })}
+        />
+        <select
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("location")}
+        >
+          <option value="Córdoba, Salta">Córdoba, Salta</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Dirección"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("address", {})}
+        />
+        <input
+          type="number"
+          placeholder="Habitaciones"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("bedrooms")}
+        />
+        <input
+          type="number"
+          placeholder="Baños"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("bathrooms", {})}
+        />
+        <input
+          type="number"
+          placeholder="Superficie"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("surface", {})}
+        />
+        <input
+          type="datetime"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          placeholder="Año"
+          {...register("year", {})}
+        />
+        <input
+          type="number"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          placeholder="Precio"
+          {...register("price")}
+        />
+        <select
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("transaction")}
+        >
+          <option value="Venta, Alquiler, Temporal">
+            Venta, Alquiler, Temporal
+          </option>
+        </select>
+        <select
+          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+          {...register("agent", { required: true })}
+        >
+          {agents.map((agent) => (
+            <option key={agent.id} value={agent.id}>
+              {agent.name}
+            </option>
+          ))}
+        </select>
+        <input
+          type="submit"
+          className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition"
+        />
+      </form>
+    </div>
   );
 }
