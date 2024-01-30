@@ -3,6 +3,7 @@ import { housesData } from "../data";
 import { useParams, Link } from "react-router-dom";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 import emailjs from "@emailjs/browser";
+import Carrousel from "../components/Carrousel";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -73,7 +74,7 @@ const PropertyDetails = () => {
         <div className="flex flex-col items-start gap-8 lg:flex-row">
           <div className="max-w-[768px]">
             <div className="mb-8">
-              <img src={house.imageLg} alt="" />
+              <Carrousel images={[house.imageLg]} />
             </div>
             <div className="flex gap-x-4 text-green-700 mb-6 text-sm">
               <div className="flex gap-x-1 items-center">
