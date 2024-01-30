@@ -3,18 +3,54 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createHouseSuccess } from "../redux/actions/houseActions";
 
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from "@cloudinary/react";
+import {
+  CloudinaryContext,
+  useCloudinary,
+  Transformation,
+} from "cloudinary-react";
+
 export default function FormHouse() {
   const dispatch = useDispatch();
   const agents = useSelector((state) => state.agents.agents);
-
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const cld = new Cloudinary({ cloud: { cloudName: "your_cloud_name" } });
+
+  const onSubmit = async (data) => {
+    const images = data.images;
+
+    const cloudinaryUrls = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const formData = new FormData();
+      formData.append("file", images[i]);
+
+      const imageUploadResponse = await fetch(
+        `https://api.cloudinary.com/v1_1/${cld.config().cloudName}/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const imageUploadData = await imageUploadResponse.json();
+      cloudinaryUrls.push(imageUploadData.secure_url);
+    }
+
+    data.images = cloudinaryUrls;
+
     dispatch(createHouseSuccess(data));
+  };
+
+  const handleImageChange = (e) => {
+    setValue("images", e.target.files);
   };
 
   return (
@@ -42,10 +78,10 @@ export default function FormHouse() {
           {...register("description", { required: true, maxLength: 100 })}
         />
         <input
-          type="url"
-          placeholder="Imagenes"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("image", { maxLength: 50 })}
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageChange}
         />
         <select
           className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
