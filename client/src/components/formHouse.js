@@ -54,100 +54,119 @@ export default function FormHouse() {
   };
 
   return (
-    <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
-        <select
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("type", { required: true })}
+    <div className="flex-1 bg-white mb-8 border border-gray-300 rounded-lg p-6 md:w-96 lg:w-80 xl:w-96">
+      <div className="flex items-center gap-x-4 mb-8">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-y-4"
         >
-          <option value="Casa">Casa</option>
-          <option value="Departamento">Departamento</option>
-          <option value="Temporal">Temporal</option>
-          <option value="Terreno">Terreno</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Nombre"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("name", { required: true, maxLength: 30 })}
-        />
-        <input
-          type="text"
-          placeholder="Descripción"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("description", { required: true, maxLength: 100 })}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleImageChange}
-        />
-        <select
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("location")}
-        >
-          <option value="Córdoba, Salta">Córdoba, Salta</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Dirección"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("address", {})}
-        />
-        <input
-          type="number"
-          placeholder="Habitaciones"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("bedrooms")}
-        />
-        <input
-          type="number"
-          placeholder="Baños"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("bathrooms", {})}
-        />
-        <input
-          type="number"
-          placeholder="Superficie"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("surface", {})}
-        />
-        <input
-          type="datetime"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          placeholder="Año"
-          {...register("year", {})}
-        />
-        <input
-          type="number"
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          placeholder="Precio"
-          {...register("price")}
-        />
-        <select
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("transaction")}
-        >
-          <option value="Venta, Alquiler, Temporal">
-            Venta, Alquiler, Temporal
-          </option>
-        </select>
-        <select
-          className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-          {...register("agent", { required: true })}
-        >
-          {agents.map((agent) => (
-            <option key={agent.id} value={agent.id}>
-              {agent.name}
+          <h1>Nueva Propiedad</h1>
+          <select
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("type", { required: true })}
+          >
+            <option value="Seleccionar Propiedad" disabled hidden>
+              Seleccionar Propiedad
             </option>
-          ))}
-        </select>
-        <input
-          type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition"
-        />
-      </form>
+            <option value="Casa">Casa</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Temporal">Temporal</option>
+            <option value="Terreno">Terreno</option>
+            <option value="Oficina">Oficina</option>
+            <option value="Local">Local</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Nombre"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("name", { required: true, maxLength: 30 })}
+          />
+          <input
+            type="text"
+            placeholder="Descripción"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("description", { required: true, maxLength: 100 })}
+          />
+          <input
+            className="w-full"
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+          />
+          <select
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("location")}
+          >
+            <option value="Seleccionar Ubicación" disabled hidden>
+              Seleccionar Ubicación
+            </option>
+            <option value="Córdoba">Córdoba</option>
+            <option value="Salta">Salta</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Dirección"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("address", {})}
+          />
+          <input
+            type="number"
+            placeholder="Habitaciones"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("bedrooms")}
+          />
+          <input
+            type="number"
+            placeholder="Baños"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("bathrooms", {})}
+          />
+          <input
+            type="number"
+            placeholder="Superficie"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("surface", {})}
+          />
+          <input
+            type="datetime"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            placeholder="Año"
+            {...register("year", {})}
+          />
+          <input
+            type="number"
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            placeholder="Precio"
+            {...register("price")}
+          />
+          <select
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("transaction")}
+          >
+            <option value="Seleccionar Operación" disabled hidden>
+              Seleccionar Operación
+            </option>
+            <option value="Venta">Venta</option>
+            <option value="Alquiler">Alquiler</option>
+            <option value="Temporal">Temporal</option>
+          </select>
+          <select
+            className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+            {...register("agent", { required: true })}
+          >
+            {agents.map((agent) => (
+              <option key={agent.id} value={agent.id}>
+                {agent.name}
+              </option>
+            ))}
+          </select>
+          <input
+            type="submit"
+            className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition"
+          />
+        </form>
+      </div>
     </div>
   );
 }
