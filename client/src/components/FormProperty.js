@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createLocationSuccess } from "../redux/actions/locationActions";
+import { createPropertySuccess } from "../redux/actions/propertyActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
 
-export default function FormLocation() {
+export default function FormProperty() {
   const dispatch = useDispatch();
   const {
     register,
@@ -14,22 +14,22 @@ export default function FormLocation() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    dispatch(createLocationSuccess(data));
+    dispatch(createPropertySuccess(data));
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenProperty, setIsOpenProperty] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
       <Menu as="div" className="dropdown w-full">
         <Menu.Button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpenProperty(!isOpenProperty)}
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
-            Crear Nueva Ubicación
+            Crear Nueva Tipologia
           </h1>
-          {isOpen ? (
+          {isOpenProperty ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
           ) : (
             <RiArrowDownSLine className="dropdown-icon-secondary" />
@@ -44,8 +44,8 @@ export default function FormLocation() {
             >
               <input
                 type="text"
-                placeholder="Nombre Ubicación"
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                placeholder="Nombre Tipologia"
+                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm "
                 {...register("name", { required: true, maxLength: 30 })}
               />
               <input

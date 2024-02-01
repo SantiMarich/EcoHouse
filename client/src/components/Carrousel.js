@@ -26,8 +26,11 @@ const Carrousel = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full" data-carousel="slide">
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div
+      className="relative flex justify-center items-center w-full"
+      data-carousel="slide"
+    >
+      <div className="relative h-full overflow-hidden rounded-lg md:h-full ">
         {images.map((image, index) => (
           <div
             key={index}
@@ -38,7 +41,7 @@ const Carrousel = ({ images }) => {
           >
             <img
               src={image}
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="flex h-fit justify-center items-center object-cover top-0 left-0"
               alt={`Slide ${index + 1}`}
             />
           </div>

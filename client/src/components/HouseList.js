@@ -1,3 +1,4 @@
+// Import necessary libraries
 import React, { useContext } from "react";
 import { HouseContext } from "./HouseContext";
 import House from "./House";
@@ -6,6 +7,11 @@ import { ImSpinner2 } from "react-icons/im";
 
 const HouseList = () => {
   const { houses, loading } = useContext(HouseContext);
+
+  // Function to handle scroll-up button click
+  const handleScrollUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (loading) {
     return (
@@ -21,20 +27,26 @@ const HouseList = () => {
     );
   }
 
-  const handleDetail = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
     <section className="z-auto mb-20">
       <div className="container mx-auto">
+        {/* Scroll-up button */}
+        <a
+          href="#"
+          className="scrollup"
+          id="scroll-up"
+          onClick={handleScrollUp}
+        >
+          <i className="uil uil-arrow-up scrollup__icon"></i>
+        </a>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14">
           {houses.map((house, index) => {
             return (
               <Link
                 to={`/property/${house.id}`}
                 key={index}
-                onClick={handleDetail}
+                onClick={handleScrollUp} // Scroll to top when clicking on a house
               >
                 <House house={house} />
               </Link>

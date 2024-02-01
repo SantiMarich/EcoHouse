@@ -34,14 +34,14 @@ const PropertyDetails = () => {
           console.log(result.text);
           setNotification({
             type: "success",
-            message: "Email sent successfully!",
+            message: "Email enviado exitosamente!",
           });
         },
         (error) => {
           console.log(error.text);
           setNotification({
             type: "error",
-            message: "Failed to send email. Please try again.",
+            message: "No se envio el email. Intentelo nuevamente.",
           });
         }
       );
