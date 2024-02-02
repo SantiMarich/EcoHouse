@@ -80,7 +80,7 @@ export default function FormHouse() {
               className="flex flex-col gap-y-4"
             >
               <select
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm transition cursor-pointer"
                 {...register("type", { required: true })}
               >
                 <option value="Seleccionar Propiedad" disabled hidden>
@@ -181,6 +181,7 @@ export default function FormHouse() {
               />
               <input
                 type="submit"
+                value="Crear Propiedad"
                 className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full px-4 h-14 transition"
               />
             </form>

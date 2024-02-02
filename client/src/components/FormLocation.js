@@ -50,7 +50,8 @@ export default function FormLocation() {
               />
               <input
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition"
+                value="Crear Ubicación"
+                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition cursor-pointer"
               />
             </form>
           </div>

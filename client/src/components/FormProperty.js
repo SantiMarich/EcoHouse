@@ -27,7 +27,7 @@ export default function FormProperty() {
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
-            Crear Nueva Tipologia
+            Crear Nueva Tipología
           </h1>
           {isOpenProperty ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
@@ -50,7 +50,8 @@ export default function FormProperty() {
               />
               <input
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition"
+                value="Crear Tipología"
+                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition cursor-pointer"
               />
             </form>
           </div>

@@ -88,7 +88,8 @@ export default function FormAgent() {
               />
               <input
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm transition w-full"
+                value="Crear Agente"
+                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm transition w-full cursor-pointer"
               />
             </form>
           </div>

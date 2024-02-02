@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/img/EcohouseLogo.jpg";
-import LogInButton from "./LogIn";
-import LogOutButton from "./LogOut";
+import LogInButton from "./ButtonLogIn";
+import LogOutButton from "./ButtonLogOut";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./Profile";
 import { MdModeEdit } from "react-icons/md";
