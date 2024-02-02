@@ -8,7 +8,11 @@ import Profile from "./Profile";
 import { MdModeEdit } from "react-icons/md";
 
 const Header = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
+  const allowedUserId = "auth0|65bc6f6c1db88018a9d22138";
+
+  const isAllowedUser = isAuthenticated && user && user.sub === allowedUserId;
+
   return (
     <header className="py-6 mb-12 border-b">
       <div className="container mx-auto flex justify-between items-center">
@@ -24,15 +28,17 @@ const Header = () => {
             <>
               <Profile />
               <LogOutButton>Log Out</LogOutButton>
+              {isAllowedUser && (
+                <Link to="/admin">
+                  <button className="bg-green-300 hover:bg-green-400 text-white h-10 px-3 py-3 rounded-lg transition flex items-center text-center justify-center">
+                    <MdModeEdit />
+                  </button>
+                </Link>
+              )}
             </>
           ) : (
             <LogInButton>Log In</LogInButton>
           )}
-          <Link to="/admin">
-            <button className="bg-green-500 hover:bg-green-600 text-white h-10  px-3 py-3 rounded-lg transition flex items-center text-center justify-center">
-              <MdModeEdit />
-            </button>
-          </Link>
         </div>
       </div>
     </header>

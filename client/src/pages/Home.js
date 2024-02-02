@@ -1,14 +1,12 @@
 import React from "react";
-import Banner from "../components/Banner";
-import HouseList from "../components/HouseList";
-import ScrollUp from "../components/ScrollUp";
+import ViewPanel from "./ViewPanel";
+import AdminPanel from "./AdminPanel";
 
 const Home = () => {
   return (
     <div className="min-h-[1800px]">
-      <Banner />
-      <HouseList />
-      <ScrollUp />
+      <ViewPanel />
+      <AdminPanel />
     </div>
   );
 };

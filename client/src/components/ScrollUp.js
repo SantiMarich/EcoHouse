@@ -31,7 +31,7 @@ const ScrollUpButton = () => {
       }`}
     >
       <button
-        className="bg-green-400 text-white p-3 rounded-full focus:outline-none"
+        className="bg-green-400 text-white p-2 rounded-full focus:outline-none"
         onClick={scrollToTop}
       >
         <FaArrowUp />
