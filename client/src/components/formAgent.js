@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createAgentSuccess } from "../redux/actions/agentActions";
+import { createAgent } from "../redux/actions/agentActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage } from "@cloudinary/react";
-import {
-  CloudinaryContext,
-  useCloudinary,
-  Transformation,
-} from "cloudinary-react";
+import UploadWidget from "./UploadWidget";
 
 export default function FormAgent() {
   const dispatch = useDispatch();
@@ -21,22 +15,8 @@ export default function FormAgent() {
     formState: { errors },
   } = useForm();
 
-  const cld = new Cloudinary({ cloud: { cloudName: "dgumwc2z4" } });
-
   const onSubmit = async (data) => {
-    const imageUploadResponse = await fetch(
-      `https://api.cloudinary.com/v1_1/${cld.config().cloudName}/upload`,
-      {
-        method: "POST",
-        body: data.image,
-      }
-    );
-
-    const imageUploadData = await imageUploadResponse.json();
-
-    data.image = imageUploadData.secure_url;
-
-    dispatch(createAgentSuccess(data));
+    dispatch(createAgent(data));
   };
 
   const handleImageChange = (e) => {
@@ -80,16 +60,11 @@ export default function FormAgent() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded px-4 h-14 text-sm w-full"
                 {...register("phone", { maxLength: 17 })}
               />
-              <input
-                className="flex flex-row text-xs"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+              <UploadWidget />
               <input
                 type="submit"
                 value="Crear Agente"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm transition w-full cursor-pointer"
+                className="bg-gray-800 hover:bg-gray-900 text-white rounded p-4 text-sm transition w-full cursor-pointer"
               />
             </form>
           </div>

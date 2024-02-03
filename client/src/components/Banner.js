@@ -62,8 +62,12 @@ const Banner = () => {
           </p>
           <ScrollDown targetSectionId="search-section" />
         </div>
-        <div className="hidden flex-1 lg:flex justify-end items-end">
-          <img src={Image} alt="" />
+        <div className="hidden flex-1 lg:flex justify-end items-end h-[550px] w-[520px] rounded-tl-[80px]">
+          <img
+            src={Image}
+            alt=""
+            className="object-cover object-center w-full h-full rounded-tl-[150px]"
+          />
         </div>
       </div>
       <Search id="house-list-section" />

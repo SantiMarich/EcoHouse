@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createPropertySuccess } from "../redux/actions/propertyActions";
+import { createProperty } from "../redux/actions/propertyActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
 
@@ -14,22 +14,22 @@ export default function FormProperty() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    dispatch(createPropertySuccess(data));
+    dispatch(createProperty(data));
   };
 
-  const [isOpenProperty, setIsOpenProperty] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
       <Menu as="div" className="dropdown w-full">
         <Menu.Button
-          onClick={() => setIsOpenProperty(!isOpenProperty)}
+          onClick={() => setIsOpen(!isOpen)}
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
             Crear Nueva Tipología
           </h1>
-          {isOpenProperty ? (
+          {isOpen ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
           ) : (
             <RiArrowDownSLine className="dropdown-icon-secondary" />
@@ -51,7 +51,7 @@ export default function FormProperty() {
               <input
                 type="submit"
                 value="Crear Tipología"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition cursor-pointer"
+                className="bg-gray-800 hover:bg-gray-900 text-white rounded p-4 text-sm w-full transition cursor-pointer"
               />
             </form>
           </div>

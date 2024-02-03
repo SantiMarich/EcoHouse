@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createLocationSuccess } from "../redux/actions/locationActions";
+import { createLocation } from "../redux/actions/locationActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
 
@@ -14,7 +14,7 @@ export default function FormLocation() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    dispatch(createLocationSuccess(data));
+    dispatch(createLocation(data));
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function FormLocation() {
               <input
                 type="submit"
                 value="Crear Ubicación"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition cursor-pointer"
+                className="bg-gray-800 hover:bg-gray-900 text-white rounded p-4 text-sm w-full transition cursor-pointer"
               />
             </form>
           </div>

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { createHouseSuccess } from "../redux/actions/houseActions";
+import { createHouse } from "../redux/actions/houseActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage } from "@cloudinary/react";
-import {
-  CloudinaryContext,
-  useCloudinary,
-  Transformation,
-} from "cloudinary-react";
+import UploadWidget from "./UploadWidget";
 
 export default function FormHouse() {
   const dispatch = useDispatch();
@@ -22,51 +16,27 @@ export default function FormHouse() {
     formState: { errors },
   } = useForm();
 
-  const cld = new Cloudinary({ cloud: { cloudName: "dgumwc2z4" } });
-
   const onSubmit = async (data) => {
-    const images = data.images;
-
-    const cloudinaryUrls = [];
-
-    for (let i = 0; i < images.length; i++) {
-      const formData = new FormData();
-      formData.append("file", images[i]);
-
-      const imageUploadResponse = await fetch(
-        `https://api.cloudinary.com/v1_1/${cld.config().cloudName}/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const imageUploadData = await imageUploadResponse.json();
-      cloudinaryUrls.push(imageUploadData.secure_url);
-    }
-
-    data.images = cloudinaryUrls;
-
-    dispatch(createHouseSuccess(data));
+    dispatch(createHouse(data));
   };
 
   const handleImageChange = (e) => {
     setValue("images", e.target.files);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenHouse, setIsOpenHouse] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
       <Menu as="div" className="dropdown">
         <Menu.Button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpenHouse(!isOpenHouse)}
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
             Crear Nueva Propiedad
           </h1>
-          {isOpen ? (
+          {isOpenHouse ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
           ) : (
             <RiArrowDownSLine className="dropdown-icon-secondary" />
@@ -74,7 +44,11 @@ export default function FormHouse() {
         </Menu.Button>
 
         <Menu.Items>
-          <div className="flex-1 bg-white mb-4 border border-gray-300 rounded-lg p-6 w-full">
+          <div
+            className={`flex-1 bg-white mb-4 border border-gray-300 rounded-lg p-6 w-full ${
+              isOpenHouse ? "visible" : "hidden"
+            }`}
+          >
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-y-4"
@@ -83,15 +57,7 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm transition cursor-pointer"
                 {...register("type", { required: true })}
               >
-                <option value="Seleccionar Propiedad" disabled hidden>
-                  Seleccionar Propiedad
-                </option>
-                <option value="Casa">Casa</option>
-                <option value="Departamento">Departamento</option>
-                <option value="Temporal">Temporal</option>
-                <option value="Terreno">Terreno</option>
-                <option value="Oficina">Oficina</option>
-                <option value="Local">Local</option>
+                {/* ... opciones de tipo de propiedad */}
               </select>
               <input
                 type="text"
@@ -103,11 +69,7 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
                 {...register("location")}
               >
-                <option value="Seleccionar Ubicación" disabled hidden>
-                  Seleccionar Ubicación
-                </option>
-                <option value="Córdoba">Córdoba</option>
-                <option value="Salta">Salta</option>
+                {/* ... opciones de ubicación */}
               </select>
               <input
                 type="text"
@@ -149,9 +111,6 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
                 {...register("transaction")}
               >
-                <option value="Seleccionar Operación" disabled hidden>
-                  Seleccionar Operación
-                </option>
                 <option value="Venta">Venta</option>
                 <option value="Alquiler">Alquiler</option>
                 <option value="Temporal">Temporal</option>
@@ -166,13 +125,7 @@ export default function FormHouse() {
                   </option>
                 ))}
               </select>
-              <input
-                className="w-full px-4  text-xs"
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleImageChange}
-              />
+              <UploadWidget className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-xs w-full px-4 h-14 transition" />
               <textarea
                 type="text"
                 placeholder="Descripción"
@@ -182,7 +135,7 @@ export default function FormHouse() {
               <input
                 type="submit"
                 value="Crear Propiedad"
-                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full px-4 h-14 transition"
+                className="bg-gray-800 hover:bg-gray-900 text-white rounded p-4 text-sm w-full px-4 h-14 transition"
               />
             </form>
           </div>

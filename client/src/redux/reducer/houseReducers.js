@@ -8,45 +8,53 @@ const initialState = {
 
 const houseReducers = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.GET_HOUSES_REQUEST:
+    case actionTypes.GET_HOUSE_REQUEST:
+    case actionTypes.CREATE_HOUSE_REQUEST:
+    case actionTypes.UPDATE_HOUSE_REQUEST:
+    case actionTypes.DELETE_HOUSE_REQUEST:
+      return { ...state, loading: true, error: null };
+
     case actionTypes.GET_HOUSES_SUCCESS:
-      return { ...state, houses: action.payload, error: null };
+      return { ...state, loading: false, houses: action.payload, error: null };
 
     case actionTypes.GET_HOUSES_FAILURE:
-      return { ...state, houses: [], error: action.payload };
+      return { ...state, loading: false, houses: [], error: action.payload };
 
     case actionTypes.GET_HOUSE_SUCCESS:
-      return { ...state, house: action.payload, error: null };
+      return { ...state, loading: false, house: action.payload, error: null };
 
     case actionTypes.GET_HOUSE_FAILURE:
-      return { ...state, house: null, error: action.payload };
+      return { ...state, loading: false, house: null, error: action.payload };
 
     case actionTypes.CREATE_HOUSE_SUCCESS:
       return {
         ...state,
         houses: [...state.houses, action.payload],
+        loading: false,
         error: null,
       };
 
     case actionTypes.CREATE_HOUSE_FAILURE:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
 
     case actionTypes.UPDATE_HOUSE_SUCCESS:
       const updatedHouses = state.houses.map((house) =>
         house.id === action.payload.id ? action.payload : house
       );
-      return { ...state, houses: updatedHouses, error: null };
+      return { ...state, loading: false, houses: updatedHouses, error: null };
 
     case actionTypes.UPDATE_HOUSE_FAILURE:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
 
     case actionTypes.DELETE_HOUSE_SUCCESS:
       const remainingHouses = state.houses.filter(
         (house) => house.id !== action.payload.id
       );
-      return { ...state, houses: remainingHouses, error: null };
+      return { ...state, loading: false, houses: remainingHouses, error: null };
 
     case actionTypes.DELETE_HOUSE_FAILURE:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
 
     default:
       return state;
