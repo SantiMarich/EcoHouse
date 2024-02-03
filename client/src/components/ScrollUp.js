@@ -26,12 +26,12 @@ const ScrollUpButton = () => {
 
   return (
     <div
-      className={`fixed bottom-24 right-1/2 transform translate-x-1/2 transition-opacity duration-300 ${
+      className={`fixed bottom-8 right-10 sm:right-10 md:right-1/2 lg:right-1/2 xl:right-1/2 transform translate-x-1/2 transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
       <button
-        className="bg-green-400 text-white p-2 rounded-full focus:outline-none"
+        className="bg-green-400/60 text-white p-3 rounded-full focus:outline-none"
         onClick={scrollToTop}
       >
         <FaArrowUp />

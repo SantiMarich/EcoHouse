@@ -25,6 +25,8 @@ import House10Lg from "./assets/img/houses/house10lg.png";
 import House11Lg from "./assets/img/houses/house11lg.png";
 import House12Lg from "./assets/img/houses/house12lg.png";
 
+import Salta from "./assets/img/imagenes/salta1.jpg";
+
 // import apartments images
 import Apartment1 from "./assets/img/apartments/a1.png";
 import Apartment2 from "./assets/img/apartments/a2.png";
@@ -63,8 +65,8 @@ export const housesData = [
     name: "Casa 1",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
-    image: House1,
-    imageLg: House1Lg,
+    image: Salta,
+    imageLg: Salta,
     country: "Salta ",
     address: "7240C Argyle St. Lawndale, CA 90260",
     bedrooms: "6",

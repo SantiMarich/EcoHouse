@@ -16,8 +16,14 @@ const House = ({ house }) => {
   } = house;
   return (
     <div className="bg-white shadow-1 p-5 rounded-lg rounded-tl-[90px] w-full max-w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition">
-      <img className="mb-8" src={image} alt=""></img>
-      <div className="mb-4 flex gap-x-2 text-xs">
+      <div className="relative overflow-hidden w-[315px] h-[315px] rounded-tl-[80px] rounded-tr-lg rounded-br-[80px] rounded-bl-lg mb-8">
+        <img
+          className="object-cover object-center w-full h-full rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg"
+          src={image}
+          alt=""
+        />
+      </div>
+      <div className="mb-8 flex gap-x-2 text-xs">
         <div className="bg-green-700 rounded-md text-white px-3">{type}</div>
         <div className="bg-green-500 rounded-md text-white px-3">{country}</div>
         <div className="bg-green-800 rounded-md text-white px-3">
