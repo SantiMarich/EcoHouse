@@ -30,18 +30,18 @@ const Carrousel = ({ images }) => {
       className="relative flex justify-center items-center w-full"
       data-carousel="slide"
     >
-      <div className="relative h-full overflow-hidden rounded-lg md:h-full ">
+      <div className="relative overflow-hidden w-full object-cover rounded-lg  h-[300px] md:h-[500px]">
         {images.map((image, index) => (
           <div
             key={index}
             className={`${
               index === currentIndex ? "block" : "hidden"
-            } duration-700 ease-in-out`}
+            } duration-700 ease-in-out w-full h-full`}
             data-carousel-item
           >
             <img
               src={image}
-              className="flex h-fit justify-center items-center object-cover top-0 left-0"
+              className="flex h-full w-full object-cover object-center top-0 left-0"
               alt={`Slide ${index + 1}`}
             />
           </div>
