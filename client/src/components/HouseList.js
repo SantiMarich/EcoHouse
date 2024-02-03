@@ -26,7 +26,7 @@ const HouseList = () => {
   }
 
   return (
-    <section className="z-auto mb-20">
+    <section className="z-10 mb-20">
       <div className="container mx-auto">
         <button className="scrollup" id="scroll-up" onClick={handleScrollUp}>
           <i className="uil uil-arrow-up scrollup__icon"></i>

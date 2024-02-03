@@ -69,6 +69,9 @@ const PropertyDetails = () => {
 
           <div className="text-2xl mb-4 font-semibold text-green-500">
             $ {house.price}
+            <div className="text-xs mt-[2px] font-medium text-green-300">
+              Pesos Argentinos
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-start gap-8 lg:flex-row">
@@ -99,8 +102,11 @@ const PropertyDetails = () => {
               </div>
               <div>
                 <div className="font-bold text-lg">{house.agent.name}</div>
-                <Link to="" className="text-green-500 text-sm">
-                  View Listings
+                <Link
+                  to="https://wa.me/5493513838890"
+                  className="text-green-500 text-sm"
+                >
+                  Enviar Whatsapp
                 </Link>
               </div>
             </div>
@@ -137,12 +143,7 @@ const PropertyDetails = () => {
                 <button className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition">
                   Enviar Mensaje
                 </button>
-                <a
-                  href="https://wa.me/5493513838890"
-                  className="bg-green-400 hover:bg-green-500 text-white text-center items-center justify-center rounded p-4 text-sm w-full transition"
-                >
-                  Enviar Whatsapp
-                </a>
+
                 <Link
                   to="/"
                   className="border border-green-800 text-green-800 hover:border-green-500 hover:text-green-500 items-center justify-center rounded p-4 text-sm w-full transition text-center"

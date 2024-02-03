@@ -12,9 +12,12 @@ import ScrollDown from "../components/ScrollDown";
 
 const Banner = () => {
   return (
-    <section className="h-full max-h-[640px] mb-8 xl:mb-24" id="banner-section">
+    <section
+      className="h-full max-h-[640px] mb-[280px] sm:mb-[280px] md:mb-[280px] lg:mb-24 xl:mb-24"
+      id="banner-section"
+    >
       <div className="flex flex-col lg:flex-row">
-        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0">
+        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-4">
           <div className="flex space-x-3 mb-16">
             <a
               href="https://wa.me/5493874033334"
