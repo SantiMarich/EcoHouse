@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 import emailjs from "@emailjs/browser";
 import Carrousel from "../components/Carrousel";
+import { BiSolidChevronRight } from "react-icons/bi";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -47,31 +48,48 @@ const PropertyDetails = () => {
       );
   };
 
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   return (
     <section>
       <div className="container mx-auto min-h-[800px] mb-14">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="text-xl mb-2 font-semibold">{house.name}</h2>
-            <h3 className="text-sm mb-2 text-green-500">{house.address}</h3>
+            <h2 className="text-xl text-gray-700 mb-[2px] font-semibold">
+              {house.name}
+            </h2>
+            <h3 className="text-xs mb-2 text-green-500">{house.address}</h3>
             <div className="mb-4 mr-20 lg:mb-4 flex gap-x-2 text-xs">
-              <div className="bg-green-600 text-white px-3 rounded-md">
+              <div className="bg-green-600 text-white px-3 rounded-sm">
                 {house.type}
               </div>
-              <div className="bg-green-500 text-white px-3 rounded-md ">
+              <div className="bg-green-500 text-white px-3 rounded-sm ">
                 {house.country}
               </div>
-              <div className="bg-green-800 text-white px-3 rounded-md ">
+              <div className="bg-green-800 text-white px-3 rounded-sm ">
                 {house.transaction}
               </div>
             </div>
           </div>
 
-          <div className="text-2xl mb-4 font-semibold text-green-500">
-            $ {house.price}
-            <div className="text-xs mt-[2px] font-medium text-green-300">
-              Pesos Argentinos
-            </div>
+          <div className="text-xl mb-4 font-semibold flex flex-col items-start sm:items-start md:items-start lg:items-end xl:items-end text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-500">
+            {house.price ? (
+              <>
+                {house.moneda} {formatNumber(Number(house.price))}
+                <div className="text-xs font-normal text-gray-400 ">
+                  {house.monedatext}
+                </div>
+                <div className="bg-gray-500 w-fit text-xs font-normal text-white px-3 rounded-sm mt-2">
+                  {house.modo}
+                </div>
+              </>
+            ) : (
+              <span className="text-lg mb-4 font-semibold text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-500">
+                Consultar
+              </span>
+            )}
           </div>
         </div>
         <div className="flex flex-col items-start gap-8 lg:flex-row">
@@ -79,21 +97,32 @@ const PropertyDetails = () => {
             <div className="mb-8">
               <Carrousel images={[house.imageLg]} />
             </div>
-            <div className="flex gap-x-4 text-green-700 mb-6 text-sm">
-              <div className="flex gap-x-1 items-center">
-                <BiBed />
-                <div>{house.bedrooms}</div>
+            <div className="flex flex-col gap-x-4 text-green-700 mb-8 text-sm">
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
+                <BiSolidChevronRight className="text-green-300" />
+                Habitaciones:
+                <div className="mr-[2px] font-normal text-gray-700">
+                  {house.bedrooms}
+                </div>
               </div>
-              <div className="flex gap-x-1 items-center">
-                <BiBath />
-                <div>{house.bathrooms}</div>
+
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
+                <BiSolidChevronRight className="text-green-300" />
+                Baños:
+                <div className="mr-[2px] font-normal text-gray-700">
+                  {house.bathrooms}
+                </div>
               </div>
-              <div className="flex gap-x-1 items-center">
-                <BiArea />
-                <div>{house.surface}</div>
+
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
+                <BiSolidChevronRight className="text-green-300" />
+                Superficie:
+                <div className="mr-[2px] font-normal text-gray-700">
+                  {house.surface} m²
+                </div>
               </div>
             </div>
-            <div className="text-sm">{house.description}</div>
+            <div className="text-sm text-gray-700">{house.description}</div>
           </div>
           <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
             <div className="flex items-center gap-x-4 mb-8">
@@ -101,7 +130,7 @@ const PropertyDetails = () => {
                 <img src={house.agent.image} alt="" />
               </div>
               <div>
-                <div className="font-bold text-lg">{house.agent.name}</div>
+                <div className="font-semibold text-lg">{house.agent.name}</div>
                 <Link
                   to={`https://wa.me/${house.agent.phone}`}
                   className="text-green-500 text-sm"
