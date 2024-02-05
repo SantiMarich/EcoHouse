@@ -103,7 +103,7 @@ const PropertyDetails = () => {
               <div>
                 <div className="font-bold text-lg">{house.agent.name}</div>
                 <Link
-                  to="https://wa.me/5493513838890"
+                  to={`https://wa.me/${house.agent.phone}`}
                   className="text-green-500 text-sm"
                 >
                   Enviar Whatsapp

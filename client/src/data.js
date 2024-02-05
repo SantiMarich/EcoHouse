@@ -78,7 +78,7 @@ export const housesData = [
     agent: {
       image: seba,
       name: "Sebastian Marich",
-      phone: "0123 456 78910",
+      phone: "3874033334",
     },
   },
   {
@@ -100,7 +100,7 @@ export const housesData = [
     agent: {
       image: romi,
       name: "Romina Ulloa",
-      phone: "0123 456 78910",
+      phone: "3874089737",
     },
   },
   {
