@@ -183,7 +183,10 @@ export default function FormHouse() {
                   <p>Cargando agentes...</p>
                 )}
               </select>
-              <UploadWidget className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-xs w-full px-4 h-14 transition" />
+              <UploadWidget
+                className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-xs w-full px-4 h-14 transition"
+                {...register("image")}
+              />
               <textarea
                 type="textarea"
                 placeholder="Descripción"

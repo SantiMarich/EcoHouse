@@ -1,63 +1,38 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { createLocation } from "../redux/actions/locationActions";
-import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
-import { Menu } from "@headlessui/react";
 
-export default function FormLocation() {
+const LocationForm = () => {
   const dispatch = useDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [locationName, setLocationName] = useState("");
 
-  const [isOpenLocation, setIsOpenLocation] = useState(false);
-
-  const onSubmit = async (data) => {
-    dispatch(createLocation(data));
-    console.log(data);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!locationName.trim()) return;
+    dispatch(createLocation({ name: locationName }));
+    setLocationName("");
   };
 
   return (
-    <div className="flex w-full justify-center">
-      <Menu as="div" className="dropdown w-full">
-        <Menu.Button
-          onClick={() => setIsOpenLocation(!isOpenLocation)}
-          className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <div className="flex items-center mb-4">
+        <input
+          type="text"
+          value={locationName}
+          onChange={(e) => setLocationName(e.target.value)}
+          className="flex-1 appearance-none border rounded py-2 px-3 mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          placeholder="Nombre de la Ubicación"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          <h1 className="font-semibold text-white text-sm">
-            Crear Nueva Ubicación
-          </h1>
-          {isOpenLocation ? (
-            <RiArrowUpSLine className="dropdown-icon-secondary" />
-          ) : (
-            <RiArrowDownSLine className="dropdown-icon-secondary" />
-          )}
-        </Menu.Button>
-
-        <Menu.Items>
-          <div className="flex-1 bg-white mb-8 border border-gray-300 rounded-lg p-6 w-full">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-y-4"
-            >
-              <input
-                type="text"
-                placeholder="Nombre Ubicación"
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
-                {...register("name", { required: true, maxLength: 30 })}
-              />
-              <input
-                type="submit"
-                value="Crear Ubicación"
-                className="bg-gray-800 hover:bg-gray-900 text-white rounded p-4 text-sm w-full transition cursor-pointer"
-              />
-            </form>
-          </div>
-        </Menu.Items>
-      </Menu>
-    </div>
+          Crear Ubicación
+        </button>
+      </div>
+    </form>
   );
-}
+};
+
+export default LocationForm;

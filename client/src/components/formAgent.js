@@ -56,7 +56,7 @@ export default function FormAgent() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded px-4 h-14 text-sm w-full"
                 {...register("phone", { maxLength: 17 })}
               />
-              <UploadWidget />
+              <UploadWidget {...register("image")} />
               <input
                 type="submit"
                 value="Crear Agente"

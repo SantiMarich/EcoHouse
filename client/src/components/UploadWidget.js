@@ -9,6 +9,7 @@ const UploadWidget = () => {
       {
         cloudName: "dgumwc2z4",
         uploadPreset: "ymuab8ak",
+        multiple: true,
       },
       function (error, result) {
         console.log(result);
