@@ -68,7 +68,7 @@ export const housesData = [
     image: Salta,
     imageLg: Salta,
     country: "Salta ",
-    address: "7240C Argyle St. Lawndale, CA 90260",
+    address: "Ituzaingo 682 1 A, Nueva Cordoba",
     bedrooms: "6",
     bathrooms: "3",
     surface: "4200 ",
@@ -236,7 +236,7 @@ export const housesData = [
   },
   {
     id: 8,
-    type: "Departamento",
+    type: "Local Comercial",
     name: "Departamento 2",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
@@ -262,7 +262,7 @@ export const housesData = [
   {
     id: 9,
     type: "Departamento",
-    name: "Departamento3",
+    name: "Departamento 3",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
     image: Apartment3,

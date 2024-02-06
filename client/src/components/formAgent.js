@@ -15,27 +15,23 @@ export default function FormAgent() {
     formState: { errors },
   } = useForm();
 
+  const [isOpenAgent, setIsOpenAgent] = useState(false); // Estado local para el dropdown
+
   const onSubmit = async (data) => {
     dispatch(createAgent(data));
   };
-
-  const handleImageChange = (e) => {
-    setValue("image", e.target.files[0]);
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
       <Menu as="div" className="dropdown ">
         <Menu.Button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpenAgent(!isOpenAgent)}
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
             Crear Nuevo Agente
           </h1>
-          {isOpen ? (
+          {isOpenAgent ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
           ) : (
             <RiArrowDownSLine className="dropdown-icon-secondary" />

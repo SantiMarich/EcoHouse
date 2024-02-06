@@ -2,7 +2,6 @@ import React from "react";
 import FormHouse from "../components/FormHouse";
 import FormAgent from "../components/FormAgent";
 import FormLocation from "../components/FormLocation";
-import FormProperty from "../components/FormProperty";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router-dom";
@@ -18,7 +17,6 @@ const AdminPanel = () => {
           <FormHouse className="w-[400px]" />
           <FormAgent className="w-[400px]" />
           <FormLocation className="w-[400px]" />
-          <FormProperty className="w-[400px]" />
         </div>
       </div>
     );

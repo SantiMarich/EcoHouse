@@ -60,7 +60,7 @@ const PropertyDetails = () => {
             <h2 className="text-xl text-gray-700 mb-[2px] font-semibold">
               {house.name}
             </h2>
-            <h3 className="text-xs mb-2 text-green-500">{house.address}</h3>
+            <h3 className="text-xs mb-2 text-green-800">{house.address}</h3>
             <div className="mb-4 mr-20 lg:mb-4 flex gap-x-2 text-xs">
               <div className="bg-green-600 text-white px-3 rounded-sm">
                 {house.type}

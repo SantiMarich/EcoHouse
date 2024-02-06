@@ -57,6 +57,18 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      moneda: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      monedatext: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      modo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       transaction: {
         type: DataTypes.STRING,
         allowNull: false,

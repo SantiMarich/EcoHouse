@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createHouse } from "../redux/actions/houseActions";
+import { getAgents } from "../redux/actions/agentActions";
+import { getLocations } from "../redux/actions/locationActions";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Menu } from "@headlessui/react";
 import UploadWidget from "./UploadWidget";
 
 export default function FormHouse() {
   const dispatch = useDispatch();
-  const agents = useSelector((state) => state.agents.agents);
+  const { agents, locations } = useSelector((state) => state);
+
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
   } = useForm();
+
+  const [isOpenHouse, setIsOpenHouse] = useState(false);
+
+  useEffect(() => {
+    dispatch(getAgents());
+    dispatch(getLocations());
+  }, [dispatch]);
 
   const onSubmit = async (data) => {
     dispatch(createHouse(data));
@@ -23,8 +33,6 @@ export default function FormHouse() {
   const handleImageChange = (e) => {
     setValue("images", e.target.files);
   };
-
-  const [isOpenHouse, setIsOpenHouse] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
@@ -54,10 +62,21 @@ export default function FormHouse() {
               className="flex flex-col gap-y-4"
             >
               <select
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm transition cursor-pointer"
-                {...register("type", { required: true })}
+                label="Tipologia"
+                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                {...register("transaction")}
               >
-                {/* ... opciones de tipo de propiedad */}
+                <option value="" disabled hidden>
+                  Tipología
+                </option>
+                <option value="Casa">Casa</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Terreno">Terreno</option>
+                <option value="Local">Local Comercial</option>
+                <option value="Cochera">Cochera</option>
+                <option value="Oficina">Oficina</option>
+                <option value="Campo">Campo</option>
+                <option value="Galpon">Galpón</option>
               </select>
               <input
                 type="text"
@@ -69,7 +88,27 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
                 {...register("location")}
               >
-                {/* ... opciones de ubicación */}
+                <option value="" disabled hidden>
+                  Ubicación
+                </option>
+                {Array.isArray(locations) && locations.length > 0 ? (
+                  <select
+                    label="Tipologia"
+                    className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                    {...register("transaction")}
+                  >
+                    <option value="" disabled hidden>
+                      Tipología
+                    </option>
+                    {locations.map((location) => (
+                      <option key={location.id} value={location.id}>
+                        {location.name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <p>Cargando ubicaciones...</p>
+                )}
               </select>
               <input
                 type="text"
@@ -111,6 +150,9 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
                 {...register("transaction")}
               >
+                <option value="" disabled hidden>
+                  Operación
+                </option>
                 <option value="Venta">Venta</option>
                 <option value="Alquiler">Alquiler</option>
                 <option value="Temporal">Temporal</option>
@@ -119,17 +161,35 @@ export default function FormHouse() {
                 className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
                 {...register("agent", { required: true })}
               >
-                {agents.map((agent) => (
-                  <option key={agent.id} value={agent.id}>
-                    {agent.name}
-                  </option>
-                ))}
+                <option value="" disabled hidden>
+                  Agente
+                </option>
+                {Array.isArray(agents) && agents.length > 0 ? (
+                  <select
+                    label="Tipologia"
+                    className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                    {...register("transaction")}
+                  >
+                    <option value="" disabled hidden>
+                      Tipología
+                    </option>
+                    {agents.map((agent) => (
+                      <option key={agent.id} value={agent.id}>
+                        {agent.name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <p>Cargando agentes...</p>
+                )}
               </select>
               <UploadWidget className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-xs w-full px-4 h-14 transition" />
               <textarea
-                type="text"
+                type="textarea"
                 placeholder="Descripción"
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 py-4 h-14 text-sm"
+                name="message"
+                defaultValue="Añadir descripción de la propiedad..."
+                className="border border-gray-300 focus:border-gray-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
                 {...register("description", { required: true, maxLength: 100 })}
               />
               <input

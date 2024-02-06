@@ -6,6 +6,7 @@ import { FaExpandArrowsAlt } from "react-icons/fa";
 
 const House = ({ house }) => {
   const {
+    name,
     image,
     type,
     country,
@@ -38,7 +39,10 @@ const House = ({ house }) => {
           {transaction}
         </div>
       </div>
-      <div className="text-[16px] font-semibold max-w-[260px]">{address}</div>
+      <div className="text-xl font-semibold max-w-[260px] mb-2">{name}</div>
+      <div className="text-xs font-nromal max-w-[260px] text-green-800">
+        {address}
+      </div>
       <div className="flex gap-x-2 my-2">
         <div className="flex items-center gap-1">
           <div className="text-[14px] mr-1 text-green-300">
@@ -54,7 +58,7 @@ const House = ({ house }) => {
         </div>
         <div className="flex items-center  gap-1">
           <div className="text-[14px] mr-1 text-green-300">
-            <FaExpandArrowsAlt />
+            <FaExpandArrowsAlt className="font-bold" />
           </div>
           <div className="text-[14px] mr-1 text-gray-600">{surface} m²</div>
         </div>

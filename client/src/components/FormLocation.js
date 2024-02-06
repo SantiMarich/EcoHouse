@@ -13,23 +13,24 @@ export default function FormLocation() {
     formState: { errors },
   } = useForm();
 
+  const [isOpenLocation, setIsOpenLocation] = useState(false);
+
   const onSubmit = async (data) => {
     dispatch(createLocation(data));
+    console.log(data);
   };
-
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
       <Menu as="div" className="dropdown w-full">
         <Menu.Button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpenLocation(!isOpenLocation)}
           className="dropdown-btn w-full text-left mb-2 bg-green-400 transition"
         >
           <h1 className="font-semibold text-white text-sm">
             Crear Nueva Ubicación
           </h1>
-          {isOpen ? (
+          {isOpenLocation ? (
             <RiArrowUpSLine className="dropdown-icon-secondary" />
           ) : (
             <RiArrowDownSLine className="dropdown-icon-secondary" />
