@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      imageLg: {
+      imagePortada: {
         type: DataTypes.STRING,
         allowNull: false,
       },
