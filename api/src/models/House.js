@@ -5,9 +5,9 @@ module.exports = (sequelize) => {
     "house",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4,
       },
       type: {
         type: DataTypes.STRING,
@@ -26,10 +26,6 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       imagePortada: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      location: {
         type: DataTypes.STRING,
         allowNull: false,
       },

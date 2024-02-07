@@ -34,7 +34,7 @@ const Agent = AgentModel(sequelize);
 const Location = LocationModel(sequelize);
 
 House.belongsTo(Agent, { as: "agent", foreignKey: "agentId" });
-House.belongsTo(Location, { as: "houseLocation", foreignKey: "locationId" });
+House.belongsTo(Location, { as: "location", foreignKey: "locationId" });
 
 module.exports = {
   sequelize,

@@ -5,9 +5,9 @@ module.exports = (sequelize) => {
     "agent",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4, // Establece un valor predeterminado UUID utilizando UUIDV4
         primaryKey: true,
-        autoIncrement: true,
       },
       image: {
         type: DataTypes.STRING,

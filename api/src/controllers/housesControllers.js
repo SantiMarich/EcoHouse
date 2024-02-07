@@ -1,4 +1,4 @@
-const { House, Agent } = require("../db");
+const { House, Agent, Location } = require("../db");
 
 const houseController = {
   getAllHouses: async (req, res) => {
@@ -8,6 +8,10 @@ const houseController = {
           {
             model: Agent,
             as: "agent",
+          },
+          {
+            model: Location,
+            as: "location",
           },
         ],
       });
@@ -22,7 +26,10 @@ const houseController = {
     const { id } = req.params;
     try {
       const house = await House.findByPk(id, {
-        include: [{ model: Agent, as: "agent" }],
+        include: [
+          { model: Agent, as: "agent" },
+          { model: Location, as: "location" },
+        ],
       });
       if (house) {
         res.json(house);
