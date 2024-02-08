@@ -11,7 +11,7 @@ export const getLocations = () => {
     } catch (error) {
       dispatch({
         type: actionTypes.GET_LOCATIONS_FAILURE,
-        payload: error,
+        payload: error.message,
       });
     }
   };

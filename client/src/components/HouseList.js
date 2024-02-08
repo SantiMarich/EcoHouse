@@ -32,7 +32,7 @@ const HouseList = () => {
           <i className="uil uil-arrow-up scrollup__icon"></i>
         </button>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-14">
           {houses.map((house, index) => {
             return (
               <Link

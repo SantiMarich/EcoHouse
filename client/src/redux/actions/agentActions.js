@@ -7,11 +7,12 @@ export const getAgents = () => {
     try {
       const apiData = await axios.get(`/agents`);
       const agents = apiData.data;
+      console.log("Datos de los agentes:", agents);
       dispatch({ type: actionTypes.GET_AGENTS_SUCCESS, payload: agents });
     } catch (error) {
       dispatch({
         type: actionTypes.GET_AGENTS_FAILURE,
-        payload: error,
+        payload: error.message,
       });
     }
   };

@@ -5,10 +5,9 @@ import { getAgents } from "../redux/actions/agentActions";
 import { getLocations } from "../redux/actions/locationActions";
 import UploadWidget from "./UploadWidget";
 
-const HouseForm = () => {
+const FormHouse = () => {
   const dispatch = useDispatch();
-  const agents = useSelector((state) => state.agents);
-  const locations = useSelector((state) => state.locations);
+
   const [formData, setFormData] = useState({
     type: "",
     name: "",
@@ -34,6 +33,9 @@ const HouseForm = () => {
     dispatch(getLocations());
   }, [dispatch]);
 
+  const agents = useSelector((state) => state.agents.agents);
+  const locations = useSelector((state) => state.locations.locations);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,11 +44,10 @@ const HouseForm = () => {
     });
   };
 
-  const handleImageUpload = (url) => {
+  const handleImageUpload = (url, isPortada) => {
     setFormData({
       ...formData,
-      image: url,
-      imagePortada: url,
+      [isPortada ? "imagePortada" : "image"]: url,
     });
   };
 
@@ -117,10 +118,8 @@ const HouseForm = () => {
           required
         />
       </div>
-      <div>
-        <label>Cargar Imagen:</label>
-        <UploadWidget onImageUpload={handleImageUpload} />
-      </div>
+      <UploadWidget onImageUpload={handleImageUpload} isPortada={true} />
+      <UploadWidget onImageUpload={handleImageUpload} isPortada={false} />
       <div>
         <label htmlFor="address">Dirección:</label>
         <input
@@ -257,19 +256,17 @@ const HouseForm = () => {
           required
         >
           <option value="">Seleccione un Agente</option>
-          {Array.isArray(agents) ? (
+          {Array.isArray(agents) &&
             agents.map((agent) => (
               <option key={agent.id} value={agent.id}>
                 {agent.name}
               </option>
-            ))
-          ) : (
-            <option value="">Cargando Agentes...</option>
-          )}
+            ))}
         </select>
       </div>
       <div>
         <label htmlFor="locationId">Ubicación:</label>
+
         <select
           id="locationId"
           name="locationId"
@@ -278,15 +275,12 @@ const HouseForm = () => {
           required
         >
           <option value="">Seleccione una Ubicación</option>
-          {Array.isArray(locations) ? (
+          {Array.isArray(locations) &&
             locations.map((location) => (
               <option key={location.id} value={location.id}>
                 {location.name}
               </option>
-            ))
-          ) : (
-            <option value="">Cargando Ubicaciones...</option>
-          )}
+            ))}
         </select>
       </div>
       <button type="submit">Crear Casa</button>
@@ -294,4 +288,4 @@ const HouseForm = () => {
   );
 };
 
-export default HouseForm;
+export default FormHouse;
