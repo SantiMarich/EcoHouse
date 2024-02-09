@@ -14,19 +14,27 @@ const LocationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-      <div className="flex items-center mb-4">
+    <form onSubmit={handleSubmit} className="mt-5">
+      <div div className="mb-5">
+        <label
+          htmlFor="name"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Ubicación
+        </label>
         <input
           type="text"
           value={locationName}
           onChange={(e) => setLocationName(e.target.value)}
-          className="flex-1 appearance-none border rounded py-2 px-3 mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Nombre de la Ubicación"
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ubicación"
           required
         />
+      </div>
+      <div className="mb-5">
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-gray-600 hover:bg-gray-700 text-white rounded p-2.5 text-sm w-full transition"
         >
           Crear Ubicación
         </button>

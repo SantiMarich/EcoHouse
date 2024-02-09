@@ -7,7 +7,7 @@ const AgentForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [image, setImage] = useState(""); // Estado para almacenar la URL de la imagen
+  const [image, setImage] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -18,7 +18,7 @@ const AgentForm = () => {
   };
 
   const handleImageUpload = (url) => {
-    setImage(url); // Almacena la URL de la imagen cargada
+    setImage(url);
   };
 
   const handleSubmit = (e) => {
@@ -26,42 +26,65 @@ const AgentForm = () => {
     const newAgent = {
       name: name,
       phone: phone,
-      image: image, // Pasamos la URL de la imagen al crear un nuevo agente
+      image: image,
     };
     dispatch(createAgent(newAgent));
-    // Aquí puedes restablecer los campos del formulario si es necesario
+
     setName("");
     setPhone("");
     setImage("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Nombre:</label>
+    <form onSubmit={handleSubmit} className="mt-5">
+      <div className="mb-5">
+        <label
+          htmlFor="name"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Nombre
+        </label>
         <input
           type="text"
           id="name"
           value={name}
           onChange={handleNameChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Nombre"
         />
       </div>
-      <div>
-        <label htmlFor="phone">Teléfono:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="phone"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Teléfono
+        </label>
         <input
           type="tel"
           id="phone"
           value={phone}
           onChange={handlePhoneChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Teléfono"
         />
       </div>
-      <div>
-        <label>Cargar Imagen:</label>
+
+      <div className="mb-5">
         <UploadWidget onImageUpload={handleImageUpload} />
       </div>
-      <button type="submit">Crear Agente</button>
+
+      <div className="mb-5">
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-700 text-white rounded p-2.5 text-sm w-full transition"
+        >
+          Crear Agente
+        </button>
+      </div>
     </form>
   );
 };

@@ -4,6 +4,7 @@ import { createHouse } from "../redux/actions/houseActions";
 import { getAgents } from "../redux/actions/agentActions";
 import { getLocations } from "../redux/actions/locationActions";
 import UploadWidget from "./UploadWidget";
+import { Menu } from "@headlessui/react";
 
 const FormHouse = () => {
   const dispatch = useDispatch();
@@ -76,29 +77,274 @@ const FormHouse = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="type">Tipo:</label>
-        <select
-          type="text"
-          id="type"
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-          required
+    <form onSubmit={handleSubmit} className="mt-5">
+      <div className="mb-5">
+        <label
+          htmlFor="type"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
-          <option value="Casa">Casa</option>
-          <option value="Departamento">Departamento</option>
-          <option value="Terreno">Terreno</option>
-          <option value="Local">Local Comercial</option>
-          <option value="Cochera">Cochera</option>
-          <option value="Oficina">Oficina</option>
-          <option value="Campo">Campo</option>
-          <option value="Galpon">Galpón</option>
-        </select>
+          Tipo
+        </label>
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.type || "Seleccionar Tipo"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full items-start z-10 mt-1 border bg-white rounded-md shadow-lg">
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Casa" })}
+                >
+                  Casa
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Departamento
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Terrenos
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Local Comercial
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Oficina
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Campo
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() =>
+                    setFormData({ ...formData, type: "Departamento" })
+                  }
+                >
+                  Galpón
+                </option>
+              )}
+            </Menu.Item>
+          </Menu.Items>
+        </Menu>
       </div>
-      <div>
-        <label htmlFor="name">Nombre:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="transaction"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Operación
+        </label>
+
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.type || "Seleccionar Operación"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Venta" })}
+                >
+                  Venta
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Alquiler" })}
+                >
+                  Alquiler
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Temporal" })}
+                >
+                  Temporal
+                </option>
+              )}
+            </Menu.Item>
+          </Menu.Items>
+        </Menu>
+      </div>
+
+      <div className="mb-5">
+        <div className="mb-5">
+          <label
+            htmlFor="modo"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Modalidad
+          </label>
+          <Menu>
+            <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+              {formData.type || "Seleccionar Modalidad"}
+            </Menu.Button>
+            <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
+              <Menu.Item>
+                {({ active }) => (
+                  <option
+                    className={`${
+                      active ? "bg-gray-100" : ""
+                    } block px-4 py-2 text-sm text-green-500`}
+                    onClick={() =>
+                      setFormData({ ...formData, type: "Compra-Venta" })
+                    }
+                  >
+                    Compra - Venta
+                  </option>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <option
+                    className={`${
+                      active ? "bg-gray-100" : ""
+                    } block px-4 py-2 text-sm text-green-500`}
+                    onClick={() =>
+                      setFormData({ ...formData, type: "Precio Mensual" })
+                    }
+                  >
+                    Precio Mensual
+                  </option>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <option
+                    className={`${
+                      active ? "bg-gray-100" : ""
+                    } block px-4 py-2 text-sm text-green-500`}
+                    onClick={() =>
+                      setFormData({ ...formData, type: "Precio Diario" })
+                    }
+                  >
+                    Precio Diario
+                  </option>
+                )}
+              </Menu.Item>
+            </Menu.Items>
+          </Menu>
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="agentId"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Agente
+        </label>
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.agentId
+              ? agents.find((agent) => agent.id === formData.agentId)?.name
+              : "Seleccione un Agente"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full z-10 mt-1 bg-white rounded-md shadow-lg">
+            {Array.isArray(agents) &&
+              agents.map((agent) => (
+                <Menu.Item key={agent.id}>
+                  {({ active }) => (
+                    <option
+                      className={`${
+                        active ? "bg-gray-100" : ""
+                      } block px-4 py-2 text-sm text-green-500`}
+                      onClick={() =>
+                        setFormData({ ...formData, agentId: agent.id })
+                      }
+                    >
+                      {agent.name}
+                    </option>
+                  )}
+                </Menu.Item>
+              ))}
+          </Menu.Items>
+        </Menu>
+      </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="name"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Nombre
+        </label>
         <input
           type="text"
           id="name"
@@ -106,22 +352,56 @@ const FormHouse = () => {
           value={formData.name}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Nombre"
         />
       </div>
-      <div>
-        <label htmlFor="description">Descripción:</label>
-        <textarea
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
+
+      <div className="mb-5">
+        <label
+          htmlFor="locationId"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Ubicación
+        </label>
+
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.locationId
+              ? locations.find(
+                  (location) => location.id === formData.locationId
+                )?.name
+              : "Seleccione una Ubicación"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full z-10 mt-1 border bg-white rounded-md shadow-lg">
+            {Array.isArray(locations) &&
+              locations.map((location) => (
+                <Menu.Item key={location.id}>
+                  {({ active }) => (
+                    <option
+                      className={`${
+                        active ? "bg-gray-100" : ""
+                      } block px-4 py-2 text-sm text-green-500`}
+                      onClick={() =>
+                        setFormData({ ...formData, locationId: location.id })
+                      }
+                    >
+                      {location.name}
+                    </option>
+                  )}
+                </Menu.Item>
+              ))}
+          </Menu.Items>
+        </Menu>
       </div>
-      <UploadWidget onImageUpload={handleImageUpload} isPortada={true} />
-      <UploadWidget onImageUpload={handleImageUpload} isPortada={false} />
-      <div>
-        <label htmlFor="address">Dirección:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="address"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Dirección
+        </label>
         <input
           type="text"
           id="address"
@@ -129,10 +409,18 @@ const FormHouse = () => {
           value={formData.address}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Dirección"
         />
       </div>
-      <div>
-        <label htmlFor="bedrooms">Dormitorios:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="bedrooms"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Dormitorios
+        </label>
         <input
           type="number"
           id="bedrooms"
@@ -140,10 +428,18 @@ const FormHouse = () => {
           value={formData.bedrooms}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Dormitorios"
         />
       </div>
-      <div>
-        <label htmlFor="bathrooms">Baños:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="bathrooms"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Baños
+        </label>
         <input
           type="number"
           id="bathrooms"
@@ -151,10 +447,18 @@ const FormHouse = () => {
           value={formData.bathrooms}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Baños"
         />
       </div>
-      <div>
-        <label htmlFor="surface">Superficie:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="surface"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Superficie
+        </label>
         <input
           type="number"
           id="surface"
@@ -162,10 +466,18 @@ const FormHouse = () => {
           value={formData.surface}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Superficie"
         />
       </div>
-      <div>
-        <label htmlFor="year">Año de Construcción:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="year"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Año de Construcción
+        </label>
         <input
           type="number"
           id="year"
@@ -173,10 +485,18 @@ const FormHouse = () => {
           value={formData.year}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Año de Construcción"
         />
       </div>
-      <div>
-        <label htmlFor="price">Precio:</label>
+
+      <div className="mb-5">
+        <label
+          htmlFor="price"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Precio
+        </label>
         <input
           type="number"
           id="price"
@@ -184,106 +504,144 @@ const FormHouse = () => {
           value={formData.price}
           onChange={handleChange}
           required
+          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Precio"
         />
       </div>
-      <div>
-        <label htmlFor="moneda">Moneda:</label>
-        <select
-          type="text"
-          id="moneda"
-          name="moneda"
-          value={formData.moneda}
-          onChange={handleChange}
-          required
-        >
-          <option value="Dolar">U$D</option>
-          <option value="Pesos">$</option>
-          <option value="Euros">€</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="monedatext">Moneda (Texto):</label>
-        <select
-          type="text"
-          id="monedatext"
-          name="monedatext"
-          value={formData.monedatext}
-          onChange={handleChange}
-          required
-        >
-          <option value="Dolar">Dólares Estadounidenses</option>
-          <option value="Pesos">Pesos Argentinos</option>
-          <option value="Euros">Euros</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="modo">Modalidad:</label>
-        <select
-          type="text"
-          id="modo"
-          name="modo"
-          value={formData.modo}
-          onChange={handleChange}
-          required
-        >
-          <option value="Compra">Compra - Venta</option>
-          <option value="Mensual">Precio Mensual</option>
-          <option value="Diario">Precio Diario</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="transaction">Operación:</label>
-        <select
-          type="text"
-          id="transaction"
-          name="transaction"
-          value={formData.transaction}
-          onChange={handleChange}
-          required
-        >
-          <option value="Venta">Venta</option>
-          <option value="Alquiler">Alquiler</option>
-          <option value="Temporal">Temporal</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="agentId">Agente:</label>
-        <select
-          id="agentId"
-          name="agentId"
-          value={formData.agentId}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Seleccione un Agente</option>
-          {Array.isArray(agents) &&
-            agents.map((agent) => (
-              <option key={agent.id} value={agent.id}>
-                {agent.name}
-              </option>
-            ))}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="locationId">Ubicación:</label>
 
-        <select
-          id="locationId"
-          name="locationId"
-          value={formData.locationId}
+      <div className="mb-5">
+        <label
+          htmlFor="moneda"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Moneda
+        </label>
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.type || "Seleccionar Simbolo"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Peso" })}
+                >
+                  $
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Dolar" })}
+                >
+                  U$D
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Euro" })}
+                >
+                  €
+                </option>
+              )}
+            </Menu.Item>
+          </Menu.Items>
+        </Menu>
+      </div>
+
+      <div className="mb-5">
+        <Menu>
+          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-900 text-sm">
+            {formData.type || "Seleccionar Moneda"}
+          </Menu.Button>
+          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Peso" })}
+                >
+                  Pesos Argentinos
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Dolar" })}
+                >
+                  Dólares Estadounidenses
+                </option>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <option
+                  className={`${
+                    active ? "bg-gray-100" : ""
+                  } block px-4 py-2 text-sm text-green-500`}
+                  onClick={() => setFormData({ ...formData, type: "Euro" })}
+                >
+                  Euros
+                </option>
+              )}
+            </Menu.Item>
+          </Menu.Items>
+        </Menu>
+      </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="description"
+          className="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Descripción
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          value={formData.description}
           onChange={handleChange}
           required
-        >
-          <option value="">Seleccione una Ubicación</option>
-          {Array.isArray(locations) &&
-            locations.map((location) => (
-              <option key={location.id} value={location.id}>
-                {location.name}
-              </option>
-            ))}
-        </select>
+          className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
+          placeholder="Mensaje*"
+          defaultValue="Hola! Estoy interesado en"
+        />
       </div>
-      <button type="submit">Crear Casa</button>
+
+      <div className="mb-5">
+        <UploadWidget onImageUpload={handleImageUpload} isPortada={true} />
+      </div>
+
+      <div className="mb-5">
+        <UploadWidget onImageUpload={handleImageUpload} isPortada={false} />
+      </div>
+
+      <div className="mb-5">
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-700 text-white rounded p-2.5 text-sm w-full transition"
+        >
+          Crear Propiedad
+        </button>
+      </div>
     </form>
   );
 };
