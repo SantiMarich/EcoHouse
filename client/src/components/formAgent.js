@@ -40,7 +40,7 @@ const AgentForm = () => {
       <div className="mb-5">
         <label
           htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-600"
         >
           Nombre
         </label>
@@ -58,7 +58,7 @@ const AgentForm = () => {
       <div className="mb-5">
         <label
           htmlFor="phone"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-600"
         >
           Teléfono
         </label>
@@ -74,7 +74,7 @@ const AgentForm = () => {
       </div>
 
       <div className="mb-5">
-        <UploadWidget onImageUpload={handleImageUpload} />
+        <UploadWidget onImageUpload={handleImageUpload} isPortada={true} />
       </div>
 
       <div className="mb-5">

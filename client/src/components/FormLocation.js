@@ -18,7 +18,7 @@ const LocationForm = () => {
       <div div className="mb-5">
         <label
           htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-600"
         >
           Ubicación
         </label>

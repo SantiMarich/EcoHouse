@@ -60,7 +60,7 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
         onClick={handleOpenWidget}
         className="bg-gray-400 hover:bg-gray-500 text-white rounded p-2.5 text-xs w-full px-4  transition"
       >
-        {isPortada ? "Cargar Portada" : "Cargar Imagenes"}
+        {isPortada ? "Cargar Imagen Perfil" : "Cargar Imagenes"}
       </button>
       {error && <p className="text-red-500 mt-2">{error}</p>}
       {uploadedImage && (
