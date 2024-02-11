@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import CountryDropdown from "./CountryDropdown";
+import LocationDropdown from "./LocationDropdown";
 import PropertyDropdown from "./PropertyDropdown";
 import PriceDropdown from "./PriceDropdown";
 import TransactionDropdown from "./TransactionDropdown";
@@ -15,7 +15,7 @@ const Search = () => {
       id="search-section"
       className="z-20 px-[30px] py-8 max-w-[1170px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-4 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg "
     >
-      <CountryDropdown />
+      <LocationDropdown />
       <PropertyDropdown />
       <TransactionDropdown />
       <PriceDropdown />

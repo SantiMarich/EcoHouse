@@ -9,7 +9,7 @@ const House = ({ house }) => {
     name,
     image,
     type,
-    country,
+    location,
     address,
     bedrooms,
     bathrooms,
@@ -34,7 +34,9 @@ const House = ({ house }) => {
       </div>
       <div className="mb-8 flex gap-x-2 text-xs">
         <div className="bg-green-700 rounded-sm text-white px-3">{type}</div>
-        <div className="bg-green-500 rounded-sm text-white px-3">{country}</div>
+        <div className="bg-green-500 rounded-sm text-white px-3">
+          {location}
+        </div>
         <div className="bg-green-800 rounded-sm text-white px-3">
           {transaction}
         </div>

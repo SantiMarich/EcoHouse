@@ -17,7 +17,7 @@ const HouseList = () => {
     );
   }
 
-  if (houses.length < 1) {
+  if (!Array.isArray(houses) || houses.length === 0) {
     return (
       <div className="text-center text-3x1 text-gray-400 mt-48">
         Sorry, Nothing Found

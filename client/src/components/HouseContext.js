@@ -1,63 +1,100 @@
-import React, { useState, useEffect, createContext } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, createContext, useState } from "react";
 import { getHouses } from "../redux/actions/houseActions";
 
 export const HouseContext = createContext();
 
 const HouseContextProvider = ({ children }) => {
-  const { houses, loading } = useSelector((state) => state.houses);
-  const dispatch = useDispatch();
-
-  const [country, setCountry] = useState("Ubicación (All)");
-  const [countries, setCountries] = useState([]);
+  const [houses, setHouses] = useState([]);
+  const [location, setLocation] = useState("Ubicación (All)");
+  const [locations, setLocations] = useState([]);
   const [property, setProperty] = useState("Propiedad (All)");
   const [properties, setProperties] = useState([]);
   const [price, setPrice] = useState("Precio (All)");
   const [sortByPrice, setSortByPrice] = useState("default");
   const [transaction, setTransaction] = useState("Transacción (All)");
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getHouses());
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        const housesData = await getHouses();
+        setHouses(housesData);
+      } catch (error) {
+        console.error("Error fetching houses:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    const allProperties = houses.map((house) => house.type);
-    const uniqueProperties = ["Propiedad (All)", ...new Set(allProperties)];
-    setProperties(uniqueProperties);
+    console.log("Houses:", houses);
+    if (Array.isArray(houses)) {
+      const allProperties = houses.map((house) => house.type);
+      const uniqueProperties = ["Propiedad (All)", ...new Set(allProperties)];
+      setProperties(uniqueProperties);
+    }
   }, [houses]);
 
   useEffect(() => {
-    const allCountries = houses.map((house) => house.country);
-    const uniqueCountries = ["Ubicación (All)", ...new Set(allCountries)];
-    setCountries(uniqueCountries);
+    console.log("Houses:", houses);
+    if (Array.isArray(houses)) {
+      const alllocations = houses.map((house) => house.location);
+      const uniquelocations = ["Ubicación (All)", ...new Set(alllocations)];
+      setLocations(uniquelocations);
+    }
   }, [houses]);
 
   useEffect(() => {
-    const allTransactions = houses.map((house) => house.transaction);
-    const uniqueTransactions = [
-      "Transacción (All)",
-      ...new Set(allTransactions),
-    ];
-    setTransactions(uniqueTransactions);
+    console.log("Houses:", houses);
+    if (Array.isArray(houses)) {
+      const allTransactions = houses.map((house) => house.transaction);
+      const uniqueTransactions = [
+        "Transacción (All)",
+        ...new Set(allTransactions),
+      ];
+      setTransactions(uniqueTransactions);
+    }
   }, [houses]);
 
   const handleClick = () => {
-    // Este método de handleClick ya no es necesario ya que las casas se obtienen de Redux
-    // y cualquier filtrado debería hacerse en las acciones de Redux
+    setLoading(true);
+
+    const isDefault = (str) => str.split(" ").includes("(All)");
+    const minPrice = parseInt(price.split(" ")[0]);
+    const maxPrice = parseInt(price.split(" ")[2]);
+
+    let newHouses = houses.filter((house) => {
+      const housePrice = parseInt(house.price);
+      const locationMatch = isDefault(location) || house.location === location;
+      const propertyMatch = isDefault(property) || house.type === property;
+      const priceMatch =
+        isDefault(price) || (housePrice >= minPrice && housePrice <= maxPrice);
+      const transactionMatch =
+        isDefault(transaction) || house.transaction === transaction;
+
+      return locationMatch && propertyMatch && priceMatch && transactionMatch;
+    });
+
+    if (sortByPrice === "highToLow") {
+      newHouses.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+    } else if (sortByPrice === "lowToHigh") {
+      newHouses.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+    }
+
+    setLoading(false);
   };
 
   return (
     <HouseContext.Provider
       value={{
-        country,
-        setCountry,
-        countries,
-        setCountries,
+        location,
+        setLocation,
+        locations,
         property,
         setProperty,
         properties,
-        setProperties,
         price,
         setPrice,
         sortByPrice,

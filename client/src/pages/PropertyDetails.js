@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { housesData } from "../data";
 import { useParams, Link } from "react-router-dom";
-import { BiBed, BiBath, BiArea } from "react-icons/bi";
 import emailjs from "@emailjs/browser";
 import Carrousel from "../components/Carrousel";
 import { BiSolidChevronRight } from "react-icons/bi";
@@ -66,7 +65,7 @@ const PropertyDetails = () => {
                 {house.type}
               </div>
               <div className="bg-green-500 text-white px-3 rounded-sm ">
-                {house.country}
+                {house.location}
               </div>
               <div className="bg-green-800 text-white px-3 rounded-sm ">
                 {house.transaction}
