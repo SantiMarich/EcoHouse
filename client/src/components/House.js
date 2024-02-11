@@ -7,7 +7,7 @@ import { FaExpandArrowsAlt } from "react-icons/fa";
 const House = ({ house }) => {
   const {
     name,
-    image,
+    imagePortada,
     type,
     address,
     bedrooms,
@@ -29,7 +29,7 @@ const House = ({ house }) => {
       <div className="relative overflow-hidden w-[315px] h-[315px] rounded-tl-[80px] rounded-tr-lg rounded-br-[80px] rounded-bl-lg mb-8">
         <img
           className="object-cover object-center w-full h-full rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg"
-          src={image}
+          src={imagePortada}
           alt=""
         />
       </div>

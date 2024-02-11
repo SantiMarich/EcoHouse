@@ -1,16 +1,15 @@
-import React, { useRef, useState } from "react";
-import { housesData } from "../data";
+import React, { useRef, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import Carrousel from "../components/Carrousel";
 import { BiSolidChevronRight } from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { getHouse } from "../redux/actions/houseActions";
 
 const PropertyDetails = () => {
   const { id } = useParams();
-
-  const house = housesData.find((house) => {
-    return house.id === parseInt(id);
-  });
+  const dispatch = useDispatch();
+  const house = useSelector((state) => state.houses.house);
 
   const [notification, setNotification] = useState(null);
   const form = useRef();
@@ -51,37 +50,43 @@ const PropertyDetails = () => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+  useEffect(() => {
+    dispatch(getHouse(id));
+  }, [dispatch, id]);
+
   return (
     <section>
       <div className="container mx-auto min-h-[800px] mb-14">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="text-xl text-gray-700 mb-[2px] font-semibold">
-              {house.name}
+              {house && house.name}
             </h2>
-            <h3 className="text-xs mb-2 text-green-800">{house.address}</h3>
+            <h3 className="text-xs mb-2 text-green-800">
+              {house && house.address}
+            </h3>
             <div className="mb-4 mr-20 lg:mb-4 flex gap-x-2 text-xs">
               <div className="bg-green-600 text-white px-3 rounded-sm">
-                {house.type}
+                {house && house.type}
               </div>
               <div className="bg-green-500 text-white px-3 rounded-sm ">
-                {house.location}
+                {house && house.location && house.location.name}
               </div>
               <div className="bg-green-800 text-white px-3 rounded-sm ">
-                {house.transaction}
+                {house && house.transaction}
               </div>
             </div>
           </div>
 
           <div className="text-xl mb-4 font-semibold flex flex-col items-start sm:items-start md:items-start lg:items-end xl:items-end text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-500">
-            {house.price ? (
+            {house && house.price ? (
               <>
-                {house.moneda} {formatNumber(Number(house.price))}
+                {house && house.moneda} {formatNumber(Number(house.price))}
                 <div className="text-xs font-normal text-gray-400 ">
-                  {house.monedatext}
+                  {house && house.monedatext}
                 </div>
                 <div className="bg-gray-500 w-fit text-xs font-normal text-white px-3 rounded-sm mt-2">
-                  {house.modo}
+                  {house && house.modo}
                 </div>
               </>
             ) : (
@@ -94,14 +99,14 @@ const PropertyDetails = () => {
         <div className="flex flex-col items-start gap-8 lg:flex-row">
           <div className="max-w-[768px]">
             <div className="mb-8">
-              <Carrousel images={[house.imageLg]} />
+              <Carrousel images={[house && house.image]} />
             </div>
             <div className="flex flex-col gap-x-4 text-green-700 mb-8 text-sm">
               <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
                 <BiSolidChevronRight className="text-green-300" />
                 Habitaciones:
                 <div className="mr-[2px] font-normal text-gray-700">
-                  {house.bedrooms}
+                  {house && house.bedrooms}
                 </div>
               </div>
 
@@ -109,7 +114,7 @@ const PropertyDetails = () => {
                 <BiSolidChevronRight className="text-green-300" />
                 Baños:
                 <div className="mr-[2px] font-normal text-gray-700">
-                  {house.bathrooms}
+                  {house && house.bathrooms}
                 </div>
               </div>
 
@@ -117,21 +122,27 @@ const PropertyDetails = () => {
                 <BiSolidChevronRight className="text-green-300" />
                 Superficie:
                 <div className="mr-[2px] font-normal text-gray-700">
-                  {house.surface} m²
+                  {house && house.surface} m²
                 </div>
               </div>
             </div>
-            <div className="text-sm text-gray-700">{house.description}</div>
+            <div className="text-sm text-gray-700">
+              {house && house.description}
+            </div>
           </div>
           <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
             <div className="flex items-center gap-x-4 mb-8">
               <div className="w-20 h-20 p-1 border border-gray-300 rounded-full">
-                <img src={house.agent.image} alt="" />
+                <img src={house && house.agent && house.agent.image} alt="" />
               </div>
               <div>
-                <div className="font-semibold text-lg">{house.agent.name}</div>
+                <div className="font-semibold text-lg">
+                  {house && house.agent && house.agent.name}
+                </div>
                 <Link
-                  to={`https://wa.me/${house.agent.phone}`}
+                  to={`https://wa.me/${
+                    house && house.agent && house.agent.phone
+                  }`}
                   className="text-green-500 text-sm"
                 >
                   Enviar Whatsapp

@@ -33,7 +33,7 @@ const HouseContextProvider = ({ children }) => {
   useEffect(() => {
     console.log("Houses:", houses);
     if (Array.isArray(houses)) {
-      const alllocations = houses.map((house) => house.location);
+      const alllocations = houses.map((house) => house.location.name);
       const uniquelocations = ["Ubicación (All)", ...new Set(alllocations)];
       setLocations(uniquelocations);
     }
@@ -60,7 +60,8 @@ const HouseContextProvider = ({ children }) => {
 
     let newHouses = houses.filter((house) => {
       const housePrice = parseInt(house.price);
-      const locationMatch = isDefault(location) || house.location === location;
+      const locationMatch =
+        isDefault(location) || house.location.name === location.name;
       const propertyMatch = isDefault(property) || house.type === property;
       const priceMatch =
         isDefault(price) || (housePrice >= minPrice && housePrice <= maxPrice);

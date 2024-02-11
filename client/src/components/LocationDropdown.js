@@ -40,7 +40,7 @@ const LocationDropdown = () => {
               as="li"
               key={index}
             >
-              {location}
+              {location.name}
             </Menu.Item>
           );
         })}
