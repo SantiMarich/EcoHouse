@@ -9,7 +9,6 @@ const House = ({ house }) => {
     name,
     image,
     type,
-    location,
     address,
     bedrooms,
     bathrooms,
@@ -18,6 +17,8 @@ const House = ({ house }) => {
     moneda,
     transaction,
   } = house;
+
+  const locationName = house.location.name;
 
   const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -35,7 +36,7 @@ const House = ({ house }) => {
       <div className="mb-8 flex gap-x-2 text-xs">
         <div className="bg-green-700 rounded-sm text-white px-3">{type}</div>
         <div className="bg-green-500 rounded-sm text-white px-3">
-          {location}
+          {locationName}
         </div>
         <div className="bg-green-800 rounded-sm text-white px-3">
           {transaction}

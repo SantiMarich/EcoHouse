@@ -1,10 +1,11 @@
 import React, { useEffect, createContext, useState } from "react";
 import { getHouses } from "../redux/actions/houseActions";
+import { useDispatch, useSelector } from "react-redux";
 
 export const HouseContext = createContext();
 
 const HouseContextProvider = ({ children }) => {
-  const [houses, setHouses] = useState([]);
+  const houses = useSelector((state) => state.houses.houses);
   const [location, setLocation] = useState("Ubicación (All)");
   const [locations, setLocations] = useState([]);
   const [property, setProperty] = useState("Propiedad (All)");
@@ -14,19 +15,11 @@ const HouseContextProvider = ({ children }) => {
   const [transaction, setTransaction] = useState("Transacción (All)");
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const housesData = await getHouses();
-        setHouses(housesData);
-      } catch (error) {
-        console.error("Error fetching houses:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    dispatch(getHouses());
+  }, [dispatch]);
 
   useEffect(() => {
     console.log("Houses:", houses);
