@@ -20,7 +20,7 @@ const HouseList = () => {
   if (!Array.isArray(houses) || houses.length === 0) {
     return (
       <div className="text-center text-3x1 text-gray-400 mt-48">
-        Sorry, Nothing Found
+        Lo Sentimos! No Se Encontraron Resultados
       </div>
     );
   }

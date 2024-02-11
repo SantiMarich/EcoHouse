@@ -56,6 +56,9 @@ const houseReducers = (state = initialState, action) => {
     case actionTypes.DELETE_HOUSE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
+    case actionTypes.FILTER_HOUSES:
+      return { ...state, filteredHouses: action.payload };
+
     default:
       return state;
   }

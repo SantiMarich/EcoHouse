@@ -1,11 +1,12 @@
 import React, { useEffect, createContext, useState } from "react";
-import { getHouses } from "../redux/actions/houseActions";
+import { getHouses, filterHouses } from "../redux/actions/houseActions";
 import { useDispatch, useSelector } from "react-redux";
 
 export const HouseContext = createContext();
 
 const HouseContextProvider = ({ children }) => {
   const houses = useSelector((state) => state.houses.houses);
+  const filteredHouses = useSelector((state) => state.houses.filteredHouses);
   const [location, setLocation] = useState("Ubicación (All)");
   const [locations, setLocations] = useState([]);
   const [property, setProperty] = useState("Propiedad (All)");
@@ -18,6 +19,7 @@ const HouseContextProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Fetching houses...");
     dispatch(getHouses());
   }, [dispatch]);
 
@@ -61,7 +63,7 @@ const HouseContextProvider = ({ children }) => {
     let newHouses = houses.filter((house) => {
       const housePrice = parseInt(house.price);
       const locationMatch =
-        isDefault(location) || house.location.name === location.name;
+        isDefault(location) || house.location.name === location;
       const propertyMatch = isDefault(property) || house.type === property;
       const priceMatch =
         isDefault(price) || (housePrice >= minPrice && housePrice <= maxPrice);
@@ -77,8 +79,13 @@ const HouseContextProvider = ({ children }) => {
       newHouses.sort((a, b) => parseInt(a.price) - parseInt(b.price));
     }
 
+    dispatch(filterHouses(newHouses));
     setLoading(false);
   };
+
+  useEffect(() => {
+    handleClick();
+  }, [houses, location, property, price, sortByPrice, transaction]);
 
   return (
     <HouseContext.Provider
@@ -96,7 +103,7 @@ const HouseContextProvider = ({ children }) => {
         transaction,
         setTransaction,
         transactions,
-        houses,
+        houses: filteredHouses,
         loading,
         handleClick,
       }}

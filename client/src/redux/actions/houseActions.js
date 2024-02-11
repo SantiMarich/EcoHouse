@@ -87,3 +87,10 @@ export const deleteHouse = (id) => {
     }
   };
 };
+
+export const filterHouses = (filteredHouses) => {
+  return {
+    type: actionTypes.FILTER_HOUSES,
+    payload: filteredHouses,
+  };
+};
