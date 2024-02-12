@@ -57,6 +57,7 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
   return (
     <div>
       <button
+        type="button"
         onClick={handleOpenWidget}
         className="bg-gray-400 hover:bg-gray-500 text-white rounded p-2.5 text-xs w-full px-4  transition"
       >

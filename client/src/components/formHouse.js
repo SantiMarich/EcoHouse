@@ -4,16 +4,11 @@ import { createHouse } from "../redux/actions/houseActions";
 import { getAgents } from "../redux/actions/agentActions";
 import { getLocations } from "../redux/actions/locationActions";
 import UploadWidget from "./UploadWidget";
-import { Menu } from "@headlessui/react";
 
 const FormHouse = () => {
   const dispatch = useDispatch();
-
-  const [type, setType] = useState("");
-  const [transaction, setTransaction] = useState("");
-  const [modo, setModo] = useState("");
-  const [symbol, setSymbol] = useState("");
-  const [coin, setCoin] = useState("");
+  const agents = useSelector((state) => state.agents.agents);
+  const locations = useSelector((state) => state.locations.locations);
 
   const [formData, setFormData] = useState({
     type: "",
@@ -35,20 +30,57 @@ const FormHouse = () => {
     locationId: "",
   });
 
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     dispatch(getAgents());
     dispatch(getLocations());
   }, [dispatch]);
 
-  const agents = useSelector((state) => state.agents.agents);
-  const locations = useSelector((state) => state.locations.locations);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "transaction") {
+      if (value === "Venta") {
+        setFormData({
+          ...formData,
+          transaction: "Venta",
+          modo: "Compra - Venta",
+        });
+      } else if (value === "Alquiler") {
+        setFormData({
+          ...formData,
+          transaction: "Alquiler",
+          modo: "Precio Mensual",
+        });
+      } else if (value === "Temporal") {
+        setFormData({
+          ...formData,
+          transaction: "Temporal",
+          modo: "Precio Diario",
+        });
+      }
+    }
+
+    if (name === "moneda") {
+      if (value === "$") {
+        setFormData({
+          ...formData,
+          moneda: "$",
+          monedatext: "Pesos Argentinos",
+        });
+      } else if (value === "U$D") {
+        setFormData({
+          ...formData,
+          moneda: "U$D",
+          monedatext: "Dólares Estadounidenses",
+        });
+      } else if (value === "€") {
+        setFormData({ ...formData, moneda: "€", monedatext: "Euros" });
+      }
+    }
   };
 
   const handleImageUpload = (url, isPortada) => {
@@ -57,29 +89,22 @@ const FormHouse = () => {
       [isPortada ? "imagePortada" : "image"]: url,
     });
   };
+  const handleSelectChange = (name, value) => {
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createHouse(formData));
-    setFormData({
-      type: "",
-      name: "",
-      description: "",
-      image: "",
-      imagePortada: "",
-      address: "",
-      bedrooms: "",
-      bathrooms: "",
-      surface: "",
-      year: "",
-      price: "",
-      moneda: "",
-      monedatext: "",
-      modo: "",
-      transaction: "",
-      agentId: "",
-      locationId: "",
-    });
+
+    try {
+      await dispatch(createHouse(formData));
+      setFormData({});
+      setSuccessMessage("¡Propiedad creada exitosamente!");
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage("¡Hubo un problema al crear la propiedad!");
+      setSuccessMessage("");
+    }
   };
 
   return (
@@ -91,97 +116,23 @@ const FormHouse = () => {
         >
           Tipo
         </label>
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {type || "Seleccionar Tipo"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full items-start z-10 mt-1 border bg-white rounded-md shadow-lg">
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Casa")}
-                >
-                  Casa
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Departamento")}
-                >
-                  Departamento
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Terreno")}
-                >
-                  Terreno
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Local Comercial")}
-                >
-                  Local Comercial
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Oficina")}
-                >
-                  Oficina
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Campo")}
-                >
-                  Campo
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setType("Galpón")}
-                >
-                  Galpón
-                </option>
-              )}
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+        <select
+          id="type"
+          name="type"
+          value={formData.type || ""}
+          onChange={handleChange}
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          required
+        >
+          <option value="">Seleccionar Tipo</option>
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
+          <option value="Terreno">Terreno</option>
+          <option value="Local Comercial">Local Comercial</option>
+          <option value="Oficina">Oficina</option>
+          <option value="Campo">Campo</option>
+          <option value="Galpón">Galpón</option>
+        </select>
       </div>
 
       <div className="mb-5">
@@ -191,104 +142,25 @@ const FormHouse = () => {
         >
           Operación
         </label>
-
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {transaction || "Seleccionar Operación"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setTransaction("Venta")}
-                >
-                  Venta
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setTransaction("Alquiler")}
-                >
-                  Alquiler
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setTransaction("Temporal")}
-                >
-                  Temporal
-                </option>
-              )}
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+        <select
+          id="transaction"
+          name="transaction"
+          value={formData.transaction || ""}
+          onChange={handleChange}
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          required
+        >
+          <option value="">Seleccionar Operación</option>
+          <option value="Venta">Venta</option>
+          <option value="Alquiler">Alquiler</option>
+          <option value="Temporal">Temporal</option>
+        </select>
       </div>
 
       <div className="mb-5">
-        <div className="mb-5">
-          <label
-            htmlFor="modo"
-            className="block mb-2 text-sm font-medium text-gray-600"
-          >
-            Modalidad
-          </label>
-          <Menu>
-            <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-              {modo || "Seleccionar Modalidad"}
-            </Menu.Button>
-            <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
-              <Menu.Item>
-                {({ active }) => (
-                  <option
-                    className={`${
-                      active ? "bg-gray-100" : ""
-                    } block px-4 py-2 text-sm text-gray-600`}
-                    onClick={() => setModo("Compra - Venta")}
-                  >
-                    Compra - Venta
-                  </option>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <option
-                    className={`${
-                      active ? "bg-gray-100" : ""
-                    } block px-4 py-2 text-sm text-gray-600`}
-                    onClick={() => setModo("Precio Mensual")}
-                  >
-                    Precio Mensual
-                  </option>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <option
-                    className={`${
-                      active ? "bg-gray-100" : ""
-                    } block px-4 py-2 text-sm text-gray-600`}
-                    onClick={() => setModo("Precio Diario")}
-                  >
-                    Precio Diario
-                  </option>
-                )}
-              </Menu.Item>
-            </Menu.Items>
-          </Menu>
-        </div>
+        <p className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
+          {formData.modo || ""}
+        </p>
       </div>
 
       <div className="mb-5">
@@ -298,32 +170,22 @@ const FormHouse = () => {
         >
           Agente
         </label>
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {formData.agentId
-              ? agents.find((agent) => agent.id === formData.agentId)?.name
-              : "Seleccione Agente"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full z-10 mt-1 bg-white rounded-md shadow-lg">
-            {Array.isArray(agents) &&
-              agents.map((agent) => (
-                <Menu.Item key={agent.id}>
-                  {({ active }) => (
-                    <option
-                      className={`${
-                        active ? "bg-gray-100" : ""
-                      } block px-4 py-2 text-sm text-gray-600`}
-                      onClick={() =>
-                        setFormData({ ...formData, agentId: agent.id })
-                      }
-                    >
-                      {agent.name}
-                    </option>
-                  )}
-                </Menu.Item>
-              ))}
-          </Menu.Items>
-        </Menu>
+        <select
+          id="agentId"
+          name="agentId"
+          value={formData.agentId || ""}
+          onChange={handleChange}
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          required
+        >
+          <option value="">Seleccione Agente</option>
+          {Array.isArray(agents) &&
+            agents.map((agent) => (
+              <option key={agent.id} value={agent.id}>
+                {agent.name}
+              </option>
+            ))}
+        </select>
       </div>
 
       <div className="mb-5">
@@ -337,11 +199,11 @@ const FormHouse = () => {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
+          value={formData.name || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Nombre"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: Casa Estancia Vieja"
         />
       </div>
 
@@ -352,35 +214,22 @@ const FormHouse = () => {
         >
           Ubicación
         </label>
-
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {formData.locationId
-              ? locations.find(
-                  (location) => location.id === formData.locationId
-                )?.name
-              : "Seleccione Ubicación"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full z-10 mt-1 border bg-white rounded-md shadow-lg">
-            {Array.isArray(locations) &&
-              locations.map((location) => (
-                <Menu.Item key={location.id}>
-                  {({ active }) => (
-                    <option
-                      className={`${
-                        active ? "bg-gray-100" : ""
-                      } block px-4 py-2 text-sm text-gray-600`}
-                      onClick={() =>
-                        setFormData({ ...formData, locationId: location.id })
-                      }
-                    >
-                      {location.name}
-                    </option>
-                  )}
-                </Menu.Item>
-              ))}
-          </Menu.Items>
-        </Menu>
+        <select
+          id="locationId"
+          name="locationId"
+          value={formData.locationId || ""}
+          onChange={handleChange}
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          required
+        >
+          <option value="">Seleccione Ubicación</option>
+          {Array.isArray(locations) &&
+            locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
+            ))}
+        </select>
       </div>
 
       <div className="mb-5">
@@ -394,11 +243,11 @@ const FormHouse = () => {
           type="text"
           id="address"
           name="address"
-          value={formData.address}
+          value={formData.address || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Dirección"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: Ituzaingo 682, Barrio Nueva Córdoba"
         />
       </div>
 
@@ -413,11 +262,11 @@ const FormHouse = () => {
           type="number"
           id="bedrooms"
           name="bedrooms"
-          value={formData.bedrooms}
+          value={formData.bedrooms || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Dormitorios"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: 3"
         />
       </div>
 
@@ -432,11 +281,11 @@ const FormHouse = () => {
           type="number"
           id="bathrooms"
           name="bathrooms"
-          value={formData.bathrooms}
+          value={formData.bathrooms || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Baños"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: 2"
         />
       </div>
 
@@ -451,11 +300,11 @@ const FormHouse = () => {
           type="number"
           id="surface"
           name="surface"
-          value={formData.surface}
+          value={formData.surface || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Superficie"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: 120"
         />
       </div>
 
@@ -470,11 +319,11 @@ const FormHouse = () => {
           type="number"
           id="year"
           name="year"
-          value={formData.year}
+          value={formData.year || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Año de Construcción"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: 2011"
         />
       </div>
 
@@ -489,11 +338,11 @@ const FormHouse = () => {
           type="number"
           id="price"
           name="price"
-          value={formData.price}
+          value={formData.price || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Precio"
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: 100000"
         />
       </div>
 
@@ -504,95 +353,25 @@ const FormHouse = () => {
         >
           Moneda
         </label>
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {symbol || "Seleccionar Simbolo"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setSymbol("$")}
-                >
-                  $
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setSymbol("U$D")}
-                >
-                  U$D
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setSymbol("€")}
-                >
-                  €
-                </option>
-              )}
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+        <select
+          id="moneda"
+          name="moneda"
+          value={formData.moneda || ""}
+          onChange={handleChange}
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          required
+        >
+          <option value="">Seleccionar Moneda</option>
+          <option value="$">$</option>
+          <option value="U$D">U$D</option>
+          <option value="€">€</option>
+        </select>
       </div>
 
       <div className="mb-5">
-        <Menu>
-          <Menu.Button className="flex items-start border border-gray-300 focus:border-green-500 rounded w-full p-2.5 px-4 text-gray-600 text-sm">
-            {coin || "Seleccionar Moneda"}
-          </Menu.Button>
-          <Menu.Items className="absolute w-full items-start border z-10 mt-1 bg-white rounded-md shadow-lg">
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setCoin("Pesos Argentinos")}
-                >
-                  Pesos Argentinos
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setCoin("Dólares Estadounidenses")}
-                >
-                  Dólares Estadounidenses
-                </option>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <option
-                  className={`${
-                    active ? "bg-gray-100" : ""
-                  } block px-4 py-2 text-sm text-gray-600`}
-                  onClick={() => setCoin("Euros")}
-                >
-                  Euros
-                </option>
-              )}
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+        <p className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
+          {formData.monedatext || ""}
+        </p>
       </div>
 
       <div className="mb-5">
@@ -605,10 +384,10 @@ const FormHouse = () => {
         <textarea
           id="description"
           name="description"
-          value={formData.description}
+          value={formData.description || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
+          className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-600"
           placeholder="Agrega una descripción de la propiedad"
         />
       </div>
@@ -629,6 +408,14 @@ const FormHouse = () => {
           Crear Propiedad
         </button>
       </div>
+
+      {successMessage && (
+        <p className="text-green-500 text-xs text-center">{successMessage}</p>
+      )}
+
+      {errorMessage && (
+        <p className="text-red-500 text-xs text-center">{errorMessage}</p>
+      )}
     </form>
   );
 };

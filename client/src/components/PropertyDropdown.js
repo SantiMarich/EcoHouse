@@ -11,6 +11,11 @@ const PropertyDropdown = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const handlePropertyChange = (selectedProperty) => {
+    setIsOpen(false);
+    setProperty(selectedProperty);
+  };
+
   return (
     <Menu as="div" className="dropdown relative">
       <Menu.Button
@@ -35,7 +40,7 @@ const PropertyDropdown = () => {
         {properties.map((property, index) => {
           return (
             <Menu.Item
-              onClick={() => setProperty(property)}
+              onClick={() => handlePropertyChange(property)}
               className="cursor-pointer hover:text-green-700 transition"
               as="li"
               key={index}

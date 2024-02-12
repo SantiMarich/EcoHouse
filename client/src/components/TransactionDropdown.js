@@ -16,6 +16,11 @@ const TransactionDropdown = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleTransactionChange = (selectedTransaction) => {
+    setIsOpen(false);
+    setTransaction(selectedTransaction);
+  };
+
   return (
     <Menu as="div" className="dropdown relative">
       <Menu.Button
@@ -40,7 +45,7 @@ const TransactionDropdown = () => {
         {transactions.map((transaction, index) => {
           return (
             <Menu.Item
-              onClick={() => setTransaction(transaction)}
+              onClick={() => handleTransactionChange(transaction)}
               className="cursor-pointer hover:text-green-700 transition"
               as="li"
               key={index}

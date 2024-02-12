@@ -7,7 +7,9 @@ const AgentForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -18,21 +20,40 @@ const AgentForm = () => {
   };
 
   const handleImageUpload = (url) => {
-    setImage(url);
+    setImageUrl(url);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newAgent = {
-      name: name,
-      phone: phone,
-      image: image,
-    };
-    dispatch(createAgent(newAgent));
 
-    setName("");
-    setPhone("");
-    setImage("");
+    const phonePattern = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+
+    if (!name.trim() || !phone.trim() || !imageUrl.trim()) {
+      setErrorMessage("Por favor completa todos los campos.");
+      return;
+    }
+
+    if (!phonePattern.test(phone)) {
+      setErrorMessage("Por favor ingresa un número de teléfono válido.");
+      return;
+    }
+
+    try {
+      const newAgent = {
+        name: name,
+        phone: phone,
+        image: imageUrl,
+      };
+      await dispatch(createAgent(newAgent));
+      setSuccessMessage("¡Agente creado exitosamente!");
+      setErrorMessage("");
+      setName("");
+      setPhone("");
+      setImageUrl("");
+    } catch (error) {
+      setErrorMessage("¡Hubo un problema al crear el agente!");
+      setSuccessMessage("");
+    }
   };
 
   return (
@@ -51,7 +72,7 @@ const AgentForm = () => {
           onChange={handleNameChange}
           required
           className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Nombre"
+          placeholder="Ej.: Sebastian Marich"
         />
       </div>
 
@@ -69,12 +90,12 @@ const AgentForm = () => {
           onChange={handlePhoneChange}
           required
           className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Teléfono"
+          placeholder="Ej.: +543513838890"
         />
       </div>
 
       <div className="mb-5">
-        <UploadWidget onImageUpload={handleImageUpload} isPortada={true} />
+        <UploadWidget onImageUpload={handleImageUpload} />
       </div>
 
       <div className="mb-5">
@@ -85,6 +106,12 @@ const AgentForm = () => {
           Crear Agente
         </button>
       </div>
+      {successMessage && (
+        <p className="text-green-500 text-xs text-center">{successMessage}</p>
+      )}
+      {errorMessage && (
+        <p className="text-red-500 text-xs text-center">{errorMessage}</p>
+      )}
     </form>
   );
 };

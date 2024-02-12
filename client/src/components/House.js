@@ -18,7 +18,7 @@ const House = ({ house }) => {
     transaction,
   } = house;
 
-  const locationName = house.location.name;
+  const locationName = house && house.location && house.location.name;
 
   const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

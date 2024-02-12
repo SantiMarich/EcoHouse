@@ -98,7 +98,7 @@ const PropertyDetails = () => {
         </div>
         <div className="flex flex-col items-start gap-8 lg:flex-row">
           <div className="max-w-[768px]">
-            <div className="mb-8">
+            <div className="mb-6">
               <Carrousel images={[house && house.image]} />
             </div>
             <div className="flex flex-col gap-x-4 text-green-700 mb-8 text-sm">

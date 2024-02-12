@@ -34,10 +34,12 @@ const HouseContextProvider = ({ children }) => {
 
   useEffect(() => {
     console.log("Houses:", houses);
-    if (Array.isArray(houses)) {
-      const alllocations = houses.map((house) => house.location.name);
-      const uniquelocations = ["Ubicación (All)", ...new Set(alllocations)];
-      setLocations(uniquelocations);
+    if (Array.isArray(houses) && houses.length > 0) {
+      const allLocations = houses.map(
+        (house) => house.location && house.location.name
+      );
+      const uniqueLocations = ["Ubicación (All)", ...new Set(allLocations)];
+      setLocations(uniqueLocations);
     }
   }, [houses]);
 
