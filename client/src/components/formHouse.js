@@ -14,7 +14,7 @@ const FormHouse = () => {
     type: "",
     name: "",
     description: "",
-    image: "",
+    image: [],
     imagePortada: "",
     address: "",
     bedrooms: "",
