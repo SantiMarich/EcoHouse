@@ -7,12 +7,12 @@ import {
 import { Menu } from "@headlessui/react";
 import { HouseContext } from "./HouseContext";
 
-const PriceDropDown = () => {
-  const { sortByPrice, setSortByPrice } = useContext(HouseContext);
+const CoinDropDown = () => {
+  const { setCoin } = useContext(HouseContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSort = (order) => {
-    setSortByPrice(order);
+  const handleCurrencyFilter = (currency) => {
+    setCoin(currency === "All" ? "(All)" : currency);
     setIsOpen(false);
   };
 
@@ -24,18 +24,11 @@ const PriceDropDown = () => {
       >
         <RiWallet3Line className="dropdown-icon-primary mr-5" />
         <div className="flex flex-col">
-          <div
-            className="text-[14px] font-medium leading-tight flex flex-col mb-[0.75px]
-          "
-          >
-            {sortByPrice === "highToLow"
-              ? "Mayor a Menor"
-              : sortByPrice === "lowToHigh"
-              ? "Menor a Mayor"
-              : "Precios (All)"}
+          <div className="text-[14px] font-medium leading-tight flex flex-col mb-[0.75px]">
+            Moneda (All)
           </div>
           <div className="text-[12px] flex flex-col mb-[1px]">
-            Ordenar Precios
+            Ordenar Moneda
           </div>
         </div>
 
@@ -49,28 +42,35 @@ const PriceDropDown = () => {
       <Menu.Items className="dropdown-menu">
         <Menu.Item
           as="li"
-          onClick={() => handleSort("all")}
+          onClick={() => handleCurrencyFilter("All")}
           className="cursor-pointer hover:text-green-700 transition"
         >
-          Precios (All)
+          Moneda (All)
         </Menu.Item>
         <Menu.Item
           as="li"
-          onClick={() => handleSort("highToLow")}
+          onClick={() => handleCurrencyFilter("$")}
           className="cursor-pointer hover:text-green-700 transition"
         >
-          Mayor a Menor
+          $ (Pesos)
         </Menu.Item>
         <Menu.Item
           as="li"
-          onClick={() => handleSort("lowToHigh")}
+          onClick={() => handleCurrencyFilter("U$D")}
           className="cursor-pointer hover:text-green-700 transition"
         >
-          Menor a Mayor
+          U$D (Dólares)
+        </Menu.Item>
+        <Menu.Item
+          as="li"
+          onClick={() => handleCurrencyFilter("€")}
+          className="cursor-pointer hover:text-green-700 transition"
+        >
+          € (Euros)
         </Menu.Item>
       </Menu.Items>
     </Menu>
   );
 };
 
-export default PriceDropDown;
+export default CoinDropDown;

@@ -7,7 +7,7 @@ import {
 } from "react-icons/ri";
 
 import Image from "../assets/img/house-banner.png";
-import Search from "./Search";
+import Sort from "./Sort";
 import ScrollDown from "../components/ScrollDown";
 
 const Banner = () => {
@@ -70,7 +70,7 @@ const Banner = () => {
           />
         </div>
       </div>
-      <Search id="house-list-section" />
+      <Sort id="house-list-section" />
     </section>
   );
 };

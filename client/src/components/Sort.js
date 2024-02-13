@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
-
 import LocationDropdown from "./LocationDropdown";
 import PropertyDropdown from "./PropertyDropdown";
-import PriceDropdown from "./PriceDropdown";
+import CoinDropdown from "./CoinDropdown";
 import TransactionDropdown from "./TransactionDropdown";
-
-import { RiSearch2Line } from "react-icons/ri";
 import { HouseContext } from "./HouseContext";
 
-const Search = () => {
-  const { handleClick } = useContext(HouseContext);
+import { TbArrowsSort } from "react-icons/tb";
+
+const Sort = () => {
+  const { handleClick, sortByPrice, setSortByPrice } = useContext(HouseContext);
+
+  const handleSortClick = () => {
+    handleClick();
+    setSortByPrice(sortByPrice === "lowToHigh" ? "highToLow" : "lowToHigh");
+  };
+
   return (
     <div
       id="search-section"
@@ -18,15 +23,15 @@ const Search = () => {
       <LocationDropdown />
       <PropertyDropdown />
       <TransactionDropdown />
-      <PriceDropdown />
+      <CoinDropdown />
       <button
-        onClick={() => handleClick()}
-        className="bg-green-400 hover:bg-green-500 transition w-full lg:max-w-[72px] h-16 rounded-lg flex justify-center items-center text-white text-lg"
+        onClick={handleSortClick}
+        className="bg-green-400 hover:bg-green-300 transition w-full lg:max-w-[72px] h-16 rounded-lg flex justify-center items-center text-white text-[28px] "
       >
-        <RiSearch2Line />
+        {sortByPrice === "lowToHigh" ? <TbArrowsSort /> : <TbArrowsSort />}
       </button>
     </div>
   );
 };
 
-export default Search;
+export default Sort;

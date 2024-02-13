@@ -11,15 +11,15 @@ const HouseContextProvider = ({ children }) => {
   const [locations, setLocations] = useState([]);
   const [property, setProperty] = useState("Propiedad (All)");
   const [properties, setProperties] = useState([]);
+  const [coin, setCoin] = useState("Moneda (All)");
   const [price, setPrice] = useState("Precio (All)");
-  const [sortByPrice, setSortByPrice] = useState("default");
   const [transaction, setTransaction] = useState("Transacción (All)");
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [sortByPrice, setSortByPrice] = useState("default");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Fetching houses...");
     dispatch(getHouses());
   }, [dispatch]);
 
@@ -29,36 +29,30 @@ const HouseContextProvider = ({ children }) => {
       const allProperties = houses.map((house) => house.type);
       const uniqueProperties = ["Propiedad (All)", ...new Set(allProperties)];
       setProperties(uniqueProperties);
-    }
-  }, [houses]);
 
-  useEffect(() => {
-    console.log("Houses:", houses);
-    if (Array.isArray(houses) && houses.length > 0) {
       const allLocations = houses.map(
         (house) => house.location && house.location.name
       );
       const uniqueLocations = ["Ubicación (All)", ...new Set(allLocations)];
       setLocations(uniqueLocations);
-    }
-  }, [houses]);
 
-  useEffect(() => {
-    console.log("Houses:", houses);
-    if (Array.isArray(houses)) {
       const allTransactions = houses.map((house) => house.transaction);
       const uniqueTransactions = [
         "Transacción (All)",
         ...new Set(allTransactions),
       ];
       setTransactions(uniqueTransactions);
+
+      handleClick();
     }
   }, [houses]);
 
   const handleClick = () => {
     setLoading(true);
 
-    const isDefault = (str) => str.split(" ").includes("(All)");
+    const isDefault = (str) =>
+      typeof str === "string" && str.split(" ").includes("(All)");
+
     const minPrice = parseInt(price.split(" ")[0]);
     const maxPrice = parseInt(price.split(" ")[2]);
 
@@ -71,8 +65,15 @@ const HouseContextProvider = ({ children }) => {
         isDefault(price) || (housePrice >= minPrice && housePrice <= maxPrice);
       const transactionMatch =
         isDefault(transaction) || house.transaction === transaction;
+      const coinMatch = isDefault(coin) || house.moneda === coin;
 
-      return locationMatch && propertyMatch && priceMatch && transactionMatch;
+      return (
+        locationMatch &&
+        propertyMatch &&
+        priceMatch &&
+        transactionMatch &&
+        coinMatch
+      );
     });
 
     if (sortByPrice === "highToLow") {
@@ -87,7 +88,7 @@ const HouseContextProvider = ({ children }) => {
 
   useEffect(() => {
     handleClick();
-  }, [houses, location, property, price, sortByPrice, transaction]);
+  }, [location, property, coin, price, transaction, sortByPrice]);
 
   return (
     <HouseContext.Provider
@@ -98,16 +99,18 @@ const HouseContextProvider = ({ children }) => {
         property,
         setProperty,
         properties,
+        coin,
+        setCoin,
         price,
         setPrice,
-        sortByPrice,
-        setSortByPrice,
         transaction,
         setTransaction,
         transactions,
         houses: filteredHouses,
         loading,
         handleClick,
+        sortByPrice,
+        setSortByPrice,
       }}
     >
       {children}

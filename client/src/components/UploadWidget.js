@@ -3,7 +3,7 @@ import { Image, Transformation } from "cloudinary-react";
 
 const UploadWidget = ({ onImageUpload, isPortada }) => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
-  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedImages, setUploadedImages] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
         if (!error && result && result.event === "success") {
           console.log("Imagen cargada correctamente:", result.info.secure_url);
           onImageUpload(result.info.secure_url, isPortada);
-          setUploadedImage(result.info);
+          setUploadedImages([...uploadedImages, result.info]);
           setError(null);
         } else if (error) {
           setError("Error al cargar la imagen. Por favor, inténtalo de nuevo.");
@@ -64,20 +64,16 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
         {isPortada ? "Cargar Imagen Perfil" : "Cargar Imagenes"}
       </button>
       {error && <p className="text-red-500 mt-2">{error}</p>}
-      {uploadedImage && (
-        <div className="mt-4">
+      {uploadedImages.map((image, index) => (
+        <div key={index} className="mt-4">
           <p className="flex text-xs mb-2 justify-center items-center">
-            {uploadedImage.original_filename}
+            {image.original_filename}
           </p>
-          <Image
-            cloudName="dgumwc2z4"
-            publicId={uploadedImage.public_id}
-            width="full"
-          >
+          <Image cloudName="dgumwc2z4" publicId={image.public_id} width="full">
             <Transformation className="w-full " />
           </Image>
         </div>
-      )}
+      ))}
     </div>
   );
 };
