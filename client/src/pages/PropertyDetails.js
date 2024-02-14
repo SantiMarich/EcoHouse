@@ -54,6 +54,10 @@ const PropertyDetails = () => {
     dispatch(getHouse(id));
   }, [dispatch, id]);
 
+  useEffect(() => {
+    console.log("Images received by Carrousel:", house && house.image);
+  }, [house]);
+
   return (
     <section>
       <div className="container mx-auto min-h-[800px] mb-14">
@@ -99,7 +103,7 @@ const PropertyDetails = () => {
         <div className="flex flex-col items-start gap-8 lg:flex-row">
           <div className="max-w-[768px]">
             <div className="mb-6">
-              <Carrousel images={[house && house.image]} />
+              <Carrousel images={house && house.image} />
             </div>
             <div className="flex flex-col gap-x-4 text-green-700 mb-8 text-sm">
               <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
@@ -126,16 +130,26 @@ const PropertyDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-gray-700 mb-8">
               {house && house.description}
+            </div>
+            <div className="text-xs text-green-500">
+              <p>
+                Consulta por las formas de pago y financiación. Los precios son
+                susceptibles a actualizaciones.
+              </p>
             </div>
           </div>
           <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
             <div className="flex items-center gap-x-4 mb-8">
-              <div className="w-20 h-20 p-1 border border-gray-300 rounded-full">
-                <img src={house && house.agent && house.agent.image} alt="" />
+              <div className="flex relative overflow-hidden w-20 h-20 p-1 border border-gray-300 rounded-full items-center justify-center">
+                <img
+                  src={house && house.agent && house.agent.image}
+                  alt=""
+                  className="object-cover object-center w-full h-full rounded-full"
+                />
               </div>
-              <div>
+              <div className="flex flex-col items-center">
                 <div className="font-semibold text-lg">
                   {house && house.agent && house.agent.name}
                 </div>
@@ -143,7 +157,7 @@ const PropertyDetails = () => {
                   to={`https://wa.me/${
                     house && house.agent && house.agent.phone
                   }`}
-                  className="text-green-500 text-sm"
+                  className="text-green-500 text-xs"
                 >
                   Enviar Whatsapp
                 </Link>

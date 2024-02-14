@@ -1,30 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Carrousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      if (!isTransitioning) {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images]);
-
-  if (!Array.isArray(images) || images.length === 0) {
-    return <p>No images available.</p>;
-  }
+  }, [images, isTransitioning]);
 
   const handlePrevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+      setTimeout(() => setIsTransitioning(false), 200);
+    }
   };
 
   const handleNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setTimeout(() => setIsTransitioning(false), 200);
+    }
   };
 
   return (
@@ -50,12 +56,14 @@ const Carrousel = ({ images }) => {
         <button
           onClick={handlePrevSlide}
           className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-400/75 dark:hover:bg-green-300/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
+          disabled={isTransitioning}
         >
           {<FaChevronLeft />}
         </button>
         <button
           onClick={handleNextSlide}
           className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-400/75 dark:hover:bg-green-300/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
+          disabled={isTransitioning}
         >
           {<FaChevronRight />}
         </button>

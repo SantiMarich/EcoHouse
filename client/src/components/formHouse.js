@@ -84,11 +84,19 @@ const FormHouse = () => {
   };
 
   const handleImageUpload = (url, isPortada) => {
-    setFormData({
-      ...formData,
-      [isPortada ? "imagePortada" : "image"]: url,
-    });
+    if (isPortada) {
+      setFormData({
+        ...formData,
+        imagePortada: url,
+      });
+    } else {
+      setFormData((prevState) => ({
+        ...formData,
+        image: [...prevState.image, url],
+      }));
+    }
   };
+
   const handleSelectChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
   };
@@ -98,7 +106,25 @@ const FormHouse = () => {
 
     try {
       await dispatch(createHouse(formData));
-      setFormData({});
+      setFormData({
+        ...formData,
+        name: "",
+        description: "",
+        image: [],
+        imagePortada: "",
+        address: "",
+        bedrooms: "",
+        bathrooms: "",
+        surface: "",
+        year: "",
+        price: "",
+        moneda: "",
+        monedatext: "",
+        modo: "",
+        transaction: "",
+        agentId: "",
+        locationId: "",
+      });
       setSuccessMessage("¡Propiedad creada exitosamente!");
       setErrorMessage("");
     } catch (error) {
