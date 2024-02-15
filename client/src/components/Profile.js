@@ -20,7 +20,7 @@ const Profile = () => {
         <img
           src={user.picture}
           alt={user.name}
-          className="lg:max-w-[72px] h-10 rounded-lg items-center justify-center"
+          className="lg:max-w-[72px] h-8 rounded-lg items-center justify-center"
         ></img>
       </div>
     )

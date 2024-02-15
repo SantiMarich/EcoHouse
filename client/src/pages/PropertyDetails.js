@@ -101,7 +101,7 @@ const PropertyDetails = () => {
           </div>
         </div>
         <div className="flex flex-col items-start gap-8 lg:flex-row">
-          <div className="max-w-[768px]">
+          <div className="xs:w-full sm:w-full md:w-[768px] lg:w-[768px] xl:w-[768px]">
             <div className="mb-6">
               <Carrousel images={house && house.image} />
             </div>
@@ -199,7 +199,7 @@ const PropertyDetails = () => {
 
                 <Link
                   to="/"
-                  className="border border-green-800 text-green-800 hover:border-green-500 hover:text-green-500 items-center justify-center rounded p-4 text-sm w-full transition text-center"
+                  className="border border-green-500 text-green-500 hover:border-green-500 hover:text-green-500 items-center justify-center rounded p-4 text-sm w-full transition text-center"
                   onClick={handleBackHome}
                 >
                   Pagina Inicio

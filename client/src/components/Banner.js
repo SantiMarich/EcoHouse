@@ -4,6 +4,7 @@ import {
   RiWhatsappLine,
   RiFacebookCircleFill,
   RiInstagramLine,
+  RiTiktokFill,
 } from "react-icons/ri";
 
 import Image from "../assets/img/house-banner.png";
@@ -13,7 +14,7 @@ import ScrollDown from "../components/ScrollDown";
 const Banner = () => {
   return (
     <section
-      className="h-full max-h-[640px] mb-[280px] sm:mb-[280px] md:mb-[280px] lg:mb-24 xl:mb-24"
+      className="h-full max-h-[640px] mb-[320px] sm:mb-[320px] md:mb-[320px] lg:mb-12 xl:mb-12"
       id="banner-section"
     >
       <div className="flex flex-col lg:flex-row">
@@ -39,6 +40,13 @@ const Banner = () => {
               rel="noopener noreferrer"
             >
               <RiInstagramLine className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@ecohouseinmobiliaria"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <RiTiktokFill className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
             </a>
           </div>
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">

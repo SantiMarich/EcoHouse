@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/img/EcohouseLogo.jpg";
 import LogInButton from "./ButtonLogIn";
@@ -6,23 +6,58 @@ import LogOutButton from "./ButtonLogOut";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./Profile";
 import { MdModeEdit } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
 
 const Header = () => {
   const { isAuthenticated, user } = useAuth0();
   const allowedUserId = "auth0|65bc6f6c1db88018a9d22138";
-
   const isAllowedUser = isAuthenticated && user && user.sub === allowedUserId;
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <header className="py-6 mb-12 border-b">
+    <header className="py-5 mb-14 border-b border-green-200 sticky top-0 bg-white z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/">
-          <img
-            src={Logo}
-            alt=""
-            className="w-[150px] md:w-[185px] lg:w-[185px] xl:w-[185px] h-auto"
-          />
-        </Link>
+        <div className="flex flex-row justify-between items-center">
+          <Link to="/">
+            <img
+              src={Logo}
+              alt=""
+              className="w-[150px] md:w-[190px] lg:w-[190px] xl:w-[190px] h-auto pr-10"
+            />
+          </Link>
+          {/* Renderizado condicional para mostrar enlaces o botón de menú */}
+          <div className="hidden md:flex">
+            <Link
+              to="/"
+              className="text-sm p-4 font-medium hover:text-green-500"
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/about"
+              className="text-sm p-4 font-medium hover:text-green-500"
+            >
+              Nosotros
+            </Link>
+            <Link
+              to="/favorites"
+              className="text-sm p-4 font-medium hover:text-green-500"
+            >
+              Favoritos
+            </Link>
+            <Link
+              to="/contact"
+              className="text-sm p-4 font-medium hover:text-green-500"
+            >
+              Contacto
+            </Link>
+          </div>
+        </div>
         <div className="flex items-center justify-center gap-4">
           {isAuthenticated ? (
             <>
@@ -30,7 +65,7 @@ const Header = () => {
               <LogOutButton>Log Out</LogOutButton>
               {isAllowedUser && (
                 <Link to="/admin">
-                  <button className="bg-green-300 hover:bg-green-400 text-white h-10 px-3 py-3 rounded-lg transition flex items-center text-center justify-center">
+                  <button className="bg-green-300 hover:bg-green-400 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center">
                     <MdModeEdit />
                   </button>
                 </Link>
@@ -39,8 +74,48 @@ const Header = () => {
           ) : (
             <LogInButton>Log In</LogInButton>
           )}
+          {/* Botón de menú para pantallas pequeñas */}
+          <button
+            className="bg-green-400 hover:bg-green-500 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center md:hidden"
+            onClick={toggleMenu}
+          >
+            <IoMenu />
+          </button>
         </div>
       </div>
+      {/* Menú desplegable para pantallas pequeñas */}
+      {menuOpen && (
+        <div className="absolute drop-shadow-md shadow-l md:hidden flex flex-col right-0  items-end w-[180px] mt-4 bg-white mr-4 rounded-lg">
+          <Link
+            to="/"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            onClick={toggleMenu}
+          >
+            Inicio
+          </Link>
+          <Link
+            to="/about"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            onClick={toggleMenu}
+          >
+            Nosotros
+          </Link>
+          <Link
+            to="/favorites"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            onClick={toggleMenu}
+          >
+            Favoritos
+          </Link>
+          <Link
+            to="/contact"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            onClick={toggleMenu}
+          >
+            Contacto
+          </Link>
+        </div>
+      )}
     </header>
   );
 };

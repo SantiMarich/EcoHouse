@@ -34,23 +34,24 @@ const Carrousel = ({ images }) => {
   };
 
   return (
-    <div className="relative flex justify-center items-center ">
+    <div className="relative flex justify-center items-center w-full">
       <div className="relative overflow-hidden w-full object-cover rounded-lg h-[300px] md:h-[500px]">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`${
-              index === currentIndex ? "block" : "hidden"
-            } duration-700 ease-in-out w-full h-full`}
-            data-carousel-item
-          >
-            <img
-              src={image}
-              className="flex h-full w-full object-cover object-center top-0 left-0"
-              alt={`Slide ${index + 1}`}
-            />
-          </div>
-        ))}
+        {images &&
+          images.map((image, index) => (
+            <div
+              key={index}
+              className={`${
+                index === currentIndex ? "block" : "hidden"
+              } duration-700 ease-in-out w-full h-full`}
+              data-carousel-item
+            >
+              <img
+                src={image}
+                className="flex h-full w-full object-cover object-center top-0 left-0"
+                alt={`Slide ${index + 1}`}
+              />
+            </div>
+          ))}
       </div>
       <div className="absolute z-10 left-0 right-0 flex justify-between items-center m-4">
         <button

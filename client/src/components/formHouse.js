@@ -127,6 +127,7 @@ const FormHouse = () => {
       });
       setSuccessMessage("¡Propiedad creada exitosamente!");
       setErrorMessage("");
+      window.location.reload();
     } catch (error) {
       setErrorMessage("¡Hubo un problema al crear la propiedad!");
       setSuccessMessage("");

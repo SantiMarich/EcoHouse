@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { MdBedtime } from "react-icons/md";
 import { IoMdWater } from "react-icons/io";
 import { FaExpandArrowsAlt } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const House = ({ house }) => {
   const {
@@ -24,8 +26,14 @@ const House = ({ house }) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
-    <div className="bg-white shadow-1 p-5 rounded-lg rounded-tl-[90px] w-full max-w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition">
+    <div className="bg-white shadow-1 drop-shadow-md p-5 rounded-lg rounded-tl-[90px] w-full max-w-[352px] mx-auto cursor-pointer hover:drop-shadow-2xl transition">
       <div className="relative overflow-hidden w-[315px] h-[315px] rounded-tl-[80px] rounded-tr-lg rounded-br-[80px] rounded-bl-lg mb-8">
         <img
           className="object-cover object-center w-full h-full rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg"
@@ -66,7 +74,7 @@ const House = ({ house }) => {
           <div className="text-[14px] mr-1 text-gray-600">{surface} m²</div>
         </div>
       </div>
-      <div className="text-lg font-semibold text-green-500 mb-4">
+      <div className="text-lg font-semibold text-green-500 mb-4 flex flex-row items-center justify-between">
         {price ? (
           <>
             {moneda} {formatNumber(Number(price))}
@@ -76,6 +84,13 @@ const House = ({ house }) => {
             Consultar
           </span>
         )}
+        <button onClick={toggleFavorite} className="pr-2 z-10 ">
+          {isFavorite ? (
+            <FaHeart className="text-green-500 text-xl hover:text-2xl" />
+          ) : (
+            <FaRegHeart className="text-green-500 text-xl hover:text-[22px]" />
+          )}
+        </button>
       </div>
     </div>
   );
