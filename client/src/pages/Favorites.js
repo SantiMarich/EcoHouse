@@ -18,7 +18,7 @@ const Favorites = () => {
 
   return (
     <section
-      className="h-full min-h-[1800px] max-auto mb-[320px] sm:mb-[320px] md:mb-[320px] lg:mb-12 xl:mb-12"
+      className="h-full min-h-[1800px] max-auto mb-[320px] sm:mb-[320px] md:mb-[320px] lg:mb-12 xl:mb-12 mt-14"
       id="banner-section"
     >
       <Sort />

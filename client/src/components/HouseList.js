@@ -25,13 +25,13 @@ const HouseList = () => {
   }
 
   return (
-    <section className="z-10 mb-20">
+    <section className="z-10 mb-20 mt-32">
       <div className="container mx-auto">
         <button className="scrollup" id="scroll-up" onClick={handleScrollUp}>
           <i className="uil uil-arrow-up scrollup__icon"></i>
         </button>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-14">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-y-10 lg:gap-x-0">
           {houses && houses.length > 0 ? (
             houses.map((house) => <House key={house.id} house={house} />)
           ) : (

@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-5 mb-14 border-b border-green-200 sticky top-0 bg-white z-50">
+    <header className="py-5 border-b border-green-200 sticky top-0 bg-white z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex flex-row justify-between items-center">
           <Link to="/">
@@ -30,29 +30,28 @@ const Header = () => {
               className="w-[150px] md:w-[190px] lg:w-[190px] xl:w-[190px] h-auto pr-10"
             />
           </Link>
-          {/* Renderizado condicional para mostrar enlaces o botón de menú */}
           <div className="hidden md:flex">
             <Link
               to="/"
-              className="text-sm p-4 font-medium hover:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
             >
               Inicio
             </Link>
             <Link
               to="/about"
-              className="text-sm p-4 font-medium hover:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
             >
               Nosotros
             </Link>
             <Link
               to="/favorites"
-              className="text-sm p-4 font-medium hover:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
             >
               Favoritos
             </Link>
             <Link
               to="/contact"
-              className="text-sm p-4 font-medium hover:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
             >
               Contacto
             </Link>
@@ -74,7 +73,6 @@ const Header = () => {
           ) : (
             <LogInButton>Log In</LogInButton>
           )}
-          {/* Botón de menú para pantallas pequeñas */}
           <button
             className="bg-green-400 hover:bg-green-500 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center md:hidden"
             onClick={toggleMenu}
@@ -83,7 +81,6 @@ const Header = () => {
           </button>
         </div>
       </div>
-      {/* Menú desplegable para pantallas pequeñas */}
       {menuOpen && (
         <div className="absolute drop-shadow-md shadow-l md:hidden flex flex-col right-0  items-end w-[180px] mt-4 bg-white mr-4 rounded-lg">
           <Link

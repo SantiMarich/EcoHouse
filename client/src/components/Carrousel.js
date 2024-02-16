@@ -35,7 +35,7 @@ const Carrousel = ({ images }) => {
 
   return (
     <div className="relative flex justify-center items-center w-full">
-      <div className="relative overflow-hidden w-full object-cover rounded-lg h-[300px] md:h-[500px]">
+      <div className="relative overflow-hidden w-full object-cover h-[300px] md:h-[500px]">
         {images &&
           images.map((image, index) => (
             <div

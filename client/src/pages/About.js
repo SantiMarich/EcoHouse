@@ -14,14 +14,14 @@ const Banner = () => {
   return (
     <section className="h-full max-h-[640px]" id="banner-section">
       <div className="flex flex-col lg:flex-row">
-        <div className="hidden flex-1 lg:flex justify-end items-end h-[550px] w-[520px] rounded-tr-[80px]">
+        <div className="hidden flex-1 lg:flex justify-end items-end h-[640px] w-[520px]">
           <img
             src={Image}
             alt=""
-            className="object-cover object-center w-full h-full rounded-tr-[150px]"
+            className="object-cover object-center w-full h-full"
           />
         </div>
-        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-4">
+        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-8 mt-14">
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
             <span className="text-4xl text-green-400 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
