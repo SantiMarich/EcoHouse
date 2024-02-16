@@ -1,4 +1,3 @@
-// HouseContextProvider.js
 import React, { useEffect, createContext, useState } from "react";
 import { getHouses, filterHouses } from "../redux/actions/houseActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,7 @@ const HouseContextProvider = ({ children }) => {
   const [locations, setLocations] = useState([]);
   const [property, setProperty] = useState("Propiedad (All)");
   const [properties, setProperties] = useState([]);
-  const [coin, setCoin] = useState("(All)");
+  const [coin, setCoin] = useState("Moneda (All)");
   const [price, setPrice] = useState("Precio (All)");
   const [transaction, setTransaction] = useState("Transacción (All)");
   const [transactions, setTransactions] = useState([]);
