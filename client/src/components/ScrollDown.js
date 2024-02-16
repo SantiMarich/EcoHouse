@@ -10,7 +10,7 @@ const ScrollDown = ({ targetSectionId }) => {
         to={targetSectionId}
         spy={true}
         smooth={true}
-        offset={0}
+        offset={-100}
         duration={500}
         className="home__scroll-button button--flex flex flex-row p-x-2 items-center transition hover:translate-y-1 cursor-pointer"
       >

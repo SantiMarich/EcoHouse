@@ -8,11 +8,11 @@ import { Menu } from "@headlessui/react";
 import { HouseContext } from "./HouseContext";
 
 const CoinDropDown = () => {
-  const { setCoin } = useContext(HouseContext);
+  const { coin, setCoin } = useContext(HouseContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCurrencyFilter = (currency) => {
-    setCoin(currency === "All" ? "(All)" : currency);
+    setCoin(currency === "All" ? "Moneda (All)" : currency);
     setIsOpen(false);
   };
 
@@ -25,7 +25,7 @@ const CoinDropDown = () => {
         <RiWallet3Line className="dropdown-icon-primary mr-5" />
         <div className="flex flex-col">
           <div className="text-[14px] font-medium leading-tight flex flex-col mb-[0.75px]">
-            Moneda (All)
+            {coin}
           </div>
           <div className="text-[12px] flex flex-col mb-[1px]">
             Ordenar Moneda
@@ -42,7 +42,7 @@ const CoinDropDown = () => {
       <Menu.Items className="dropdown-menu">
         <Menu.Item
           as="li"
-          onClick={() => handleCurrencyFilter("All")}
+          onClick={() => handleCurrencyFilter("Moneda (All)")}
           className="cursor-pointer hover:text-green-700 transition"
         >
           Moneda (All)

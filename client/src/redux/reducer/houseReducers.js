@@ -1,10 +1,14 @@
 import * as actionTypes from "../actions/ActionTypes";
 
-const initialState = {
-  houses: [],
-  house: null,
-  error: null,
-};
+const persistedState = localStorage.getItem("reduxState");
+const initialState = persistedState
+  ? JSON.parse(persistedState)
+  : {
+      houses: [],
+      house: null,
+      favorites: [],
+      error: null,
+    };
 
 const houseReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -58,6 +62,30 @@ const houseReducers = (state = initialState, action) => {
 
     case actionTypes.FILTER_HOUSES:
       return { ...state, filteredHouses: action.payload };
+
+    case actionTypes.ADD_FAVORITE_HOUSE:
+      const updatedFavorites = [...state.favorites, action.payload];
+      localStorage.setItem(
+        "reduxState",
+        JSON.stringify({ ...state, favorites: updatedFavorites })
+      );
+      return {
+        ...state,
+        favorites: updatedFavorites,
+      };
+
+    case actionTypes.REMOVE_FAVORITE_HOUSE:
+      const filteredFavorites = state.favorites.filter(
+        (id) => id !== action.payload
+      );
+      localStorage.setItem(
+        "reduxState",
+        JSON.stringify({ ...state, favorites: filteredFavorites })
+      );
+      return {
+        ...state,
+        favorites: filteredFavorites,
+      };
 
     default:
       return state;

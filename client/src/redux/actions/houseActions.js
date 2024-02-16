@@ -94,3 +94,28 @@ export const filterHouses = (filteredHouses) => {
     payload: filteredHouses,
   };
 };
+
+export const toggleFavoriteHouse = (houseId) => {
+  return async function (dispatch, getState) {
+    const { favorites } = getState().houses;
+    if (favorites && favorites.includes(houseId)) {
+      dispatch(removeFavoriteHouse(houseId));
+    } else {
+      dispatch(addFavoriteHouse(houseId));
+    }
+  };
+};
+
+const addFavoriteHouse = (houseId) => {
+  return {
+    type: actionTypes.ADD_FAVORITE_HOUSE,
+    payload: houseId,
+  };
+};
+
+const removeFavoriteHouse = (houseId) => {
+  return {
+    type: actionTypes.REMOVE_FAVORITE_HOUSE,
+    payload: houseId,
+  };
+};

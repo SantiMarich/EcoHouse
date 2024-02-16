@@ -47,14 +47,10 @@ const Contact = () => {
   };
 
   return (
-    <section
-      className="h-full max-auto w-full mb-8 flex justify-around items-center"
-      id="banner-section"
-    >
-      {" "}
-      <div class="md:mb-12 lg:mb-8 flex flex-row">
-        <div className="flex flex-col sm:flex-col md-flex-col lg:flex-row xl:flex-row space-x-8 border h-full max-auto w-[320px] sm:w-[320px] md:w-[320px] lg:w-[640px] xl:w-[640px] border-gray-300 outline:none rounded py-4 px-4 text-md mb-8">
-          <div className="flex flex-col w-full lg:w-1/2 xl:w-1/2 space-x-3 items-center">
+    <section className="h-full max-auto w-full mb-8 flex justify-around items-center">
+      <div class="md:mb-12 lg:mb-8 flex flex-row ">
+        <div className="flex flex-col shadow-lg sm:flex-col md-flex-col lg:flex-row xl:flex-row space-x-8 border h-full max-auto w-[320px] sm:w-[320px] md:w-[320px] lg:w-[640px] xl:w-[640px] border-gray-300 outline:none rounded py-4 px-4 text-md mb-8">
+          <div className="flex flex-col w-full lg:w-1/2 xl:w-1/2  items-center">
             <div className="flex mb-2 mt-4 justify-center items-center text-lg font-semibold">
               Contactanos
             </div>
@@ -151,7 +147,6 @@ const Contact = () => {
               className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
               placeholder="Mensaje*"
               name="message"
-              defaultValue="Hola! Estoy interesado en"
             ></textarea>
             <div className="flex gap-x-2">
               <button className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition">
