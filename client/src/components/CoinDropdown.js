@@ -43,28 +43,28 @@ const CoinDropDown = () => {
         <Menu.Item
           as="li"
           onClick={() => handleCurrencyFilter("Moneda (All)")}
-          className="cursor-pointer hover:text-green-700 transition"
+          className="cursor-pointer hover:text-green-800 transition"
         >
           Moneda (All)
         </Menu.Item>
         <Menu.Item
           as="li"
           onClick={() => handleCurrencyFilter("$")}
-          className="cursor-pointer hover:text-green-700 transition"
+          className="cursor-pointer hover:text-green-800 transition"
         >
           $ (Pesos)
         </Menu.Item>
         <Menu.Item
           as="li"
           onClick={() => handleCurrencyFilter("U$D")}
-          className="cursor-pointer hover:text-green-700 transition"
+          className="cursor-pointer hover:text-green-800 transition"
         >
           U$D (Dólares)
         </Menu.Item>
         <Menu.Item
           as="li"
           onClick={() => handleCurrencyFilter("€")}
-          className="cursor-pointer hover:text-green-700 transition"
+          className="cursor-pointer hover:text-green-800 transition"
         >
           € (Euros)
         </Menu.Item>

@@ -23,11 +23,11 @@ const Banner = () => {
         </div>
         <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-8 mt-14">
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
-            <span className="text-4xl text-green-600 lg:text-[48px] font-bold flex flex-col mb-4">
+            <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
             </span>{" "}
             Servicios Inmobiliarios
-            <span className="text-green-600 text-sm font-medium flex flex-col mt-2">
+            <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
           </h1>
@@ -37,7 +37,7 @@ const Banner = () => {
             Nuestra trayectoria nos ha permitido entender las necesidades de
             nuestros clientes y acompañarlos en cada paso de su proceso de
             inversión. Con{" "}
-            <span className="text-green-500 font-semibold ">ECO HOUSE</span>, no
+            <span className="text-green-600 font-semibold ">ECO HOUSE</span>, no
             solo encontrarás una agencia inmobiliaria, sino un equipo
             comprometido en brindarte las mejores oportunidades para tu próxima
             inversión. Nos enorgullece ofrecer un servicio personalizado, basado
@@ -46,13 +46,13 @@ const Banner = () => {
             hemos comprometido con la transparencia y el profesionalismo en cada
             transacción. Nuestra misión es proporcionar una experiencia cortés,
             eficiente y de calidad en cada interacción.{" "}
-            <span className="text-green-500 font-semibold ">ECO HOUSE</span> y
+            <span className="text-green-600 font-semibold ">ECO HOUSE</span> y
             permitirnos acompañarte en tu próxima inversión inmobiliaria.
           </p>
           <div className="w-full flex flex-col items-center sm:items-center md:items-center lg:items-start xl:items-start">
             <Link
               to="/contact"
-              className="mb-4 text-[14px] text-green-500 hover:text-green-400 font-semibold"
+              className="mb-4 text-[14px] text-green-600 hover:text-green-500 font-semibold"
             >
               Contactanos
             </Link>
@@ -63,28 +63,28 @@ const Banner = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <RiWhatsappLine className="text-lg mr-[4px] text-green-600 hover:text-green-500" />
+                <RiWhatsappLine className="text-lg mr-[4px] text-green-700 hover:text-green-600" />
               </a>
               <a
                 href="https://www.facebook.com/ECOHOUSEINMOBILIARIA"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <RiFacebookCircleFill className="text-lg mr-[4px] text-green-600 hover:text-green-500" />
+                <RiFacebookCircleFill className="text-lg mr-[4px] text-green-700 hover:text-green-600" />
               </a>
               <a
                 href="https://www.instagram.com/inmobiliariaecohousesalta/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <RiInstagramLine className="text-lg mr-[4px] text-green-600 hover:text-green-500" />
+                <RiInstagramLine className="text-lg mr-[4px] text-green-700 hover:text-green-600" />
               </a>
               <a
                 href="https://www.tiktok.com/@ecohouseinmobiliaria"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <RiTiktokFill className="text-lg mr-[4px] text-green-600 hover:text-green-500" />
+                <RiTiktokFill className="text-lg mr-[4px] text-green-700 hover:text-green-600" />
               </a>
             </div>
           </div>

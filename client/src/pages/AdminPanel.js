@@ -25,7 +25,7 @@ const AdminPanel = () => {
           <div className="relative">
             <button
               onClick={() => setShowHouseForm(!showHouseForm)}
-              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-400 text-white font-normal mt-2 text-sm"
+              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-500 text-white font-normal mt-2 text-sm"
             >
               Crear Propiedad <TiPlus />
             </button>
@@ -34,7 +34,7 @@ const AdminPanel = () => {
           <div className="relative">
             <button
               onClick={() => setShowAgentForm(!showAgentForm)}
-              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-400  text-white font-normal mt-2 text-sm"
+              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-500  text-white font-normal mt-2 text-sm"
             >
               Crear Agente <TiPlus />
             </button>
@@ -43,7 +43,7 @@ const AdminPanel = () => {
           <div className="relative">
             <button
               onClick={() => setShowLocationForm(!showLocationForm)}
-              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-400 text-white font-normal mt-2 text-sm"
+              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-500 text-white font-normal mt-2 text-sm"
             >
               Crear Ubicación <TiPlus />
             </button>
@@ -52,7 +52,7 @@ const AdminPanel = () => {
           <div className="relative">
             <button
               onClick={() => setShowEditDatabase(!showEditDatabase)}
-              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-400 text-white font-normal mt-2 text-sm"
+              className="flex flex-row items-center justify-between p-4 w-full rounded bg-green-500 text-white font-normal mt-2 text-sm"
             >
               Editar Base de Datos <TiPlus />
             </button>

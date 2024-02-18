@@ -36,7 +36,7 @@ const LocationDropdown = () => {
         {locations.map((location, index) => (
           <Menu.Item
             onClick={() => handleLocationChange(location)}
-            className="cursor-pointer hover:text-green-700 transition"
+            className="cursor-pointer hover:text-green-800 transition"
             as="li"
             key={index}
           >

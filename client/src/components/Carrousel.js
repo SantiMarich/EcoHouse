@@ -46,14 +46,14 @@ const Carrousel = ({ images }) => {
       <div className="absolute z-10 left-0 right-0 flex justify-between items-center m-4">
         <button
           onClick={handlePrevSlide}
-          className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-400/75 dark:hover:bg-green-300/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
+          className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-500/75 dark:hover:bg-green-400/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
           disabled={isTransitioning}
         >
           {<FaChevronLeft />}
         </button>
         <button
           onClick={handleNextSlide}
-          className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-400/75 dark:hover:bg-green-300/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
+          className="flex items-center justify-center w-8 h-8 rounded-full text-md font-semibold text-white dark:bg-green-500/75 dark:hover:bg-green-400/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
           disabled={isTransitioning}
         >
           {<FaChevronRight />}

@@ -36,25 +36,25 @@ const Header = () => {
           <div className="hidden md:flex">
             <Link
               to="/"
-              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             >
               Inicio
             </Link>
             <Link
               to="/about"
-              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             >
               Nosotros
             </Link>
             <Link
               to="/favorites"
-              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             >
               Favoritos
             </Link>
             <Link
               to="/contact"
-              className="text-sm p-4 font-medium hover:text-green-500 focus:text-green-500"
+              className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             >
               Contacto
             </Link>
@@ -67,7 +67,7 @@ const Header = () => {
               <LogOutButton>Log Out</LogOutButton>
               {isAllowedUser && (
                 <Link to="/admin">
-                  <button className="bg-green-300 hover:bg-green-400 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center">
+                  <button className="bg-green-400 hover:bg-green-500 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center">
                     <MdModeEdit />
                   </button>
                 </Link>
@@ -77,7 +77,7 @@ const Header = () => {
             <LogInButton>Log In</LogInButton>
           )}
           <button
-            className="bg-green-400 hover:bg-green-500 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center md:hidden"
+            className="bg-green-500 hover:bg-green-600 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center md:hidden"
             onClick={toggleMenu}
           >
             <IoMenu />
@@ -88,28 +88,28 @@ const Header = () => {
         <div className="absolute drop-shadow-md shadow-l md:hidden flex flex-col right-0  items-end w-[180px] mt-4 bg-white mr-4 rounded-lg">
           <Link
             to="/"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
             onClick={toggleMenu}
           >
             Inicio
           </Link>
           <Link
             to="/about"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
             onClick={toggleMenu}
           >
             Nosotros
           </Link>
           <Link
             to="/favorites"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
             onClick={toggleMenu}
           >
             Favoritos
           </Link>
           <Link
             to="/contact"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-300"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
             onClick={toggleMenu}
           >
             Contacto

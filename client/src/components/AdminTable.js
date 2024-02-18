@@ -114,7 +114,7 @@ const AdminTable = () => {
                   {selectedHouse && selectedHouse.id === house.id ? (
                     <>
                       <button
-                        className="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-2 rounded mr-2"
+                        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 rounded mr-2"
                         onClick={handleSave}
                       >
                         <HiCheck />
@@ -129,7 +129,7 @@ const AdminTable = () => {
                   ) : (
                     <>
                       <button
-                        className="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-2 rounded mr-2"
+                        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 rounded mr-2"
                         onClick={() => handleEdit(house)}
                       >
                         <FiEdit2 />

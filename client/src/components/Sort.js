@@ -26,7 +26,7 @@ const Sort = () => {
       <CoinDropdown />
       <button
         onClick={handleSortClick}
-        className="bg-green-400 hover:bg-green-300 transition w-full lg:max-w-[72px] h-16 rounded-lg flex justify-center items-center text-white text-[28px] drop-shadow-lg "
+        className="bg-green-500 hover:bg-green-400 transition w-full lg:max-w-[72px] h-16 rounded-lg flex justify-center items-center text-white text-[28px] drop-shadow-lg "
       >
         {sortByPrice === "lowToHigh" ? <TbArrowsSort /> : <TbArrowsSort />}
       </button>

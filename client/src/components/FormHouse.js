@@ -150,7 +150,7 @@ const FormHouse = () => {
           value={formData.name || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: Casa Estancia Vieja"
         />
       </div>
@@ -167,7 +167,7 @@ const FormHouse = () => {
           name="type"
           value={formData.type || ""}
           onChange={handleChange}
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           required
         >
           <option value="">Seleccionar Tipo</option>
@@ -193,7 +193,7 @@ const FormHouse = () => {
           name="transaction"
           value={formData.transaction || ""}
           onChange={handleChange}
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           required
         >
           <option value="">Seleccionar Operación</option>
@@ -204,7 +204,7 @@ const FormHouse = () => {
       </div>
 
       <div className="mb-5">
-        <p className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
+        <p className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
           {formData.modo || ""}
         </p>
       </div>
@@ -221,7 +221,7 @@ const FormHouse = () => {
           name="agentId"
           value={formData.agentId || ""}
           onChange={handleChange}
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           required
         >
           <option value="">Seleccione Agente</option>
@@ -246,7 +246,7 @@ const FormHouse = () => {
           name="locationId"
           value={formData.locationId || ""}
           onChange={handleChange}
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           required
         >
           <option value="">Seleccione Ubicación</option>
@@ -273,7 +273,7 @@ const FormHouse = () => {
           value={formData.address || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: Ituzaingo 682, Barrio Nueva Córdoba"
         />
       </div>
@@ -292,7 +292,7 @@ const FormHouse = () => {
           value={formData.bedrooms || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: 3"
         />
       </div>
@@ -311,7 +311,7 @@ const FormHouse = () => {
           value={formData.bathrooms || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: 2"
         />
       </div>
@@ -330,7 +330,7 @@ const FormHouse = () => {
           value={formData.surface || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: 120"
         />
       </div>
@@ -349,7 +349,7 @@ const FormHouse = () => {
           value={formData.year || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: 2011"
         />
       </div>
@@ -368,7 +368,7 @@ const FormHouse = () => {
           value={formData.price || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: 100000"
         />
       </div>
@@ -385,7 +385,7 @@ const FormHouse = () => {
           name="moneda"
           value={formData.moneda || ""}
           onChange={handleChange}
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
           required
         >
           <option value="">Seleccionar Moneda</option>
@@ -396,7 +396,7 @@ const FormHouse = () => {
       </div>
 
       <div className="mb-5">
-        <p className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
+        <p className="border border-gray-300 focus:border-green-600 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2 h-[42px]">
           {formData.monedatext || ""}
         </p>
       </div>
@@ -414,7 +414,7 @@ const FormHouse = () => {
           value={formData.description || ""}
           onChange={handleChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-600"
+          className="border border-gray-300 focus:border-green-600 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-600"
           placeholder="Agrega una descripción de la propiedad"
         />
       </div>
@@ -437,7 +437,7 @@ const FormHouse = () => {
       </div>
 
       {successMessage && (
-        <p className="text-green-500 text-xs text-center">{successMessage}</p>
+        <p className="text-green-600 text-xs text-center">{successMessage}</p>
       )}
 
       {errorMessage && (

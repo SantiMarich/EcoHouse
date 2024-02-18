@@ -74,10 +74,10 @@ const PropertyDetails = () => {
               {house && house.address}
             </h3>
             <div className="mb-4 mr-20 lg:mb-4 flex gap-x-2 text-xs">
-              <div className="bg-green-600 text-white px-3 rounded-sm">
+              <div className="bg-green-700 text-white px-3 rounded-sm">
                 {house && house.type}
               </div>
-              <div className="bg-green-500 text-white px-3 rounded-sm ">
+              <div className="bg-green-600 text-white px-3 rounded-sm ">
                 {house && house.location && house.location.name}
               </div>
               <div className="bg-green-800 text-white px-3 rounded-sm ">
@@ -86,7 +86,7 @@ const PropertyDetails = () => {
             </div>
           </div>
 
-          <div className="text-xl mb-4 font-semibold flex flex-col items-start sm:items-start md:items-start lg:items-end xl:items-end text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-500">
+          <div className="text-xl mb-4 font-semibold flex flex-col items-start sm:items-start md:items-start lg:items-end xl:items-end text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-600">
             {house && house.price ? (
               <>
                 {house && house.moneda} {formatNumber(Number(house.price))}
@@ -98,7 +98,7 @@ const PropertyDetails = () => {
                 </div>
               </>
             ) : (
-              <span className="text-lg mb-4 font-semibold text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-500">
+              <span className="text-lg mb-4 font-semibold text-start sm:text-start md:text-start lg:text-end xl:text-end text-green-600">
                 Consultar
               </span>
             )}
@@ -109,25 +109,25 @@ const PropertyDetails = () => {
             <div className="mb-6">
               <Carrousel images={house && house.image} />
             </div>
-            <div className="flex flex-col gap-x-4 text-green-700 mb-8 text-sm">
-              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
-                <BiSolidChevronRight className="text-green-300" />
+            <div className="flex flex-col gap-x-4 text-green-800 mb-8 text-sm">
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-600">
+                <BiSolidChevronRight className="text-green-400" />
                 Habitaciones:
                 <div className="mr-[2px] font-normal text-gray-700">
                   {house && house.bedrooms}
                 </div>
               </div>
 
-              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
-                <BiSolidChevronRight className="text-green-300" />
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-600">
+                <BiSolidChevronRight className="text-green-400" />
                 Baños:
                 <div className="mr-[2px] font-normal text-gray-700">
                   {house && house.bathrooms}
                 </div>
               </div>
 
-              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-500">
-                <BiSolidChevronRight className="text-green-300" />
+              <div className="flex gap-x-1 items-center mb-[2px] font-semibold text-green-600">
+                <BiSolidChevronRight className="text-green-400" />
                 Superficie:
                 <div className="mr-[2px] font-normal text-gray-700">
                   {house && house.surface} m²
@@ -137,7 +137,7 @@ const PropertyDetails = () => {
             <div className="text-sm text-gray-700 mb-8">
               {house && house.description}
             </div>
-            <div className="text-xs text-green-500">
+            <div className="text-xs text-green-600">
               <p>
                 Consulta por las formas de pago y financiación. Los precios son
                 susceptibles a actualizaciones.
@@ -161,7 +161,7 @@ const PropertyDetails = () => {
                   to={`https://wa.me/${
                     house && house.agent && house.agent.phone
                   }`}
-                  className="text-green-500 text-xs"
+                  className="text-green-600 text-xs"
                 >
                   Enviar Whatsapp
                 </Link>
@@ -173,37 +173,37 @@ const PropertyDetails = () => {
               onSubmit={sendEmail}
             >
               <input
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                className="border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
                 type="text"
                 name="user_name"
                 placeholder="Nombre*"
               />
               <input
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                className="border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
                 type="email"
                 name="user_email"
                 placeholder="Mail*"
               />
               <input
-                className="border border-gray-300 focus:border-green-500 outline:none rounded w-full px-4 h-14 text-sm"
+                className="border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
                 type="text"
                 name="user_phone"
                 placeholder="Telefono*"
               />
               <textarea
-                className="border border-gray-300 focus:border-green-500 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
+                className="border border-gray-300 focus:border-green-600 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
                 placeholder="Mensaje*"
                 name="message"
                 defaultValue="Hola! Estoy interesado en"
               ></textarea>
               <div className="flex gap-x-2">
-                <button className="bg-green-500 hover:bg-green-600 text-white rounded p-4 text-sm w-full transition">
+                <button className="bg-green-600 hover:bg-green-700 text-white rounded p-4 text-sm w-full transition">
                   Enviar Mensaje
                 </button>
 
                 <Link
                   to="/"
-                  className="border border-green-500 text-green-500 hover:border-green-500 hover:text-green-500 items-center justify-center rounded p-4 text-sm w-full transition text-center"
+                  className="border border-green-600 text-green-600 hover:border-green-600 hover:text-green-600 items-center justify-center rounded p-4 text-sm w-full transition text-center"
                   onClick={handleBackHome}
                 >
                   Pagina Inicio
@@ -213,7 +213,7 @@ const PropertyDetails = () => {
                 <div
                   className={`${
                     notification.type === "success"
-                      ? "text-green-500"
+                      ? "text-green-600"
                       : "text-red-500"
                   } text-sm`}
                 >

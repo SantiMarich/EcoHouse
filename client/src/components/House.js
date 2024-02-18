@@ -47,10 +47,10 @@
 //             />
 //           </div>
 //           <div className="mb-8 flex gap-x-2 text-xs">
-//             <div className="bg-green-700 rounded-sm text-white px-3">
+//             <div className="bg-green-800 rounded-sm text-white px-3">
 //               {type}
 //             </div>
-//             <div className="bg-green-500 rounded-sm text-white px-3">
+//             <div className="bg-green-600 rounded-sm text-white px-3">
 //               {locationName}
 //             </div>
 //             <div className="bg-green-800 rounded-sm text-white px-3">
@@ -63,31 +63,31 @@
 //           </div>
 //           <div className="flex gap-x-2 my-2">
 //             <div className="flex items-center gap-1">
-//               <div className="text-[14px] mr-1 text-green-300">
+//               <div className="text-[14px] mr-1 text-green-400">
 //                 <MdBedtime />
 //               </div>
 //               <div className="text-[14px] mr-1 text-gray-600">{bedrooms}</div>
 //             </div>
 //             <div className="flex items-center  gap-1">
-//               <div className="text-[14px] mr-1 text-green-300">
+//               <div className="text-[14px] mr-1 text-green-400">
 //                 <IoMdWater />
 //               </div>
 //               <div className="text-[14px] mr-1 text-gray-600">{bathrooms}</div>
 //             </div>
 //             <div className="flex items-center  gap-1">
-//               <div className="text-[14px] mr-1 text-green-300">
+//               <div className="text-[14px] mr-1 text-green-400">
 //                 <FaExpandArrowsAlt className="font-bold" />
 //               </div>
 //               <div className="text-[14px] mr-1 text-gray-600">{surface} m²</div>
 //             </div>
 //           </div>
-//           <div className="text-lg font-semibold text-green-500 mb-4 flex flex-row items-center justify-between">
+//           <div className="text-lg font-semibold text-green-600 mb-4 flex flex-row items-center justify-between">
 //             {price ? (
 //               <>
 //                 {moneda} {formatNumber(Number(price))}
 //               </>
 //             ) : (
-//               <span className="text-sm font-semibold text-green-500 mb-4">
+//               <span className="text-sm font-semibold text-green-600 mb-4">
 //                 Consultar
 //               </span>
 //             )}
@@ -98,9 +98,9 @@
 //           className="absolute flex favorite-button bottom-10 right-8"
 //         >
 //           {isFavorite ? (
-//             <FaHeart className="text-green-400 text-xl hover:text-2xl" />
+//             <FaHeart className="text-green-500 text-xl hover:text-2xl" />
 //           ) : (
-//             <FaRegHeart className="text-green-400 text-xl hover:text-[22px]" />
+//             <FaRegHeart className="text-green-500 text-xl hover:text-[22px]" />
 //           )}
 //         </button>
 //       </div>
@@ -160,10 +160,10 @@ const House = ({ house }) => {
           </div>
           <div className="p-5">
             <div className="mb-4 flex gap-x-2 text-xs">
-              <div className="bg-green-700 rounded-sm text-white px-3">
+              <div className="bg-green-800 rounded-sm text-white px-3">
                 {type}
               </div>
-              <div className="bg-green-500 rounded-sm text-white px-3">
+              <div className="bg-green-600 rounded-sm text-white px-3">
                 {locationName}
               </div>
               <div className="bg-green-800 rounded-sm text-white px-3">
@@ -178,13 +178,13 @@ const House = ({ house }) => {
             </div>
             <div className="flex gap-x-2 my-2">
               <div className="flex items-center gap-1">
-                <div className="text-[14px] mr-1 text-green-300">
+                <div className="text-[14px] mr-1 text-green-400">
                   <MdBedtime />
                 </div>
                 <div className="text-[14px] mr-1 text-gray-600">{bedrooms}</div>
               </div>
               <div className="flex items-center  gap-1">
-                <div className="text-[14px] mr-1 text-green-300">
+                <div className="text-[14px] mr-1 text-green-400">
                   <IoMdWater />
                 </div>
                 <div className="text-[14px] mr-1 text-gray-600">
@@ -192,7 +192,7 @@ const House = ({ house }) => {
                 </div>
               </div>
               <div className="flex items-center  gap-1">
-                <div className="text-[14px] mr-1 text-green-300">
+                <div className="text-[14px] mr-1 text-green-400">
                   <FaExpandArrowsAlt className="font-bold" />
                 </div>
                 <div className="text-[14px] mr-1 text-gray-600">
@@ -200,13 +200,13 @@ const House = ({ house }) => {
                 </div>
               </div>
             </div>
-            <div className="text-lg font-semibold text-green-500 flex flex-row items-center justify-between">
+            <div className="text-lg font-semibold text-green-600 flex flex-row items-center justify-between">
               {price ? (
                 <>
                   {moneda} {formatNumber(Number(price))}
                 </>
               ) : (
-                <span className="text-sm font-semibold text-green-500 mb-4">
+                <span className="text-sm font-semibold text-green-600 mb-4">
                   Consultar
                 </span>
               )}
@@ -218,9 +218,9 @@ const House = ({ house }) => {
           className="absolute flex favorite-button bottom-[26px] right-8"
         >
           {isFavorite ? (
-            <FaHeart className="text-green-400 text-lg hover:text-xl" />
+            <FaHeart className="text-green-500 text-lg hover:text-xl" />
           ) : (
-            <FaRegHeart className="text-green-400 text-lg hover:text-xl" />
+            <FaRegHeart className="text-green-500 text-lg hover:text-xl" />
           )}
         </button>
       </div>

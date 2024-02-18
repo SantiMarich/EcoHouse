@@ -46,7 +46,7 @@ const TransactionDropdown = () => {
           return (
             <Menu.Item
               onClick={() => handleTransactionChange(transaction)}
-              className="cursor-pointer hover:text-green-700 transition"
+              className="cursor-pointer hover:text-green-800 transition"
               as="li"
               key={index}
             >

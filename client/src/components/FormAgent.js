@@ -71,7 +71,7 @@ const AgentForm = () => {
           value={name}
           onChange={handleNameChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: Sebastian Marich"
         />
       </div>
@@ -89,7 +89,7 @@ const AgentForm = () => {
           value={phone}
           onChange={handlePhoneChange}
           required
-          className="border border-gray-300 focus:border-green-500 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          className="border border-gray-300 focus:border-green-600 outline:none rounded block w-full p-2.5 px-4 text-sm gap-2"
           placeholder="Ej.: +543513838890"
         />
       </div>
@@ -107,7 +107,7 @@ const AgentForm = () => {
         </button>
       </div>
       {successMessage && (
-        <p className="text-green-500 text-xs text-center">{successMessage}</p>
+        <p className="text-green-600 text-xs text-center">{successMessage}</p>
       )}
       {errorMessage && (
         <p className="text-red-500 text-xs text-center">{errorMessage}</p>

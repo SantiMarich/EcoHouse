@@ -25,42 +25,42 @@ const Banner = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RiWhatsappLine className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
+              <RiWhatsappLine className="text-xl mr-[4px] text-green-700 hover:text-green-600" />
             </a>
             <a
               href="https://www.facebook.com/ECOHOUSEINMOBILIARIA"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RiFacebookCircleFill className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
+              <RiFacebookCircleFill className="text-xl mr-[4px] text-green-700 hover:text-green-600" />
             </a>
             <a
               href="https://www.instagram.com/inmobiliariaecohousesalta/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RiInstagramLine className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
+              <RiInstagramLine className="text-xl mr-[4px] text-green-700 hover:text-green-600" />
             </a>
             <a
               href="https://www.tiktok.com/@ecohouseinmobiliaria"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RiTiktokFill className="text-xl mr-[4px] text-green-600 hover:text-green-500" />
+              <RiTiktokFill className="text-xl mr-[4px] text-green-700 hover:text-green-600" />
             </a>
           </div>
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
-            <span className="text-4xl text-green-600 lg:text-[48px] font-bold flex flex-col mb-4">
+            <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
             </span>{" "}
             Servicios Inmobiliarios
-            <span className="text-green-600 text-sm font-medium flex flex-col mt-2">
+            <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
           </h1>
           <p className="max-w-[480px] mb-8 text-[14px] ">
             Encuentra las mejores oportunidades inmobiliaria con{" "}
-            <span className="text-green-500 font-semibold ">ECO HOUSE</span>,
+            <span className="text-green-600 font-semibold ">ECO HOUSE</span>,
             expertos en alquiler y venta de propiedades en la ciudad de Salta.
             Nuestra experiencia local nos permite proporcionar asesoramiento
             detallado sobre las diferentes zonas de la ciudad y las tendencias

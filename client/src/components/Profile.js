@@ -14,7 +14,7 @@ const Profile = () => {
         <div className="flex flex-col justify-end justify-items-end text-end">
           <div className="hidden lg:block">
             <h2 className="font-semibold">{user.name}</h2>
-            <p className="text-green-500">{user.email}</p>
+            <p className="text-green-600">{user.email}</p>
           </div>
         </div>
         <img
