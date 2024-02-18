@@ -64,7 +64,7 @@ const PropertyDetails = () => {
 
   return (
     <section>
-      <div className="container mx-auto min-h-[800px] mb-14">
+      <div className="container mx-auto min-h-[800px] mb-14 mt-14">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="text-xl text-gray-700 mb-[2px] font-semibold">
@@ -153,7 +153,7 @@ const PropertyDetails = () => {
                   className="object-cover object-center w-full h-full rounded-full"
                 />
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center text-start justify-start">
                 <div className="font-semibold text-lg">
                   {house && house.agent && house.agent.name}
                 </div>
