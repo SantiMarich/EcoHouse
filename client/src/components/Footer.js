@@ -4,6 +4,7 @@ import {
   RiWhatsappLine,
   RiFacebookCircleFill,
   RiInstagramLine,
+  RiTiktokFill,
 } from "react-icons/ri";
 
 const Footer = () => {
