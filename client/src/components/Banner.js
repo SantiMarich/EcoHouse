@@ -14,7 +14,7 @@ import ScrollDown from "../components/ScrollDown";
 const Banner = () => {
   return (
     <section
-      className="h-full max-h-[640px] mb-[320px] sm:mb-[320px] md:mb-[320px] lg:mb-12 xl:mb-12"
+      className="h-full max-h-[640px] mb-[400px] sm:mb-[400px] md:mb-[400px] lg:mb-12 xl:mb-12"
       id="banner-section"
     >
       <div className="flex flex-col lg:flex-row">

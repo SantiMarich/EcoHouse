@@ -18,7 +18,7 @@ const Sort = () => {
   return (
     <div
       id="search-section"
-      className=" shadow-1  z-20 px-[30px] py-8 max-w-[1170px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-4 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg "
+      className=" shadow-1 mt-12 sm:mt-12 md:mt-12 lg:mt-0 xl:mt-0 z-20 px-[30px] py-8 max-w-[1170px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-4 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg "
     >
       <LocationDropdown />
       <PropertyDropdown />
