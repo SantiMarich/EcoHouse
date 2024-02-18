@@ -12,7 +12,7 @@ const { REACT_APP_USER_OWNER } = process.env;
 
 const AdminPanel = () => {
   const { user } = useAuth0();
-  const allowedUserId = REACT_APP_USER_ADMIN;
+  const allowedUserId = REACT_APP_USER_ADMIN || REACT_APP_USER_OWNER;
   const [showHouseForm, setShowHouseForm] = useState(false);
   const [showAgentForm, setShowAgentForm] = useState(false);
   const [showLocationForm, setShowLocationForm] = useState(false);
