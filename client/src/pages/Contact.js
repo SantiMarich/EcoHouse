@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import {
   RiWhatsappLine,
@@ -8,7 +7,9 @@ import {
   RiTiktokFill,
 } from "react-icons/ri";
 
-import Image from "../assets/img/Salta2.jpg";
+const { REACT_APP_EMAILJS_SERVICE } = process.env;
+const { REACT_APP_EMAILJS_TEMPLATE } = process.env;
+const { REACT_APP_EMAILJS_FORM } = process.env;
 
 const Contact = () => {
   const [notification, setNotification] = useState(null);
@@ -23,10 +24,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_li17sd7",
-        "template_szd9c1y",
+        REACT_APP_EMAILJS_SERVICE,
+        REACT_APP_EMAILJS_TEMPLATE,
         form.current,
-        "XUdAWRtt-W3drbuBP"
+        REACT_APP_EMAILJS_FORM
       )
       .then(
         (result) => {

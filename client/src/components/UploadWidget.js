@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Image, Transformation } from "cloudinary-react";
 
+const { REACT_APP_CLOUDYNARY_CLOUDNAME } = process.env;
+const { REACT_APP_CLOUDYNARY_UPLOADPRESET } = process.env;
+const { REACT_APP_CLOUDYNARY_APIKEY } = process.env;
+
 const UploadWidget = ({ onImageUpload, isPortada }) => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -9,9 +13,9 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
   useEffect(() => {
     const widget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "dgumwc2z4",
-        uploadPreset: "ecohouse-app",
-        apiKey: "242438313979396",
+        cloudName: REACT_APP_CLOUDYNARY_CLOUDNAME,
+        uploadPreset: REACT_APP_CLOUDYNARY_UPLOADPRESET,
+        apiKey: REACT_APP_CLOUDYNARY_APIKEY,
         sources: ["local", "url", "camera", "image_search", "dropbox"],
         googleApiKey: "<YOUR_GOOGLE_API_KEY>",
         searchBySites: ["all", "cloudinary.com"],

@@ -7,9 +7,12 @@ import { Navigate } from "react-router-dom";
 import { TiPlus } from "react-icons/ti";
 import AdminTable from "../components/AdminTable";
 
+const { REACT_APP_USER_ADMIN } = process.env;
+const { REACT_APP_USER_OWNER } = process.env;
+
 const AdminPanel = () => {
   const { user } = useAuth0();
-  const allowedUserId = "auth0|65bc6f6c1db88018a9d22138";
+  const allowedUserId = REACT_APP_USER_ADMIN;
   const [showHouseForm, setShowHouseForm] = useState(false);
   const [showAgentForm, setShowAgentForm] = useState(false);
   const [showLocationForm, setShowLocationForm] = useState(false);

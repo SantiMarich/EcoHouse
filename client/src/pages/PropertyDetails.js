@@ -6,6 +6,10 @@ import { BiSolidChevronRight } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import { getHouse } from "../redux/actions/houseActions";
 
+const { REACT_APP_EMAILJS_SERVICE } = process.env;
+const { REACT_APP_EMAILJS_TEMPLATE } = process.env;
+const { REACT_APP_EMAILJS_FORM } = process.env;
+
 const PropertyDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -23,10 +27,10 @@ const PropertyDetails = () => {
 
     emailjs
       .sendForm(
-        "service_li17sd7",
-        "template_szd9c1y",
+        REACT_APP_EMAILJS_SERVICE,
+        REACT_APP_EMAILJS_TEMPLATE,
         form.current,
-        "XUdAWRtt-W3drbuBP"
+        REACT_APP_EMAILJS_FORM
       )
       .then(
         (result) => {

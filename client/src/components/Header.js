@@ -8,9 +8,12 @@ import Profile from "./Profile";
 import { MdModeEdit } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 
+const { REACT_APP_USER_ADMIN } = process.env;
+const { REACT_APP_USER_OWNER } = process.env;
+
 const Header = () => {
   const { isAuthenticated, user } = useAuth0();
-  const allowedUserId = "auth0|65bc6f6c1db88018a9d22138";
+  const allowedUserId = REACT_APP_USER_ADMIN;
   const isAllowedUser = isAuthenticated && user && user.sub === allowedUserId;
 
   const [menuOpen, setMenuOpen] = useState(false);

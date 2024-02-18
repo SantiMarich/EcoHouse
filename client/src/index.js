@@ -9,7 +9,16 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
+const { REACT_APP_AXIOS_URL } = process.env;
+
+const { REACT_APP_AUTH0_DOMAINID } = process.env;
+const { REACT_APP_AUTH0_CLIENTID } = process.env;
+
+axios.defaults.baseURL = REACT_APP_AXIOS_URL;
+
+console.log(REACT_APP_AXIOS_URL);
+console.log(REACT_APP_AUTH0_DOMAINID);
+console.log(REACT_APP_AUTH0_CLIENTID);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,8 +27,8 @@ root.render(
       <Router>
         <React.StrictMode>
           <Auth0Provider
-            domain="dev-mc7l5b4ip10iamgl.us.auth0.com"
-            clientId="trLxaAsawcG6nj9BZUXm6kisKFhriAsl"
+            domain={REACT_APP_AUTH0_DOMAINID}
+            clientId={REACT_APP_AUTH0_CLIENTID}
             authorizationParams={{
               redirect_uri: window.location.origin,
             }}

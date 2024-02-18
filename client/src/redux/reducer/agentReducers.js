@@ -1,4 +1,3 @@
-// agentReducers.js
 import * as actionTypes from "../actions/ActionTypes";
 
 const initialState = {
