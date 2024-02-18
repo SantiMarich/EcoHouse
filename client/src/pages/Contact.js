@@ -55,7 +55,7 @@ const Contact = () => {
             <div className="flex mb-2 mt-4 justify-center items-center text-lg font-semibold">
               Contactanos
             </div>
-            <p className="text-center text-xs text-green-600 mb-2 px-2">
+            <p className="text-center text-xs text-green-600 mb-2 pl-4 pr-4">
               Completá el formulario para contactarnos sobre cualquier pregunta
               o consulta y nos contactaremos a la brevedad
             </p>
@@ -122,7 +122,7 @@ const Contact = () => {
             <div className="flex space-x-3 mb-2 mt-2 items-center text-xl font-semibold"></div>
           </div>
           <form
-            className="flex flex-col gap-y-4 w-[225px] lg:w-1/2 xl:w-1/2 mt-2"
+            className="flex flex-col gap-y-4 w-[225px] lg:w-1/2 xl:w-1/2 mt-4"
             ref={form}
             onSubmit={sendEmail}
           >

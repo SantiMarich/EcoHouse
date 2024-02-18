@@ -50,11 +50,11 @@ const Banner = () => {
             </a>
           </div>
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
-            <span className="text-4xl text-green-400 lg:text-[48px] font-bold flex flex-col mb-4">
+            <span className="text-4xl text-green-600 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
             </span>{" "}
             Servicios Inmobiliarios
-            <span className="text-green-500 text-sm font-medium flex flex-col mt-2">
+            <span className="text-green-600 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
           </h1>

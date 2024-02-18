@@ -9,8 +9,8 @@ const Favorites = () => {
   if (!isAuthenticated) {
     return (
       <div className="text-center mt-4">
-        <div className="text-center text-3x1 text-gray-400 mt-48 mb-48">
-          Lo Sentimos! Debes estar Logueado para Acceder a esta Sección.
+        <div className="text-center text-3x1 text-gray-400 mt-48 mb-48 pl-4 pr-4">
+          Lo Sentimos! Debes Iniciar Sesión para Acceder a esta Sección
         </div>
       </div>
     );
