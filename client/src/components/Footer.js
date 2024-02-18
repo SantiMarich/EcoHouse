@@ -40,7 +40,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <RiTiktokFill className="text-xl mr-[4px] text-green-700 hover:text-green-600" />
+          <RiTiktokFill className="text-xl mr-[4px] text-white" />
         </a>
       </div>
     </footer>
