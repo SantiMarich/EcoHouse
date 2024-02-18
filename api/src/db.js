@@ -6,15 +6,20 @@ const HouseModel = require("./models/House");
 const LocationModel = require("./models/Location");
 
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, POSTGRES_URL } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecohouse`,
-  {
-    logging: false,
-    native: false,
-  }
-);
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecohouse`,
+//   {
+//     logging: false,
+//     native: false,
+//   }
+// );
+
+const sequelize = new Sequelize(POSTGRES_URL, {
+  logging: false,
+  native: false,
+});
 
 const basename = path.basename(__filename);
 
