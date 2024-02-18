@@ -2,10 +2,10 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
   dialect: "postgres",
-  host: "localhost", // Cambia esto según tu configuración
-  username: "postgres", // Cambia esto según tu configuración
-  password: "33814489", // Cambia esto según tu configuración
-  database: "postgres", // Cambia esto según tu configuración
+  host: "localhost",
+  username: "postgres",
+  password: "33814489",
+  database: "postgres",
 });
 
 module.exports = sequelize;

@@ -5,16 +5,6 @@ const Carrousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isTransitioning) {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [images, isTransitioning]);
-
   const handlePrevSlide = () => {
     if (!isTransitioning) {
       setIsTransitioning(true);
