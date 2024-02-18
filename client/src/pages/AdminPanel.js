@@ -12,14 +12,17 @@ const { REACT_APP_USER_OWNER } = process.env;
 
 const AdminPanel = () => {
   const { user } = useAuth0();
-  const isAllowedUser =
-    user.sub === REACT_APP_USER_ADMIN || user.sub === REACT_APP_USER_OWNER;
+  const allowedUserId = REACT_APP_USER_ADMIN;
+  const ownerUserId = REACT_APP_USER_OWNER;
   const [showHouseForm, setShowHouseForm] = useState(false);
   const [showAgentForm, setShowAgentForm] = useState(false);
   const [showLocationForm, setShowLocationForm] = useState(false);
   const [showEditDatabase, setShowEditDatabase] = useState(false);
 
-  if (user && user.sub === isAllowedUser) {
+  if (
+    (user && user.sub === allowedUserId) ||
+    (user && user.sub === ownerUserId)
+  ) {
     return (
       <div className="flex flex-col w-full justify-center items-center h-full">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2 lg:gap-2 p-6 mb-12 w-[375px]">
