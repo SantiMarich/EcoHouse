@@ -13,7 +13,8 @@ const { REACT_APP_USER_OWNER } = process.env;
 
 const Header = () => {
   const { isAuthenticated, user } = useAuth0();
-  const allowedUserId = REACT_APP_USER_ADMIN || REACT_APP_USER_OWNER;
+  const allowedUserId =
+    user.sub === REACT_APP_USER_ADMIN || user.sub === REACT_APP_USER_OWNER;
   const isAllowedUser = isAuthenticated && user && user.sub === allowedUserId;
 
   const [menuOpen, setMenuOpen] = useState(false);
