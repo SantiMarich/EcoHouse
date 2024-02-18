@@ -138,6 +138,25 @@ const FormHouse = () => {
     <form onSubmit={handleSubmit} className="mt-5">
       <div className="mb-5">
         <label
+          htmlFor="name"
+          className="block mb-2 text-sm font-medium text-gray-600"
+        >
+          Nombre
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name || ""}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
+          placeholder="Ej.: Casa Estancia Vieja"
+        />
+      </div>
+
+      <div className="mb-5">
+        <label
           htmlFor="type"
           className="block mb-2 text-sm font-medium text-gray-600"
         >
@@ -213,25 +232,6 @@ const FormHouse = () => {
               </option>
             ))}
         </select>
-      </div>
-
-      <div className="mb-5">
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-600"
-        >
-          Nombre
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name || ""}
-          onChange={handleChange}
-          required
-          className="border border-gray-300 focus:border-green-500 outline-none rounded block w-full p-2.5 px-4 text-sm gap-2"
-          placeholder="Ej.: Casa Estancia Vieja"
-        />
       </div>
 
       <div className="mb-5">

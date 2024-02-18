@@ -16,10 +16,6 @@ const { REACT_APP_AUTH0_CLIENTID } = process.env;
 
 axios.defaults.baseURL = REACT_APP_AXIOS_URL;
 
-console.log(REACT_APP_AXIOS_URL);
-console.log(REACT_APP_AUTH0_DOMAINID);
-console.log(REACT_APP_AUTH0_CLIENTID);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

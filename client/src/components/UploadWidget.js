@@ -35,7 +35,6 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Imagen cargada correctamente:", result.info.secure_url);
           onImageUpload(result.info.secure_url, isPortada);
           setUploadedImages([...uploadedImages, result.info]);
           setError(null);

@@ -24,7 +24,6 @@ const HouseContextProvider = ({ children }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("Houses:", houses);
     if (Array.isArray(houses)) {
       const allProperties = houses.map((house) => house.type);
       const uniqueProperties = ["Propiedad (All)", ...new Set(allProperties)];
