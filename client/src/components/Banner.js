@@ -8,6 +8,7 @@ import {
 } from "react-icons/ri";
 
 import Image from "../assets/img/Salta0.png";
+import Logo from "../assets/img/EcohouseLogo.png";
 import Sort from "./Sort";
 import ScrollDown from "../components/ScrollDown";
 
@@ -50,9 +51,10 @@ const Banner = () => {
             </a>
           </div>
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
-            <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
+            {/* <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
-            </span>{" "}
+            </span>{" "} */}
+            <img src={Logo} alt="" className="w-[275px] mb-4"></img>
             Servicios Inmobiliarios
             <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta

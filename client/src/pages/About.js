@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Image from "../assets/img/Salta.jpg";
+import Logo from "../assets/img/EcohouseLogo.png";
 
 import {
   RiWhatsappLine,
@@ -23,9 +24,10 @@ const Banner = () => {
         </div>
         <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-8 mt-14">
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
-            <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
+            {/* <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
-            </span>{" "}
+            </span>{" "} */}
+            <img src={Logo} alt="" className="w-[275px] mb-4"></img>
             Servicios Inmobiliarios
             <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta

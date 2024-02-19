@@ -69,10 +69,14 @@ const UploadWidget = ({ onImageUpload, isPortada }) => {
       {error && <p className="text-red-500 mt-2">{error}</p>}
       {uploadedImages.map((image, index) => (
         <div key={index} className="mt-4">
-          <p className="flex text-xs mb-2 justify-center items-center">
+          <p className="flex text-xs mb-2 mt-2 justify-center items-center">
             {image.original_filename}
           </p>
-          <Image cloudName="dgumwc2z4" publicId={image.public_id} width="full">
+          <Image
+            cloudName={REACT_APP_CLOUDYNARY_CLOUDNAME}
+            publicId={image.public_id}
+            width="full"
+          >
             <Transformation className="w-full " />
           </Image>
         </div>

@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-5 border-b border-green-200 sticky top-0 bg-white z-50">
+    <header className="py-2 border-b border-green-200 sticky top-0 bg-white  z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex flex-row justify-between items-center">
           <Link to="/">
@@ -91,28 +91,28 @@ const Header = () => {
         <div className="absolute drop-shadow-md shadow-l md:hidden flex flex-col right-0  items-end w-[180px] mt-4 bg-white mr-4 rounded-lg">
           <Link
             to="/"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             onClick={toggleMenu}
           >
             Inicio
           </Link>
           <Link
             to="/about"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             onClick={toggleMenu}
           >
             Nosotros
           </Link>
           <Link
             to="/favorites"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             onClick={toggleMenu}
           >
             Favoritos
           </Link>
           <Link
             to="/contact"
-            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-white hover:bg-green-400"
+            className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
             onClick={toggleMenu}
           >
             Contacto

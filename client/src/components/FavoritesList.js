@@ -42,7 +42,8 @@ const FavoritesList = () => {
   if (!sortedFavoriteHouses || sortedFavoriteHouses.length === 0) {
     return (
       <div className="text-center text-3x1 text-gray-400 mt-48 mb-48">
-        Lo Sentimos! No Se Encontraron Resultados
+        Lo Sentimos! No Se Encontraron Resultados. Selecciona tus propiedades
+        favoritas para que aparezcan aqui.
       </div>
     );
   }

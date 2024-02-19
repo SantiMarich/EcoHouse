@@ -7,6 +7,8 @@ import {
   RiTiktokFill,
 } from "react-icons/ri";
 
+import Logo2 from "../assets/img/EcohouseLogo.png";
+
 const { REACT_APP_EMAILJS_SERVICE } = process.env;
 const { REACT_APP_EMAILJS_TEMPLATE } = process.env;
 const { REACT_APP_EMAILJS_FORM } = process.env;
@@ -52,14 +54,9 @@ const Contact = () => {
       <div class="md:mb-12 lg:mb-8 flex flex-row mt-14 ">
         <div className="flex flex-col shadow-lg sm:flex-col md-flex-col lg:flex-row xl:flex-row space-x-8 border h-full max-auto w-[320px] sm:w-[320px] md:w-[320px] lg:w-[640px] xl:w-[640px] border-gray-300 outline:none rounded py-4 px-4 text-md mb-8">
           <div className="flex flex-col w-full lg:w-1/2 xl:w-1/2  items-center">
-            <div className="flex mb-2 mt-4 justify-center items-center text-lg font-semibold">
-              Contactanos
-            </div>
-            <p className="text-center text-xs text-green-700 mb-2 pl-4 pr-4">
-              Completá el formulario para contactarnos sobre cualquier pregunta
-              o consulta y nos contactaremos a la brevedad
-            </p>
-            <div className="flex space-x-3 mb-2 mt-2 items-center text-sm font-semibold">
+            <img src={Logo2} alt="" className="w-[160px] mt-4 mb-2"></img>
+            <p className="text-center text-xs text-green-700 mb-2 pl-4 pr-4"></p>
+            <div className="flex space-x-3 mb-2  items-center text-sm font-semibold">
               Redes Sociales
             </div>
             <div className="flex space-x-3 mb-4 mt-2 items-center text-xl font-semibold">
@@ -93,12 +90,21 @@ const Contact = () => {
               </a>
             </div>
             <div className="flex space-x-3 mb-2 mt-2 items-center text-sm font-semibold">
-              Teléfono
+              Teléfonos
             </div>
-            <p className="text-center text-xs text-green-700 mb-4">
+            <p className="text-center text-xs text-green-700 mb-1">
               +54 387 4033334
             </p>
-            <div className="flex space-x-3 mb-2 mt-2 items-center text-sm font-semibold">
+            <p className="text-center text-xs text-green-700 mb-4">
+              +54 387 4089737
+            </p>
+            <div className="flex space-x-3 mb-2 items-center text-sm font-semibold">
+              Mail
+            </div>
+            <p className="text-center text-xs text-green-700 mb-4">
+              ecohousesalta@gmail.com
+            </p>
+            <div className="flex space-x-3 mb-2  items-center text-sm font-semibold">
               Ubicación
             </div>
             <p className="text-center text-xs text-green-700 mb-1">
@@ -107,7 +113,7 @@ const Contact = () => {
             <p className="text-center text-xs text-green-700 mb-4">
               Ciudad de Salta
             </p>
-            <div className="flex space-x-3 mb-2 mt-2 items-center text-sm font-semibold">
+            <div className="flex space-x-3 mb-2 items-center text-sm font-semibold">
               Horarios Atención
             </div>
             <p className="text-center text-xs text-green-700 mb-1">
