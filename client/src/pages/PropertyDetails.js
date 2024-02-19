@@ -153,7 +153,7 @@ const PropertyDetails = () => {
                   className="object-cover object-center w-full h-full rounded-full"
                 />
               </div>
-              <div className="flex flex-col items-center text-start justify-start">
+              <div className="flex flex-col items-start text-start justify-start">
                 <div className="font-semibold text-lg">
                   {house && house.agent && house.agent.name}
                 </div>
