@@ -3,17 +3,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Sort from "../components/Sort";
 import FavoritesList from "../components/FavoritesList";
 
+import Mundo from "../assets/img/Ecohouse.jpg";
+
 const Favorites = () => {
   const { isAuthenticated } = useAuth0();
 
   if (!isAuthenticated) {
     return (
-      <div className="text-center mt-4">
-        <div className="text-center text-3x1 text-gray-400 mt-64 pl-4 pr-4">
+      <div className="flex flex-col text-center items-center mt-4">
+        <div className="flex flex-col text-center items-center text-3x1 text-gray-400 mt-28 pl-4 pr-4">
+          <img src={Mundo} alt="" className="w-[100px] mb-8"></img>
           Lo Sentimos! Debes Iniciar Sesión para Acceder a esta Sección.
         </div>
         <div className="text-center text-3x1 text-gray-400 mb-96 pl-4 pr-4">
-          Aqui podras ver las propiedades que hayas seleccionado como favoritas.
+          Aquí verás propiedades que hayas seleccionado como favoritas.
         </div>
       </div>
     );

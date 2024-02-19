@@ -52,9 +52,9 @@ const Contact = () => {
   return (
     <section className="h-full max-auto w-full mb-8 flex justify-around items-center">
       <div class="md:mb-12 lg:mb-8 flex flex-row mt-14 ">
-        <div className="flex flex-col shadow-lg sm:flex-col md-flex-col lg:flex-row xl:flex-row space-x-8 border h-full max-auto w-[320px] sm:w-[320px] md:w-[320px] lg:w-[640px] xl:w-[640px] border-gray-300 outline:none rounded py-4 px-4 text-md mb-8">
+        <div className="flex flex-col shadow-lg sm:flex-col md-flex-col lg:flex-row xl:flex-row border h-full max-auto w-[320px] sm:w-[320px] md:w-[320px] lg:w-[640px] xl:w-[640px] border-gray-300 outline:none rounded py-4 px-4 text-md mb-8">
           <div className="flex flex-col w-full lg:w-1/2 xl:w-1/2  items-center">
-            <img src={Logo2} alt="" className="w-[160px] mt-4 mb-2"></img>
+            <img src={Logo2} alt="" className="w-[160px] mt-6 mb-4"></img>
             <p className="text-center text-xs text-green-700 mb-2 pl-4 pr-4"></p>
             <div className="flex space-x-3 mb-2  items-center text-sm font-semibold">
               Redes Sociales
@@ -89,19 +89,19 @@ const Contact = () => {
                 <RiTiktokFill className="text-lg mr-[4px] text-green-700 hover:text-green-600" />
               </a>
             </div>
-            <div className="flex space-x-3 mb-2 mt-2 items-center text-sm font-semibold">
+            <div className="flex space-x-3 mb-2 items-center text-sm font-semibold">
               Teléfonos
             </div>
             <p className="text-center text-xs text-green-700 mb-1">
               +54 387 4033334
             </p>
-            <p className="text-center text-xs text-green-700 mb-4">
+            <p className="text-center text-xs text-green-700 mb-3">
               +54 387 4089737
             </p>
             <div className="flex space-x-3 mb-2 items-center text-sm font-semibold">
               Mail
             </div>
-            <p className="text-center text-xs text-green-700 mb-4">
+            <p className="text-center text-xs text-green-700 mb-3">
               ecohousesalta@gmail.com
             </p>
             <div className="flex space-x-3 mb-2  items-center text-sm font-semibold">
@@ -110,7 +110,7 @@ const Contact = () => {
             <p className="text-center text-xs text-green-700 mb-1">
               Mendoza 748 Oficina 2
             </p>
-            <p className="text-center text-xs text-green-700 mb-4">
+            <p className="text-center text-xs text-green-700 mb-3">
               Ciudad de Salta
             </p>
             <div className="flex space-x-3 mb-2 items-center text-sm font-semibold">
@@ -128,7 +128,7 @@ const Contact = () => {
             <div className="flex space-x-3 mb-2 mt-2 items-center text-xl font-semibold"></div>
           </div>
           <form
-            className="flex flex-col gap-y-4 w-[225px] lg:w-1/2 xl:w-1/2 mt-4"
+            className="flex flex-col gap-y-4 w-full lg:w-1/2 xl:w-1/2 mt-4"
             ref={form}
             onSubmit={sendEmail}
           >
@@ -136,23 +136,23 @@ const Contact = () => {
               className=" border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
               type="text"
               name="user_name"
-              placeholder="Nombre*"
+              placeholder="Nombre"
             />
             <input
               className="border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
               type="email"
               name="user_email"
-              placeholder="Mail*"
+              placeholder="Mail"
             />
             <input
               className="border border-gray-300 focus:border-green-600 outline:none rounded w-full px-4 h-14 text-sm"
               type="text"
               name="user_phone"
-              placeholder="Telefono*"
+              placeholder="Teléfono"
             />
             <textarea
               className="border border-gray-300 focus:border-green-600 outline-none resize-none rounded w-full p-4 h-36 text-sm text-gray-400"
-              placeholder="Mensaje*"
+              placeholder="Mensaje"
               name="message"
             ></textarea>
             <div className="flex gap-x-2">

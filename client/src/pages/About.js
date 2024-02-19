@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Image from "../assets/img/Salta.jpg";
+import Image from "../assets/img/Fondo2.jpg";
 import Logo from "../assets/img/EcohouseLogo.png";
 
 import {

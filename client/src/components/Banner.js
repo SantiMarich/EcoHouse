@@ -7,7 +7,7 @@ import {
   RiTiktokFill,
 } from "react-icons/ri";
 
-import Image from "../assets/img/Salta0.png";
+import Image from "../assets/img/Fondo1.jpg";
 import Logo from "../assets/img/EcohouseLogo.png";
 import Sort from "./Sort";
 import ScrollDown from "../components/ScrollDown";
@@ -20,7 +20,7 @@ const Banner = () => {
     >
       <div className="flex flex-col lg:flex-row">
         <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-4">
-          <div className="flex space-x-3 mb-16 mt-14">
+          <div className="flex space-x-3 mb-14 mt-14">
             <a
               href="https://wa.me/5493874033334"
               target="_blank"
