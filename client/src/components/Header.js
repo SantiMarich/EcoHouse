@@ -25,11 +25,15 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className="py-2 border-b border-green-200 sticky top-0 bg-white  z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex flex-row justify-between items-center">
-          <Link to="/">
+          <Link to="/" onClick={closeMenu}>
             <img
               src={Logo}
               alt=""
@@ -40,24 +44,28 @@ const Header = () => {
             <Link
               to="/"
               className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
+              onClick={closeMenu}
             >
               Inicio
             </Link>
             <Link
               to="/about"
               className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
+              onClick={closeMenu}
             >
               Nosotros
             </Link>
             <Link
               to="/favorites"
               className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
+              onClick={closeMenu}
             >
               Favoritos
             </Link>
             <Link
               to="/contact"
               className="text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
+              onClick={closeMenu}
             >
               Contacto
             </Link>
@@ -69,7 +77,7 @@ const Header = () => {
               <Profile />
               <LogOutButton>Log Out</LogOutButton>
               {isAllowedUser && (
-                <Link to="/admin">
+                <Link to="/admin" onClick={closeMenu}>
                   <button className="bg-green-400 hover:bg-green-500 text-white h-8 px-2 py-2 rounded-lg transition flex items-center text-center justify-center">
                     <MdModeEdit />
                   </button>
@@ -92,28 +100,28 @@ const Header = () => {
           <Link
             to="/"
             className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Inicio
           </Link>
           <Link
             to="/about"
             className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Nosotros
           </Link>
           <Link
             to="/favorites"
             className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Favoritos
           </Link>
           <Link
             to="/contact"
             className="block w-full items-end rounded-lg text-center text-sm p-4 font-medium hover:text-green-600 focus:text-green-600"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Contacto
           </Link>
