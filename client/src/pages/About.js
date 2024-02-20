@@ -44,12 +44,12 @@ const Banner = () => {
             comprometido en brindarte las mejores oportunidades para tu próxima
             inversión. Nos enorgullece ofrecer un servicio personalizado, basado
             en nuestra sólida experiencia local y en el profundo conocimiento de
-            las diferentes zonas de la ciudad y las tendencias del mercado. Nos
+            las diferentes zonas de la ciudad y las tendencias del mercado. En{" "}
+            <span className="text-green-600 font-bold ">ECO HOUSE</span> nos
             hemos comprometido con la transparencia y el profesionalismo en cada
             transacción. Nuestra misión es proporcionar una experiencia cortés,
-            eficiente y de calidad en cada interacción.{" "}
-            <span className="text-green-600 font-bold ">ECO HOUSE</span> y
-            permitirnos acompañarte en tu próxima inversión inmobiliaria.
+            eficiente y de calidad en cada interacción. Permitinos acompañarte
+            en tu próxima inversión inmobiliaria.
           </p>
           <div className="w-full flex flex-col items-center sm:items-center md:items-center lg:items-start xl:items-start">
             <Link
