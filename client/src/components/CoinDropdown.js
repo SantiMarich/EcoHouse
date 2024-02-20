@@ -12,7 +12,7 @@ const CoinDropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCurrencyFilter = (currency) => {
-    setCoin(currency === "Todas" ? "Moneda (Todas)" : currency);
+    setCoin(currency === "All" ? "Moneda (All)" : currency);
     setIsOpen(false);
   };
 
@@ -42,10 +42,10 @@ const CoinDropDown = () => {
       <Menu.Items className="dropdown-menu">
         <Menu.Item
           as="li"
-          onClick={() => handleCurrencyFilter("Moneda (Todas)")}
+          onClick={() => handleCurrencyFilter("Moneda (All)")}
           className="cursor-pointer hover:text-green-800 transition"
         >
-          Moneda (Todas)
+          Moneda (All)
         </Menu.Item>
         <Menu.Item
           as="li"

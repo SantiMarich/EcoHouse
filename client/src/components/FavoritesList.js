@@ -19,14 +19,13 @@ const FavoritesList = () => {
 
   const filteredFavoriteHouses = favoriteHouses.filter((house) => {
     return (
-      (location === "Ubicación (Todas)" || house.location.name === location) &&
-      (property === "Propiedad (Todas)" || house.type === property) &&
-      (coin === "Moneda (Todas)" || house.moneda === coin) &&
-      (price === "Precio (Todas)" ||
+      (location === "Ubicación (All)" || house.location.name === location) &&
+      (property === "Propiedad (All)" || house.type === property) &&
+      (coin === "Moneda (All)" || house.moneda === coin) &&
+      (price === "Precio (All)" ||
         (parseInt(house.price) >= parseInt(price.split(" ")[0]) &&
           parseInt(house.price) <= parseInt(price.split(" ")[2]))) &&
-      (transaction === "Transacción (Todas)" ||
-        house.transaction === transaction)
+      (transaction === "Operación (All)" || house.transaction === transaction)
     );
   });
 
