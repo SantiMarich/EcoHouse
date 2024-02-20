@@ -37,7 +37,7 @@ const Banner = () => {
               Ciudad de Salta
             </span>{" "}
           </h1>
-          <p className="max-w-[480px] mb-4 text-[14px] px-8 md:px-0 ">
+          <p className="max-w-[480px] mb-4 text-[14px] px-6 md:px-0 ">
             Somos un equipo apasionado por el desarrollo inmobiliario, con más
             de 5 años de experiencia en el mercado de la ciudad de Salta.
             Nuestra trayectoria nos ha permitido entender las necesidades de

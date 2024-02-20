@@ -64,7 +64,7 @@ const Banner = () => {
               Ciudad de Salta
             </span>{" "}
           </h1>
-          <p className="max-w-[480px] mb-8 text-[14px] px-8 md:px-0">
+          <p className="max-w-[480px] mb-8 text-[14px] px-6 md:px-0">
             Encuentra las mejores oportunidades inmobiliaria con{" "}
             <span className="text-green-600 font-bold ">ECO HOUSE</span>,
             expertos en alquiler y venta de propiedades en la ciudad de Salta.
