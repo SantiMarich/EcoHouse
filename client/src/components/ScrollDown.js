@@ -16,7 +16,7 @@ const ScrollDown = ({ targetSectionId }) => {
       >
         <CgMouse className="text-2xl mr-[8px] text-green-700" />
         <span className="home__scroll-name mr-[8px] flex flex-row text-sm font-semibold">
-          Scroll Down
+          Nuestras Propiedades
         </span>
         <IoArrowDownOutline className="text-base mr-[8px] text-green-700" />
       </Link>

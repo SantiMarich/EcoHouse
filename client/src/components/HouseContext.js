@@ -7,13 +7,13 @@ export const HouseContext = createContext();
 const HouseContextProvider = ({ children }) => {
   const houses = useSelector((state) => state.houses.houses);
   const filteredHouses = useSelector((state) => state.houses.filteredHouses);
-  const [location, setLocation] = useState("Ubicación (All)");
+  const [location, setLocation] = useState("Ubicación (Todas)");
   const [locations, setLocations] = useState([]);
-  const [property, setProperty] = useState("Propiedad (All)");
+  const [property, setProperty] = useState("Propiedad (Todas)");
   const [properties, setProperties] = useState([]);
-  const [coin, setCoin] = useState("Moneda (All)");
-  const [price, setPrice] = useState("Precio (All)");
-  const [transaction, setTransaction] = useState("Transacción (All)");
+  const [coin, setCoin] = useState("Moneda (Todas)");
+  const [price, setPrice] = useState("Precio (Todas)");
+  const [transaction, setTransaction] = useState("Operación (Todas)");
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sortByPrice, setSortByPrice] = useState("default");
@@ -26,18 +26,18 @@ const HouseContextProvider = ({ children }) => {
   useEffect(() => {
     if (Array.isArray(houses)) {
       const allProperties = houses.map((house) => house.type);
-      const uniqueProperties = ["Propiedad (All)", ...new Set(allProperties)];
+      const uniqueProperties = ["Propiedad (Todas)", ...new Set(allProperties)];
       setProperties(uniqueProperties);
 
       const allLocations = houses.map(
         (house) => house.location && house.location.name
       );
-      const uniqueLocations = ["Ubicación (All)", ...new Set(allLocations)];
+      const uniqueLocations = ["Ubicación (Todas)", ...new Set(allLocations)];
       setLocations(uniqueLocations);
 
       const allTransactions = houses.map((house) => house.transaction);
       const uniqueTransactions = [
-        "Transacción (All)",
+        "Operación (Todas)",
         ...new Set(allTransactions),
       ];
       setTransactions(uniqueTransactions);
@@ -50,7 +50,7 @@ const HouseContextProvider = ({ children }) => {
     setLoading(true);
 
     const isDefault = (str) =>
-      typeof str === "string" && str.split(" ").includes("(All)");
+      typeof str === "string" && str.split(" ").includes("(Todas)");
 
     const minPrice = parseInt(price.split(" ")[0]);
     const maxPrice = parseInt(price.split(" ")[2]);

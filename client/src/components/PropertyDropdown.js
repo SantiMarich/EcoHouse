@@ -24,7 +24,7 @@ const PropertyDropdown = () => {
       >
         <RiHome5Line className="dropdown-icon-primary" />
         <div>
-          <div className="text-[14px] font-medium leadign-tight">
+          <div className="text-[13px] font-medium leadign-tight">
             {property}
           </div>
           <div className="text-[12px]">Selección Propiedad</div>

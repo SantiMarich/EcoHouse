@@ -29,10 +29,10 @@ const TransactionDropdown = () => {
       >
         <RiArrowLeftRightLine className="dropdown-icon-primary" />
         <div>
-          <div className="text-[14px] font-medium leadign-tight">
+          <div className="text-[13px] font-medium leadign-tight">
             {transaction}
           </div>
-          <div className="text-[12px]">Selección Transacción</div>
+          <div className="text-[12px]">Selección Operación</div>
         </div>
         {isOpen ? (
           <RiArrowUpSLine className="dropdown-icon-secondary" />

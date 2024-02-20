@@ -20,7 +20,7 @@ const LocationDropdown = () => {
       >
         <RiMapPinLine className="dropdown-icon-primary" />
         <div>
-          <div className="text-[14px] font-medium leading-tight">
+          <div className="text-[13px] font-medium leading-tight">
             {location}
           </div>
           <div className="text-[12px]">Selección Ubicación</div>
