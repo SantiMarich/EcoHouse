@@ -28,7 +28,7 @@ const Banner = () => {
               ECO HOUSE
             </span>{" "} */}
             <img src={Logo} alt="" className="w-[275px] mb-4"></img>
-            Servicios Inmobiliarios
+            <h2 className="text-2xl">Servicios Inmobiliarios</h2>
             <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
@@ -39,7 +39,7 @@ const Banner = () => {
             Nuestra trayectoria nos ha permitido entender las necesidades de
             nuestros clientes y acompañarlos en cada paso de su proceso de
             inversión. Con{" "}
-            <span className="text-green-600 font-semibold ">ECO HOUSE</span>, no
+            <span className="text-green-600 font-bold ">ECO HOUSE</span>, no
             solo encontrarás una agencia inmobiliaria, sino un equipo
             comprometido en brindarte las mejores oportunidades para tu próxima
             inversión. Nos enorgullece ofrecer un servicio personalizado, basado
@@ -48,7 +48,7 @@ const Banner = () => {
             hemos comprometido con la transparencia y el profesionalismo en cada
             transacción. Nuestra misión es proporcionar una experiencia cortés,
             eficiente y de calidad en cada interacción.{" "}
-            <span className="text-green-600 font-semibold ">ECO HOUSE</span> y
+            <span className="text-green-600 font-bold ">ECO HOUSE</span> y
             permitirnos acompañarte en tu próxima inversión inmobiliaria.
           </p>
           <div className="w-full flex flex-col items-center sm:items-center md:items-center lg:items-start xl:items-start">

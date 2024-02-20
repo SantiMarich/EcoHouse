@@ -20,7 +20,7 @@ const Banner = () => {
     >
       <div className="flex flex-col lg:flex-row">
         <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-4">
-          <div className="flex space-x-3 mb-14 mt-14">
+          <div className="flex space-x-3 mb-10 mt-28">
             <a
               href="https://wa.me/5493874033334"
               target="_blank"
@@ -55,14 +55,14 @@ const Banner = () => {
               ECO HOUSE
             </span>{" "} */}
             <img src={Logo} alt="" className="w-[275px] mb-4"></img>
-            Servicios Inmobiliarios
+            <h2 className="text-2xl">Servicios Inmobiliarios</h2>
             <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
           </h1>
           <p className="max-w-[480px] mb-8 text-[14px] ">
             Encuentra las mejores oportunidades inmobiliaria con{" "}
-            <span className="text-green-600 font-semibold ">ECO HOUSE</span>,
+            <span className="text-green-600 font-bold ">ECO HOUSE</span>,
             expertos en alquiler y venta de propiedades en la ciudad de Salta.
             Nuestra experiencia local nos permite proporcionar asesoramiento
             detallado sobre las diferentes zonas de la ciudad y las tendencias
