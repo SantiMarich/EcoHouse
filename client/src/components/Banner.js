@@ -72,11 +72,11 @@ const Banner = () => {
           </p>
           <ScrollDown targetSectionId="search-section" />
         </div>
-        <div className="hidden flex-1 lg:flex justify-end items-end h-[640px] w-[520px]">
+        <div className="hidden overflow-hidden flex-1 lg:flex justify-end items-end h-[640px] w-[520px]">
           <img
             src={Image}
             alt=""
-            className="object-cover object-center w-full h-full "
+            className="object-cover object-center w-full h-full"
           />
         </div>
       </div>

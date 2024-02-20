@@ -15,11 +15,11 @@ const Banner = () => {
   return (
     <section className="h-full max-auto " id="banner-section">
       <div className="flex flex-col lg:flex-row">
-        <div className="hidden flex-1 lg:flex justify-end items-end h-[640px] w-[520px]">
+        <div className="hidden overflow-hidden flex-1 lg:flex justify-end items-end h-[640px] w-[520px]">
           <img
             src={Image}
             alt=""
-            className="object-cover object-center w-full h-full"
+            className="object-cover object-center  w-full h-full"
           />
         </div>
         <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-8 mt-14">

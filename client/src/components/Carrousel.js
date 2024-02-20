@@ -145,7 +145,7 @@ const Carrousel = ({ images }) => {
             <img
               src={images[selectedImage]}
               alt={`Slide ${selectedImage + 1}`}
-              className="w-full h-full"
+              className="overflow-hidden w-full object-cover h-full"
             />
             <button
               className="absolute flex text-lg top-6 right-6 w-8 h-8 items-center justify-center text-center rounded-full text-md font-semibold text-white dark:bg-green-500/75 dark:hover:bg-green-400/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
