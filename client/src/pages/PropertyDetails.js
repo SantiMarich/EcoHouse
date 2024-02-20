@@ -144,7 +144,7 @@ const PropertyDetails = () => {
               </p>
             </div>
           </div>
-          <div className="flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
+          <div className="flex-1 shadow-lg bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
             <div className="flex items-center gap-x-4 mb-8">
               <div className="flex relative overflow-hidden w-20 h-20 p-1 border border-gray-300 rounded-full items-center justify-center">
                 <img

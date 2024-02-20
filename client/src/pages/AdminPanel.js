@@ -24,7 +24,7 @@ const AdminPanel = () => {
     (user && user.sub === ownerUserId)
   ) {
     return (
-      <div className="flex flex-col w-full items-center h-full max-auto mt-24 mb-48">
+      <div className="flex flex-col w-full items-center h-full max-auto mt-24 mb-72">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2 lg:gap-2 p-6 mb-12 w-[375px]">
           <div className="relative">
             <button
