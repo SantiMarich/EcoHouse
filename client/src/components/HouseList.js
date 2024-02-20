@@ -18,14 +18,14 @@ const HouseList = () => {
 
   if (!Array.isArray(houses) || houses.length === 0) {
     return (
-      <div className="text-center text-3x1 text-gray-400 mt-[480px] sm:mt-96 md:mt-48 p-4">
+      <div className="text-center text-3x1 text-gray-400 mt-[480px] sm:mt-96 md:mt-48 p-4 px-10">
         Lo Sentimos! No Se Encontraron Resultados
       </div>
     );
   }
 
   return (
-    <section className="z-10 mb-20  mt-48 sm:mt-48 md:mt-32 lg:mt-32 xl:mt-32">
+    <section className="z-10 mb-20  mt-54 sm:mt-54 md:mt-32 lg:mt-32 xl:mt-32">
       <div className="container mx-auto">
         <button className="scrollup" id="scroll-up" onClick={handleScrollUp}>
           <i className="uil uil-arrow-up scrollup__icon"></i>

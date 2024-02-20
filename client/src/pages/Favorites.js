@@ -11,11 +11,11 @@ const Favorites = () => {
   if (!isAuthenticated) {
     return (
       <div className="flex flex-col text-center items-center mt-4">
-        <div className="flex flex-col text-center items-center text-3x1 text-gray-400 mt-28 pl-4 pr-4">
+        <div className="flex flex-col text-center items-center text-3x1 text-gray-400 mt-28 px-10">
           <img src={Mundo} alt="" className="w-[100px] mb-8"></img>
           Lo Sentimos! Debes Iniciar Sesión para Acceder a esta Sección.
         </div>
-        <div className="text-center text-3x1 text-gray-400 mb-96 pl-4 pr-4">
+        <div className="text-center text-3x1 text-gray-400 mb-96 px-10">
           Aquí verás propiedades que hayas seleccionado como favoritas.
         </div>
       </div>

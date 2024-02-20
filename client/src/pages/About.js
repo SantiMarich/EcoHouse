@@ -22,18 +22,22 @@ const Banner = () => {
             className="object-cover object-center  w-full h-full"
           />
         </div>
-        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-8 mt-14">
+        <div className="lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-start flex-1 px-4 lg:px-0 mb-14 mt-14">
           <h1 className="lg:text-[30px] font-semibold leading-none mb-6">
             {/* <span className="text-4xl text-green-700 lg:text-[48px] font-bold flex flex-col mb-4">
               ECO HOUSE
             </span>{" "} */}
-            <img src={Logo} alt="" className="w-[275px] mb-4"></img>
-            <h2 className="text-2xl">Servicios Inmobiliarios</h2>
+            <img
+              src={Logo}
+              alt=""
+              className="w-[220px] md:w-[275px] mb-4"
+            ></img>
+            <h2 className="text-lg lg:text-2xl">Servicios Inmobiliarios</h2>
             <span className="text-green-700 text-sm font-medium flex flex-col mt-2">
               Ciudad de Salta
             </span>{" "}
           </h1>
-          <p className="max-w-[480px] mb-4 text-[14px] ">
+          <p className="max-w-[480px] mb-4 text-[14px] px-8 md:px-0 ">
             Somos un equipo apasionado por el desarrollo inmobiliario, con más
             de 5 años de experiencia en el mercado de la ciudad de Salta.
             Nuestra trayectoria nos ha permitido entender las necesidades de

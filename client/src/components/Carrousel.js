@@ -141,11 +141,11 @@ const Carrousel = ({ images }) => {
       </div>
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-90 z-50 p-8">
-          <div className="max-w-screen-lg w-full h-full p-4 bg-white relative">
+          <div className="max-w-screen-lg  max-h-full md:w-full md:h-full lg:w-full lg:h-full xl:w-full xl:h-full p-4 bg-white relative">
             <img
               src={images[selectedImage]}
               alt={`Slide ${selectedImage + 1}`}
-              className="overflow-hidden w-full object-cover h-full"
+              className="overflow-hidden max-w-full max-h-full md:w-full md:h-full lg:w-full lg:h-full xl:w-full xl:h-full object-cover "
             />
             <button
               className="absolute flex text-lg top-6 right-6 w-8 h-8 items-center justify-center text-center rounded-full text-md font-semibold text-white dark:bg-green-500/75 dark:hover:bg-green-400/75 group-focus:ring-4 dark:focus:ring-green-100/75 group-focus:outline-none"
