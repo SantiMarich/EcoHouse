@@ -149,17 +149,17 @@ const House = ({ house }) => {
 
   return (
     <div className="house-card">
-      <div className="bg-white shadow-1 drop-shadow-lg w-full max-w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition">
+      <div className="bg-white shadow-1 drop-shadow-lg w-full sm:w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition">
         <Link to={`/property/${id}`} className="house-link">
-          <div className="relative overflow-hidden w-[352px] h-[352px] ">
+          <div className="relative overflow-hidden w-full sm:w-[352px] h-[352px] ">
             <img
-              className="absolute top-0 left-0 object-cover object-center w-full h-full"
+              className="absolute top-0 left-0 object-cover object-center w-full sm:w-[352px] h-full"
               src={imagePortada}
               alt=""
             />
           </div>
           <div className="p-5">
-            <div className="mb-4 flex gap-x-2 text-xs">
+            <div className="mb-4 flex w-full sm:flex-row gap-x-2 gap-y-2 xs:gap-y-0 text-xs">
               <div className="bg-green-800 rounded-sm text-white px-3">
                 {type}
               </div>
