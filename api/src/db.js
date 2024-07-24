@@ -4,7 +4,7 @@ const fs = require("fs");
 const AgentModel = require("./models/Agent");
 const HouseModel = require("./models/House");
 const LocationModel = require("./models/Location");
-import * as pg from "pg";
+const pg = require("pg");
 
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
